@@ -1,0 +1,628 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>YEGToday — Edmonton &amp; area news</title>
+<meta name="description" content="Free local news for Edmonton, St. Albert, Sherwood Park, Spruce Grove, Stony Plain, Leduc, Beaumont, Fort Saskatchewan and the communities around them.">
+<meta name="theme-color" content="#ffffff">
+<script>document.documentElement.classList.add('js')</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700;800;900&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+<script src="assets/js/main.js" defer></script>
+</head>
+<body>
+<svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true" focusable="false">
+<defs>
+  <linearGradient id="haze" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff" stop-opacity=".35"/></linearGradient>
+  <linearGradient id="shade" x1="0" y1="0" x2="0" y2="1"><stop offset=".55" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".16"/></linearGradient>
+
+  <!-- ===== Illustrated photo placeholders (600x400, colour via .t-* palette classes) ===== -->
+
+  <symbol id="s-skyline" viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice">
+    <rect width="600" height="400" style="fill:var(--sky)"/><rect width="600" height="400" fill="url(#haze)"/>
+    <circle cx="470" cy="92" r="34" style="fill:var(--pop)" opacity=".9"/>
+    <path d="M0 252Q150 214 300 240T600 228V400H0Z" style="fill:var(--far)"/>
+    <g style="fill:var(--mid)">
+      <rect x="132" y="196" width="34" height="90"/><rect x="170" y="164" width="28" height="122"/><rect x="202" y="126" width="32" height="160"/>
+      <rect x="238" y="178" width="40" height="108"/><path d="M282 92l28-22v216h-28z"/><rect x="314" y="140" width="36" height="146"/>
+      <rect x="354" y="172" width="30" height="114"/><rect x="388" y="150" width="26" height="136"/><rect x="418" y="198" width="44" height="88"/>
+    </g>
+    <g style="fill:var(--pop)" opacity=".55">
+      <rect x="208" y="140" width="5" height="7"/><rect x="220" y="162" width="5" height="7"/><rect x="290" y="112" width="5" height="7"/><rect x="290" y="150" width="5" height="7"/>
+      <rect x="322" y="170" width="5" height="7"/><rect x="336" y="200" width="5" height="7"/><rect x="394" y="176" width="5" height="7"/><rect x="176" y="186" width="5" height="7"/>
+    </g>
+    <path d="M0 300q22-30 46-6 26-30 54-4 24-26 52-2 26-28 56-4 28-26 56-2 30-28 58-4 26-24 54-2 30-28 58-2 26-24 52 0 22-20 44-2 20-22 44-4 14-14 26-2V400H0z" style="fill:var(--near)"/>
+    <rect y="322" width="600" height="30" style="fill:var(--water)"/>
+    <path d="M40 334h60M180 340h80M330 332h50M450 342h90" stroke="#fff" stroke-opacity=".45" stroke-width="2" stroke-linecap="round"/>
+    <path d="M0 352q150-14 300 4t300-6V400H0z" style="fill:var(--near)"/>
+    <rect width="600" height="400" fill="url(#shade)"/>
+  </symbol>
+
+  <symbol id="s-bridge" viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice">
+    <rect width="600" height="400" style="fill:var(--sky)"/><rect width="600" height="400" fill="url(#haze)"/>
+    <path d="M0 236Q130 206 270 226T600 214V400H0Z" style="fill:var(--far)"/>
+    <rect y="300" width="600" height="64" style="fill:var(--water)"/>
+    <path d="M30 318h70M200 326h90M380 316h60M480 330h80" stroke="#fff" stroke-opacity=".4" stroke-width="2" stroke-linecap="round"/>
+    <g style="fill:var(--near)">
+      <rect x="-10" y="150" width="620" height="14"/><rect x="-10" y="140" width="620" height="4"/><rect x="-10" y="194" width="620" height="5"/>
+      <path d="M46 199h28l10 131H36zM166 199h28l10 131h-48zM286 199h28l10 131h-48zM406 199h28l10 131h-48zM526 199h28l10 131h-48z"/>
+    </g>
+    <polyline points="0,164 15,194 30,164 45,194 60,164 75,194 90,164 105,194 120,164 135,194 150,164 165,194 180,164 195,194 210,164 225,194 240,164 255,194 270,164 285,194 300,164 315,194 330,164 345,194 360,164 375,194 390,164 405,194 420,164 435,194 450,164 465,194 480,164 495,194 510,164 525,194 540,164 555,194 570,164 585,194 600,164" fill="none" style="stroke:var(--near)" stroke-width="3"/>
+    <path d="M50 205L80 325M70 205L40 325M170 205L200 325M190 205L160 325M290 205L320 325M310 205L280 325M410 205L440 325M430 205L400 325M530 205L560 325M550 205L520 325" style="stroke:var(--mid)" stroke-width="2"/>
+    <rect x="236" y="122" width="76" height="18" rx="3" style="fill:var(--pop)"/>
+    <g style="fill:var(--near)" opacity=".6"><rect x="242" y="126" width="9" height="7"/><rect x="256" y="126" width="9" height="7"/><rect x="270" y="126" width="9" height="7"/><rect x="284" y="126" width="9" height="7"/><rect x="298" y="126" width="9" height="7"/></g>
+    <path d="M0 360q30-26 60-4 30-28 64-2 28-24 60 0 32-28 66-2 30-26 62 0 30-28 64-2 28-24 58 0 30-26 62-2 28-22 60 0 24-20 44-4V400H0z" style="fill:var(--mid)"/>
+    <rect width="600" height="400" fill="url(#shade)"/>
+  </symbol>
+
+  <symbol id="s-legislature" viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice">
+    <rect width="600" height="400" style="fill:var(--sky)"/><rect width="600" height="400" fill="url(#haze)"/>
+    <circle cx="120" cy="90" r="28" style="fill:var(--pop)" opacity=".85"/>
+    <g style="fill:var(--mid)">
+      <rect x="120" y="232" width="360" height="92"/><rect x="236" y="196" width="128" height="128"/>
+      <path d="M226 198h148l-74-30z"/><rect x="258" y="138" width="84" height="34"/>
+      <path d="M252 140q48-86 96 0z"/><rect x="295" y="80" width="10" height="20"/><path d="M300 66l5 14h-10z"/>
+    </g>
+    <g style="fill:var(--far)">
+      <rect x="248" y="206" width="8" height="96"/><rect x="266" y="206" width="8" height="96"/><rect x="284" y="206" width="8" height="96"/>
+      <rect x="302" y="206" width="8" height="96"/><rect x="320" y="206" width="8" height="96"/><rect x="338" y="206" width="8" height="96"/>
+      <rect x="136" y="250" width="10" height="16"/><rect x="156" y="250" width="10" height="16"/><rect x="176" y="250" width="10" height="16"/><rect x="196" y="250" width="10" height="16"/><rect x="216" y="250" width="10" height="16"/>
+      <rect x="136" y="284" width="10" height="16"/><rect x="156" y="284" width="10" height="16"/><rect x="176" y="284" width="10" height="16"/><rect x="196" y="284" width="10" height="16"/><rect x="216" y="284" width="10" height="16"/>
+      <rect x="374" y="250" width="10" height="16"/><rect x="394" y="250" width="10" height="16"/><rect x="414" y="250" width="10" height="16"/><rect x="434" y="250" width="10" height="16"/><rect x="454" y="250" width="10" height="16"/>
+      <rect x="374" y="284" width="10" height="16"/><rect x="394" y="284" width="10" height="16"/><rect x="414" y="284" width="10" height="16"/><rect x="434" y="284" width="10" height="16"/><rect x="454" y="284" width="10" height="16"/>
+    </g>
+    <rect y="324" width="600" height="76" style="fill:var(--ground)"/>
+    <ellipse cx="300" cy="360" rx="170" ry="16" style="fill:var(--water)"/>
+    <g style="fill:var(--near)"><circle cx="70" cy="300" r="40"/><circle cx="30" cy="322" r="34"/><circle cx="522" cy="296" r="42"/><circle cx="576" cy="318" r="36"/></g>
+    <rect width="600" height="400" fill="url(#shade)"/>
+  </symbol>
+
+  <symbol id="s-lrt" viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice">
+    <rect width="600" height="400" style="fill:var(--sky)"/><rect width="600" height="400" fill="url(#haze)"/>
+    <g style="fill:var(--far)"><rect x="20" y="150" width="40" height="150"/><rect x="66" y="120" width="30" height="180"/><rect x="102" y="170" width="44" height="130"/><rect x="380" y="140" width="34" height="160"/><rect x="420" y="100" width="28" height="200"/><rect x="454" y="160" width="46" height="140"/><rect x="506" y="130" width="34" height="170"/><rect x="546" y="176" width="50" height="124"/></g>
+    <path d="M90 100v196M310 100v196M530 100v196M90 112h40M310 112h40M530 112h40" style="stroke:var(--near)" stroke-width="5" fill="none"/>
+    <path d="M0 122q160 10 310 0t310 0" fill="none" style="stroke:var(--near)" stroke-width="2"/>
+    <path d="M280 196l20-34 20 34M300 162v-38" stroke="#4d4d4d" stroke-width="3" fill="none"/>
+    <rect x="60" y="196" width="480" height="84" rx="16" fill="#f3f5f7"/>
+    <path d="M520 196h26q34 2 40 44v40h-66z" fill="#f3f5f7"/>
+    <rect x="60" y="258" width="526" height="9" style="fill:var(--pop)"/>
+    <g style="fill:var(--near)" opacity=".85">
+      <rect x="84" y="210" width="44" height="34" rx="4"/><rect x="138" y="210" width="44" height="34" rx="4"/><rect x="192" y="210" width="44" height="34" rx="4"/><rect x="246" y="210" width="44" height="34" rx="4"/>
+      <rect x="300" y="210" width="44" height="34" rx="4"/><rect x="354" y="210" width="44" height="34" rx="4"/><rect x="408" y="210" width="44" height="34" rx="4"/><rect x="462" y="210" width="44" height="34" rx="4"/>
+      <path d="M528 210h18q24 2 30 34h-48z"/>
+    </g>
+    <g style="fill:var(--near)"><rect x="96" y="280" width="90" height="10" rx="5"/><rect x="420" y="280" width="90" height="10" rx="5"/></g>
+    <rect y="290" width="600" height="7" style="fill:var(--near)"/>
+    <rect y="297" width="600" height="103" style="fill:var(--mid)"/>
+    <rect y="304" width="600" height="5" style="fill:var(--pop)" opacity=".9"/>
+    <rect width="600" height="400" fill="url(#shade)"/>
+  </symbol>
+
+  <symbol id="s-snow" viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice">
+    <rect width="600" height="400" style="fill:var(--sky)"/><rect width="600" height="400" fill="url(#haze)"/>
+    <path d="M0 236q40-30 80-6 40-28 90-4 50-30 100-6 50-28 110-4 50-26 100-4 40-22 120-8V320H0z" style="fill:var(--far)"/>
+    <g style="fill:var(--mid)"><rect x="70" y="200" width="150" height="112"/><rect x="290" y="180" width="170" height="132"/><rect x="520" y="214" width="110" height="98"/></g>
+    <g style="fill:var(--near)"><path d="M56 204l89-70 89 70z"/><path d="M276 184l99-76 99 76z"/><path d="M508 218l67-58 67 58z"/></g>
+    <g fill="#fff"><path d="M60 200l85-68 85 68-8 4-77-60-77 60z"/><path d="M280 180l95-72 95 72-8 4-87-64-87 64z"/><path d="M512 214l63-54 63 54-8 4-55-46-55 46z"/></g>
+    <g style="fill:var(--pop)" opacity=".85"><rect x="90" y="228" width="30" height="28"/><rect x="176" y="228" width="30" height="28"/><rect x="310" y="210" width="32" height="30"/><rect x="408" y="210" width="32" height="30"/><rect x="540" y="240" width="28" height="26"/></g>
+    <g style="fill:var(--near)"><rect x="133" y="262" width="28" height="50"/><rect x="360" y="258" width="30" height="54"/></g>
+    <path d="M250 330V170M250 172h22" style="stroke:var(--near)" stroke-width="5" fill="none"/>
+    <circle cx="274" cy="178" r="26" style="fill:var(--pop)" opacity=".22"/><circle cx="274" cy="178" r="8" style="fill:var(--pop)"/>
+    <path d="M0 318q40-22 80-6 40-24 90-4 50-22 100-2 50-24 110-4 50-20 100-2 40-16 120-6V352H0z" fill="#fff"/>
+    <rect y="352" width="600" height="48" style="fill:var(--near)" opacity=".35"/>
+    <path d="M0 370h600M0 386h600" stroke="#fff" stroke-opacity=".55" stroke-width="3" stroke-dasharray="40 18"/>
+    <g fill="#fff">
+      <circle cx="40" cy="60" r="3"/><circle cx="120" cy="40" r="2.5"/><circle cx="200" cy="90" r="3"/><circle cx="260" cy="30" r="2"/><circle cx="330" cy="70" r="3"/>
+      <circle cx="410" cy="40" r="2.5"/><circle cx="480" cy="90" r="3"/><circle cx="560" cy="50" r="2"/><circle cx="80" cy="140" r="2.5"/><circle cx="160" cy="120" r="2"/>
+      <circle cx="240" cy="150" r="3"/><circle cx="350" cy="140" r="2"/><circle cx="430" cy="130" r="3"/><circle cx="520" cy="140" r="2.5"/><circle cx="590" cy="120" r="2"/>
+      <circle cx="20" cy="190" r="2"/><circle cx="300" cy="100" r="2.5"/><circle cx="380" cy="90" r="2"/><circle cx="500" cy="30" r="3"/><circle cx="140" cy="80" r="2"/>
+    </g>
+    <rect width="600" height="400" fill="url(#shade)"/>
+  </symbol>
+
+  <symbol id="s-rink" viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice">
+    <rect width="600" height="400" style="fill:var(--sky)"/><rect width="600" height="400" fill="url(#haze)"/>
+    <path d="M0 255l15-45 15 45 15-55 15 55 15-40 15 40 15-60 15 60 15-48 15 48 15-52 15 52 15-38 15 38 15-58 15 58 15-44 15 44 15-50 15 50 15-42 15 42 15-56 15 56 15-46 15 46 15-54 15 54 15-40 15 40 15-60 15 60 15-45 15 45 15-50 15 50 15-48 15 48 15-55 15 55V270H0z" style="fill:var(--near)"/>
+    <path d="M60 268V120M540 268V120" style="stroke:var(--near)" stroke-width="4"/>
+    <g style="fill:var(--pop)"><circle cx="60" cy="120" r="40" opacity=".22"/><circle cx="540" cy="120" r="40" opacity=".22"/><circle cx="60" cy="120" r="7"/><circle cx="540" cy="120" r="7"/></g>
+    <rect x="20" y="258" width="560" height="22" fill="#f1f4f7"/><rect x="20" y="274" width="560" height="6" fill="#c8102e"/>
+    <path d="M20 280h560l40 120H-20z" fill="#e9f1f7"/>
+    <path d="M170 280l-40 120" stroke="#1f5fa8" stroke-width="6" opacity=".55"/>
+    <path d="M300 280v120" stroke="#c8102e" stroke-width="5" opacity=".5"/>
+    <ellipse cx="300" cy="340" rx="60" ry="20" fill="none" stroke="#1f5fa8" stroke-width="3" opacity=".45"/>
+    <g transform="translate(470 300)">
+      <path d="M2 14h56M2 26h56M10 4v36M20 2v38M30 2v38M40 2v38M50 4v36" stroke="#9aa3ab" stroke-width="1"/>
+      <path d="M0 40V6q0-6 6-6h48q6 0 6 6v34" stroke="#c8102e" stroke-width="5" fill="none"/>
+    </g>
+    <path d="M250 300l90 52h28" stroke="#6b4a22" stroke-width="6" stroke-linecap="round" fill="none"/>
+    <ellipse cx="386" cy="360" rx="14" ry="5" fill="#111"/>
+    <rect width="600" height="400" fill="url(#shade)"/>
+  </symbol>
+
+  <symbol id="s-pyramids" viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice">
+    <rect width="600" height="400" style="fill:var(--sky)"/><rect width="600" height="400" fill="url(#haze)"/>
+    <g style="fill:var(--far)"><rect x="60" y="170" width="30" height="120"/><rect x="96" y="140" width="26" height="150"/><rect x="128" y="186" width="36" height="104"/><path d="M170 110l22-18v198h-22z"/><rect x="198" y="160" width="30" height="130"/><rect x="234" y="190" width="40" height="100"/><rect x="420" y="180" width="34" height="110"/><rect x="460" y="150" width="26" height="140"/><rect x="492" y="196" width="40" height="94"/></g>
+    <path d="M0 284q150-20 300-6t300-4V400H0z" style="fill:var(--mid)"/>
+    <g style="fill:var(--water)"><path d="M70 330 200 170 330 330z"/><path d="M390 330 490 180 590 330z"/><path d="M270 330 360 214 450 330z"/><path d="M10 330 70 254 130 330z"/></g>
+    <g style="fill:var(--near)" opacity=".18"><path d="M200 170 330 330H200z"/><path d="M490 180 590 330H490z"/><path d="M360 214 450 330H360z"/><path d="M70 254 130 330H70z"/></g>
+    <path d="M200 170 135 330M200 170v160M200 170l65 160M167.5 210h65M135 250h130M102.5 290h195M490 180l-50 150M490 180v150M490 180l50 150M456.7 230h66.6M423.3 280h133.4M360 214l-45 116M360 214v116M360 214l45 116M330.5 252h59M300.3 291h119.4M70 254v76M40 292h60" stroke="#fff" stroke-opacity=".4" stroke-width="2" fill="none"/>
+    <rect y="330" width="600" height="70" style="fill:var(--ground)"/>
+    <path d="M0 330q20-26 44-4 18-16 34 0H0zM520 330q22-30 48-4 16-14 32 0z" style="fill:var(--near)"/>
+    <rect width="600" height="400" fill="url(#shade)"/>
+  </symbol>
+
+  <symbol id="s-farm" viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice">
+    <rect width="600" height="400" style="fill:var(--sky)"/><rect width="600" height="400" fill="url(#haze)"/>
+    <g fill="#fff" opacity=".75"><ellipse cx="140" cy="80" rx="60" ry="18"/><ellipse cx="180" cy="68" rx="40" ry="18"/><ellipse cx="430" cy="110" rx="70" ry="16"/><ellipse cx="470" cy="98" rx="38" ry="15"/></g>
+    <path d="M0 250q30-16 60-2 30-18 64-2 34-16 66 0 30-18 62-2 34-16 66 0 32-18 64-2 30-16 62 0 34-18 66 0 30-16 60-2 20-10 30-2V262H0z" style="fill:var(--far)"/>
+    <rect x="400" y="132" width="58" height="126" fill="#9b3b2a"/><path d="M394 136l35-30 35 30z" fill="#7d2f22"/>
+    <rect x="418" y="92" width="22" height="22" fill="#9b3b2a"/><path d="M414 94l15-12 15 12z" fill="#7d2f22"/>
+    <rect x="458" y="176" width="34" height="82" fill="#8a3527"/><rect x="404" y="150" width="50" height="8" fill="#fff" opacity=".8"/>
+    <rect y="258" width="600" height="142" fill="#e9c43a"/>
+    <path d="M300 258L-300 400M300 258L-150 400M300 258L0 400M300 258L150 400M300 258L300 400M300 258L450 400M300 258L600 400M300 258L750 400M300 258L900 400" stroke="#d1a52a" stroke-width="3"/>
+    <path d="M0 372q150-12 300 0t300 0V400H0z" fill="#c99a22"/>
+    <rect width="600" height="400" fill="url(#shade)"/>
+  </symbol>
+
+  <symbol id="s-refinery" viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice">
+    <rect width="600" height="400" style="fill:var(--sky)"/><rect width="600" height="400" fill="url(#haze)"/>
+    <g fill="#fff" opacity=".55"><circle cx="128" cy="78" r="22"/><circle cx="150" cy="60" r="26"/><circle cx="178" cy="48" r="20"/><circle cx="208" cy="96" r="18"/><circle cx="228" cy="78" r="22"/><circle cx="252" cy="62" r="16"/></g>
+    <g style="fill:var(--near)"><rect x="120" y="96" width="16" height="190"/><rect x="200" y="116" width="14" height="170"/></g>
+    <g style="fill:var(--pop)"><rect x="120" y="104" width="16" height="8"/><rect x="200" y="124" width="14" height="8"/></g>
+    <rect x="270" y="130" width="34" height="156" style="fill:var(--mid)"/>
+    <path d="M262 160h50M262 200h50M262 240h50" style="stroke:var(--near)" stroke-width="3"/>
+    <g style="fill:var(--far)"><rect x="340" y="214" width="110" height="72"/><ellipse cx="395" cy="214" rx="55" ry="12"/><rect x="462" y="232" width="90" height="54"/><ellipse cx="507" cy="232" rx="45" ry="10"/></g>
+    <g style="fill:var(--near)" opacity=".16"><rect x="395" y="214" width="55" height="72"/><rect x="507" y="232" width="45" height="54"/></g>
+    <rect x="30" y="230" width="70" height="56" style="fill:var(--mid)"/>
+    <path d="M20 262h330M20 272h330M136 262v-40h134M214 248h56" style="stroke:var(--near)" stroke-width="4" fill="none"/>
+    <g style="fill:var(--pop)"><circle cx="128" cy="150" r="3"/><circle cx="207" cy="170" r="3"/><circle cx="287" cy="150" r="3"/><circle cx="287" cy="210" r="3"/><circle cx="400" cy="240" r="3"/><circle cx="500" cy="250" r="3"/></g>
+    <rect y="286" width="600" height="114" style="fill:var(--ground)"/>
+    <path d="M0 340h600" stroke="#fff" stroke-opacity=".3" stroke-width="3" stroke-dasharray="18 14"/>
+    <rect width="600" height="400" fill="url(#shade)"/>
+  </symbol>
+
+  <symbol id="s-court" viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice">
+    <rect width="600" height="400" style="fill:var(--sky)"/><rect width="600" height="400" fill="url(#haze)"/>
+    <path d="M470 70v190" style="stroke:var(--near)" stroke-width="4"/>
+    <rect x="472" y="72" width="62" height="34" fill="#d52b1e"/><rect x="488" y="72" width="30" height="34" fill="#fff"/>
+    <path d="M503 79l3 6 5-2-2 6 4 2-6 3 1 6h-5l1-6-6-3 4-2-2-6 5 2z" fill="#d52b1e"/>
+    <rect x="150" y="172" width="300" height="98" style="fill:var(--near)" opacity=".45"/>
+    <g style="fill:var(--mid)"><path d="M130 150h340l-170-60z"/><rect x="140" y="150" width="320" height="22"/><rect x="150" y="270" width="300" height="16"/></g>
+    <g style="fill:var(--far)">
+      <rect x="162" y="172" width="18" height="98"/><rect x="206" y="172" width="18" height="98"/><rect x="250" y="172" width="18" height="98"/><rect x="294" y="172" width="18" height="98"/>
+      <rect x="338" y="172" width="18" height="98"/><rect x="382" y="172" width="18" height="98"/><rect x="426" y="172" width="18" height="98"/>
+      <rect x="130" y="286" width="340" height="12"/><rect x="116" y="298" width="368" height="12"/><rect x="102" y="310" width="396" height="12"/>
+    </g>
+    <rect y="322" width="600" height="78" style="fill:var(--ground)"/>
+    <g style="fill:var(--near)"><circle cx="60" cy="290" r="40"/><circle cx="36" cy="320" r="30"/><circle cx="560" cy="292" r="38"/></g>
+    <rect width="600" height="400" fill="url(#shade)"/>
+  </symbol>
+
+  <symbol id="s-festival" viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice">
+    <rect width="600" height="400" style="fill:var(--sky)"/><rect width="600" height="400" fill="url(#haze)"/>
+    <path d="M0 90Q150 160 300 100Q450 160 600 90" fill="none" stroke="#111" stroke-opacity=".55" stroke-width="2"/>
+    <g style="fill:var(--pop)" opacity=".25">
+      <circle cx="30" cy="102.7" r="12"/><circle cx="60" cy="112.8" r="12"/><circle cx="90" cy="120.3" r="12"/><circle cx="120" cy="125.2" r="12"/><circle cx="150" cy="127.5" r="12"/><circle cx="180" cy="127.2" r="12"/><circle cx="210" cy="124.3" r="12"/><circle cx="240" cy="118.8" r="12"/><circle cx="270" cy="110.7" r="12"/>
+      <circle cx="330" cy="110.7" r="12"/><circle cx="360" cy="118.8" r="12"/><circle cx="390" cy="124.3" r="12"/><circle cx="420" cy="127.2" r="12"/><circle cx="450" cy="127.5" r="12"/><circle cx="480" cy="125.2" r="12"/><circle cx="510" cy="120.3" r="12"/><circle cx="540" cy="112.8" r="12"/><circle cx="570" cy="102.7" r="12"/>
+    </g>
+    <g style="fill:var(--pop)">
+      <circle cx="30" cy="102.7" r="5"/><circle cx="60" cy="112.8" r="5"/><circle cx="90" cy="120.3" r="5"/><circle cx="120" cy="125.2" r="5"/><circle cx="150" cy="127.5" r="5"/><circle cx="180" cy="127.2" r="5"/><circle cx="210" cy="124.3" r="5"/><circle cx="240" cy="118.8" r="5"/><circle cx="270" cy="110.7" r="5"/>
+      <circle cx="330" cy="110.7" r="5"/><circle cx="360" cy="118.8" r="5"/><circle cx="390" cy="124.3" r="5"/><circle cx="420" cy="127.2" r="5"/><circle cx="450" cy="127.5" r="5"/><circle cx="480" cy="125.2" r="5"/><circle cx="510" cy="120.3" r="5"/><circle cx="540" cy="112.8" r="5"/><circle cx="570" cy="102.7" r="5"/>
+    </g>
+    <path d="M40 300l70-80v80z" fill="#f4f1ea"/><path d="M110 220l70 80h-70z" style="fill:var(--pop)" opacity=".85"/>
+    <path d="M420 300l70-86v86z" fill="#f4f1ea"/><path d="M490 214l70 86h-70z" style="fill:var(--pop)" opacity=".85"/>
+    <rect x="210" y="210" width="180" height="90" style="fill:var(--mid)"/>
+    <path d="M230 210l-30 90h60zM370 210l-30 90h60z" fill="#fff" opacity=".12"/>
+    <g style="fill:var(--near)">
+      <rect y="328" width="600" height="72" rx="10"/>
+      <circle cx="20" cy="318" r="13"/><circle cx="60" cy="312" r="13"/><circle cx="100" cy="320" r="13"/><circle cx="140" cy="310" r="13"/><circle cx="180" cy="318" r="13"/>
+      <circle cx="220" cy="312" r="13"/><circle cx="260" cy="320" r="13"/><circle cx="300" cy="310" r="13"/><circle cx="340" cy="318" r="13"/><circle cx="380" cy="312" r="13"/>
+      <circle cx="420" cy="320" r="13"/><circle cx="460" cy="310" r="13"/><circle cx="500" cy="318" r="13"/><circle cx="540" cy="312" r="13"/><circle cx="580" cy="320" r="13"/>
+    </g>
+    <rect width="600" height="400" fill="url(#shade)"/>
+  </symbol>
+
+  <symbol id="s-trail" viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice">
+    <rect width="600" height="400" style="fill:var(--sky)"/><rect width="600" height="400" fill="url(#haze)"/>
+    <path d="M0 210Q160 170 320 200T600 190V400H0Z" style="fill:var(--far)"/>
+    <path d="M330 232q80-8 270-4v22q-170-6-270 0z" style="fill:var(--water)"/>
+    <path d="M0 250q25-34 50-8 25-36 56-6 26-32 52-4 28-34 58-6 24-30 50-4 26-34 54-6 28-36 58-4 24-30 50-4 28-34 58-6 26-30 54-4 22-26 44-2 20-22 40 0V400H0z" style="fill:var(--mid)"/>
+    <path d="M250 400C270 340 360 330 330 290S262 262 300 242" fill="none" stroke="#e7dcc2" stroke-width="40" stroke-linecap="round"/>
+    <g fill="#f4f1ea"><rect x="70" y="180" width="8" height="220"/><rect x="120" y="160" width="9" height="240"/><rect x="470" y="170" width="8" height="230"/><rect x="530" y="150" width="10" height="250"/></g>
+    <g fill="#3a3a3a" opacity=".6"><rect x="70" y="240" width="8" height="3"/><rect x="70" y="300" width="8" height="3"/><rect x="120" y="220" width="9" height="3"/><rect x="120" y="290" width="9" height="3"/><rect x="470" y="250" width="8" height="3"/><rect x="530" y="230" width="10" height="3"/><rect x="530" y="310" width="10" height="3"/></g>
+    <g style="fill:var(--pop)" opacity=".95"><circle cx="74" cy="170" r="40"/><circle cx="124" cy="150" r="46"/><circle cx="96" cy="200" r="30"/><circle cx="474" cy="160" r="40"/><circle cx="535" cy="140" r="48"/><circle cx="505" cy="190" r="30"/></g>
+    <path d="M0 380q300-20 600 0V400H0z" style="fill:var(--near)" opacity=".4"/>
+    <rect width="600" height="400" fill="url(#shade)"/>
+  </symbol>
+
+  <symbol id="s-aurora" viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice">
+    <rect width="600" height="400" style="fill:var(--sky)"/>
+    <g fill="#fff" opacity=".8"><circle cx="40" cy="40" r="1.5"/><circle cx="110" cy="70" r="1.2"/><circle cx="190" cy="30" r="1.6"/><circle cx="260" cy="60" r="1.2"/><circle cx="340" cy="26" r="1.5"/><circle cx="420" cy="56" r="1.3"/><circle cx="500" cy="34" r="1.6"/><circle cx="570" cy="70" r="1.2"/><circle cx="80" cy="120" r="1.2"/><circle cx="530" cy="120" r="1.4"/></g>
+    <path d="M-20 180C80 80 160 220 260 120S440 60 620 140V200C440 120 360 220 260 190S80 160-20 240Z" fill="#5ef2b0" opacity=".38"/>
+    <path d="M-20 140C120 60 200 160 320 90S500 40 620 90V130C500 90 420 170 320 150S120 110-20 190Z" fill="#7bd3ff" opacity=".25"/>
+    <path d="M0 300Q300 280 600 300V400H0Z" style="fill:var(--far)"/>
+    <path d="M0 340l14-50 14 50 12-36 12 36 16-62 16 62 13-44 13 44 15-56 15 56 11-34 11 34 17-66 17 66 13-40 13 40 15-54 15 54 12-38 12 38 16-60 16 60 14-46 14 46 13-42 13 42 17-64 17 64 12-36 12 36 15-52 15 52 14-48 14 48 16-58 16 58 13-40 13 40 15-50 15 50 17-62 17 62 14-44 14 44V400H0z" style="fill:var(--near)"/>
+  </symbol>
+
+  <symbol id="s-cityhall" viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice">
+    <rect width="600" height="400" style="fill:var(--sky)"/><rect width="600" height="400" fill="url(#haze)"/>
+    <g style="fill:var(--far)"><rect x="40" y="130" width="40" height="180"/><rect x="86" y="170" width="30" height="140"/><rect x="470" y="120" width="36" height="190"/><rect x="512" y="160" width="46" height="150"/></g>
+    <rect x="110" y="236" width="360" height="74" style="fill:var(--mid)"/>
+    <path d="M200 238 300 140 400 238z" style="fill:var(--water)"/>
+    <path d="M300 140 400 238H300z" style="fill:var(--near)" opacity=".15"/>
+    <path d="M300 140 250 238M300 140v98M300 140l50 98M251 188h98M226 213h148" stroke="#fff" stroke-opacity=".4" stroke-width="2" fill="none"/>
+    <rect x="420" y="120" width="30" height="116" style="fill:var(--near)"/><path d="M416 122l19-16 19 16z" style="fill:var(--near)"/>
+    <circle cx="435" cy="142" r="9" fill="#fff" opacity=".85"/><path d="M435 136v6l4 3" style="stroke:var(--near)" stroke-width="2" fill="none"/>
+    <g style="fill:var(--far)" opacity=".9"><rect x="126" y="262" width="26" height="22"/><rect x="162" y="262" width="26" height="22"/><rect x="398" y="262" width="16" height="22"/></g>
+    <rect y="310" width="600" height="90" style="fill:var(--ground)"/>
+    <ellipse cx="300" cy="352" rx="120" ry="18" style="fill:var(--water)"/>
+    <path d="M260 350q10-40 20 0M290 350q10-56 20 0M320 350q10-40 20 0" stroke="#fff" stroke-width="3" fill="none" opacity=".8"/>
+    <rect width="600" height="400" fill="url(#shade)"/>
+  </symbol>
+
+  <symbol id="s-person" viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice">
+    <rect width="600" height="400" style="fill:var(--sky)"/>
+    <circle cx="300" cy="160" r="70" style="fill:var(--mid)"/>
+    <path d="M150 400q10-150 150-150t150 150z" style="fill:var(--mid)"/>
+  </symbol>
+
+  <symbol id="s-flower" viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice">
+    <rect width="600" height="400" fill="#eef0f2"/>
+    <g transform="translate(300 200)" fill="#fff" stroke="#d3d8de" stroke-width="2">
+      <ellipse rx="28" ry="70" transform="translate(0 -55)"/>
+      <ellipse rx="28" ry="70" transform="rotate(72) translate(0 -55)"/>
+      <ellipse rx="28" ry="70" transform="rotate(144) translate(0 -55)"/>
+      <ellipse rx="28" ry="70" transform="rotate(216) translate(0 -55)"/>
+      <ellipse rx="28" ry="70" transform="rotate(288) translate(0 -55)"/>
+    </g>
+    <circle cx="300" cy="200" r="20" fill="#e8c34a"/>
+  </symbol>
+
+  <!-- ===== UI icons (24x24 unless noted) ===== -->
+  <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 10.6 12 3l9 7.6V21h-6.2v-6.1H9.2V21H3z" fill="currentColor"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 22s7-6.4 7-12.2A7 7 0 0 0 5 9.8C5 15.6 12 22 12 22z" fill="currentColor"/><circle cx="12" cy="9.8" r="2.6" fill="#fff"/></symbol>
+  <symbol id="i-flower" viewBox="0 0 24 24"><path d="M12 21v-8" stroke="currentColor" stroke-width="2" fill="none"/><path d="M6 4l3 2.5L12 3l3 3.5L18 4v5a6 6 0 0 1-12 0z" fill="currentColor"/><path d="M12 18c-2.5 0-4-1.5-5-3M12 18c2.5 0 4-1.5 5-3" stroke="currentColor" stroke-width="1.6" fill="none"/></symbol>
+  <symbol id="i-puck" viewBox="0 0 24 24"><ellipse cx="12" cy="9" rx="9" ry="4" fill="currentColor"/><path d="M3 9v5c0 2.2 4 4 9 4s9-1.8 9-4V9c0 2.2-4 4-9 4S3 11.2 3 9z" fill="currentColor" opacity=".7"/></symbol>
+  <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13.5 2 4.5 13.5h6.2L9.8 22l9.7-12.2h-6.4z" fill="currentColor"/></symbol>
+  <symbol id="i-pen" viewBox="0 0 24 24"><path d="M4 20l1-4.6L15.6 4.8a2 2 0 0 1 2.8 0l.8.8a2 2 0 0 1 0 2.8L8.6 19z" fill="currentColor"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 2.5 4.5 5.3v5.9c0 4.9 3.2 9 7.5 10.3 4.3-1.3 7.5-5.4 7.5-10.3V5.3z" fill="currentColor"/><path d="M9 12l2.2 2.2L15.5 10" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-more" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5" stroke="currentColor" stroke-width="2.2" fill="none"/><path d="M15.5 15.5 21 21" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></symbol>
+  <symbol id="i-caret" viewBox="0 0 10 10"><path d="M1.5 3.2 5 6.8l3.5-3.6" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8.5" r="4" stroke="currentColor" stroke-width="1.8" fill="none"/><path d="M4.5 20.5c.8-4 3.8-6 7.5-6s6.7 2 7.5 6" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round"/></symbol>
+  <symbol id="i-trend" viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 7-7M15 8h5v5" stroke="currentColor" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-4 3.5V16H4z" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linejoin="round"/></symbol>
+  <symbol id="i-camera" viewBox="0 0 24 24"><path d="M4 8h3l1.5-2h7L17 8h3v11H4z" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linejoin="round"/><circle cx="12" cy="13" r="3.2" stroke="currentColor" stroke-width="1.8" fill="none"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5z" fill="currentColor"/></symbol>
+  <symbol id="i-pause" viewBox="0 0 24 24"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z" fill="currentColor"/></symbol>
+  <symbol id="i-share" viewBox="0 0 24 24"><path d="M12 3v12M7.5 7.5 12 3l4.5 4.5M5 13v7h14v-7" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><path d="M3.5 6h17v12h-17z" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linejoin="round"/><path d="M4 6.5l8 6.5 8-6.5" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linejoin="round"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+  <symbol id="i-left" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" stroke="currentColor" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-right" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-snowcloud" viewBox="0 0 24 24"><path d="M7 15a4.5 4.5 0 0 1-.6-9 6 6 0 0 1 11.3 1.6A3.7 3.7 0 0 1 17.5 15z" fill="currentColor" opacity=".9"/><g fill="currentColor"><circle cx="8" cy="19" r="1.2"/><circle cx="12" cy="20.5" r="1.2"/><circle cx="16" cy="19" r="1.2"/></g></symbol>
+
+</defs>
+</svg>
+
+
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="preview-bar" role="note"><strong>Design preview</strong> — headlines are real local news summarized in our own words, each linking to the outlet that reported it. Photos are freely licensed images of the places in the news, credited at the bottom; obituaries, the poll and the weather are samples.</div>
+
+<header class="site-header">
+  <div class="header-top">
+    <button class="icon-btn menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu"><svg aria-hidden="true"><use href="#i-more"/></svg></button>
+    <a class="logo" href="index.html">
+      <img class="logo-img" src="assets/img/yegtoday-logo.svg" alt="YEGToday home" width="143" height="32">
+    </a>
+    <button class="icon-btn search-toggle-m" type="button" data-search-toggle aria-expanded="false" aria-controls="search-panel" aria-label="Search"><svg aria-hidden="true"><use href="#i-search"/></svg></button>
+    <a class="account" href="#account">
+      <span class="account-label">Sign in or register for your free account</span>
+      <span class="account-avatar" aria-hidden="true"><svg><use href="#i-user"/></svg></span>
+    </a>
+  </div>
+
+  <nav class="primary-nav" id="primary-nav" aria-label="Main">
+    <div class="nav-head"><span>Sections</span><button class="icon-btn nav-close" type="button" aria-label="Close menu"><svg aria-hidden="true"><use href="#i-close"/></svg></button></div>
+    <ul class="nav-list">
+      <li class="nav-item"><a class="nav-link" href="index.html" aria-current="page"><svg class="ico" style="color:var(--brand)" aria-hidden="true"><use href="#i-home"/></svg>Home</a></li>
+
+      <li class="nav-item">
+        <button class="nav-link" type="button" aria-expanded="false" aria-controls="dd-communities"><svg class="ico" style="color:#d0342c" aria-hidden="true"><use href="#i-pin"/></svg>Communities<svg class="caret" aria-hidden="true"><use href="#i-caret"/></svg></button>
+        <div class="dropdown wide" id="dd-communities"><ul>
+          <li><a class="dd-all" href="#">All communities</a></li>
+          <li><a href="#">Edmonton</a></li>
+          <li><a href="#">St. Albert</a></li>
+          <li><a href="#">Sherwood Park</a></li>
+          <li><a href="#">Strathcona County</a></li>
+          <li><a href="#">Spruce Grove</a></li>
+          <li><a href="#">Stony Plain</a></li>
+          <li><a href="#">Parkland County</a></li>
+          <li><a href="#">Leduc</a></li>
+          <li><a href="#">Leduc County &amp; Nisku</a></li>
+          <li><a href="#">Beaumont</a></li>
+          <li><a href="#">Devon</a></li>
+          <li><a href="#">Fort Saskatchewan</a></li>
+          <li><a href="#">Morinville</a></li>
+          <li><a href="#">Sturgeon County</a></li>
+          <li><a href="#">Enoch Cree Nation</a></li>
+        </ul></div>
+      </li>
+
+      <li class="nav-item">
+        <button class="nav-link" type="button" aria-expanded="false" aria-controls="dd-obits"><svg class="ico" style="color:#c2477f" aria-hidden="true"><use href="#i-flower"/></svg>Obituaries<svg class="caret" aria-hidden="true"><use href="#i-caret"/></svg></button>
+        <div class="dropdown" id="dd-obits"><ul>
+          <li><a class="dd-all" href="#">Latest obituaries</a></li>
+          <li><a href="#">Search obituaries</a></li>
+          <li><a href="#">In memoriam</a></li>
+          <li><a href="#">Place an obituary</a></li>
+        </ul></div>
+      </li>
+
+      <li class="nav-item">
+        <button class="nav-link" type="button" aria-expanded="false" aria-controls="dd-sports"><svg class="ico" style="color:#7a4f2a" aria-hidden="true"><use href="#i-puck"/></svg>Sports<svg class="caret" aria-hidden="true"><use href="#i-caret"/></svg></button>
+        <div class="dropdown" id="dd-sports"><ul>
+          <li><a class="dd-all" href="#">All sports</a></li>
+          <li><a href="#">Oilers</a></li>
+          <li><a href="#">Elks</a></li>
+          <li><a href="#">Oil Kings</a></li>
+          <li><a href="#">University &amp; college</a></li>
+          <li><a href="#">High school &amp; amateur</a></li>
+          <li><a href="#">Community sports</a></li>
+        </ul></div>
+      </li>
+
+      <li class="nav-item">
+        <button class="nav-link" type="button" aria-expanded="false" aria-controls="dd-business"><svg class="ico" style="color:#d48c00" aria-hidden="true"><use href="#i-bolt"/></svg>Business &amp; Energy<svg class="caret" aria-hidden="true"><use href="#i-caret"/></svg></button>
+        <div class="dropdown" id="dd-business"><ul>
+          <li><a class="dd-all" href="#">All business</a></li>
+          <li><a href="#">Energy &amp; the Industrial Heartland</a></li>
+          <li><a href="#">Real estate &amp; development</a></li>
+          <li><a href="#">Agriculture &amp; rural</a></li>
+          <li><a href="#">Jobs</a></li>
+        </ul></div>
+      </li>
+
+      <li class="nav-item">
+        <button class="nav-link" type="button" aria-expanded="false" aria-controls="dd-opinion"><svg class="ico" style="color:#3a6fb5" aria-hidden="true"><use href="#i-pen"/></svg>Opinion<svg class="caret" aria-hidden="true"><use href="#i-caret"/></svg></button>
+        <div class="dropdown" id="dd-opinion"><ul>
+          <li><a class="dd-all" href="#">All opinion</a></li>
+          <li><a href="#">Columns</a></li>
+          <li><a href="#">Letters to the editor</a></li>
+          <li><a href="#">Write to us</a></li>
+        </ul></div>
+      </li>
+
+      <li class="nav-item">
+        <button class="nav-link" type="button" aria-expanded="false" aria-controls="dd-crime"><svg class="ico" style="color:#2f4fb3" aria-hidden="true"><use href="#i-shield"/></svg>Crime<svg class="caret" aria-hidden="true"><use href="#i-caret"/></svg></button>
+        <div class="dropdown" id="dd-crime"><ul>
+          <li><a class="dd-all" href="#">All crime</a></li>
+          <li><a href="#">Cops &amp; courts</a></li>
+          <li><a href="#">Fire &amp; rescue</a></li>
+          <li><a href="#">Road safety</a></li>
+        </ul></div>
+      </li>
+
+      <li class="nav-item">
+        <button class="nav-link" type="button" aria-expanded="false" aria-controls="dd-more"><svg class="ico" style="color:#6b6b6b" aria-hidden="true"><use href="#i-more"/></svg>More<svg class="caret" aria-hidden="true"><use href="#i-caret"/></svg></button>
+        <div class="dropdown wide right" id="dd-more"><ul>
+          <li><a href="#">City Hall &amp; council</a></li>
+          <li><a href="#">Transit &amp; roads</a></li>
+          <li><a href="#">Weather</a></li>
+          <li><a href="#">Arts &amp; festivals</a></li>
+          <li><a href="#">Food &amp; drink</a></li>
+          <li><a href="#">Indigenous</a></li>
+          <li><a href="#">Newcomers</a></li>
+          <li><a href="#">Edmonton history</a></li>
+          <li><a href="#">Local events</a></li>
+          <li><a href="#">Meet your neighbours</a></li>
+          <li><a href="#">Podcasts</a></li>
+          <li><a href="#">Newsletters</a></li>
+          <li><a href="#">Classifieds</a></li>
+          <li><a href="#">About us</a></li>
+        </ul></div>
+      </li>
+
+      <li class="nav-item search"><button class="nav-link" type="button" data-search-toggle aria-expanded="false" aria-controls="search-panel" aria-label="Search"><svg class="ico" aria-hidden="true"><use href="#i-search"/></svg></button></li>
+    </ul>
+  </nav>
+
+  <div class="search-panel" id="search-panel" hidden>
+    <form class="search-form" role="search" action="#">
+      <label class="sr-only" for="site-search">Search</label>
+      <input id="site-search" type="text" inputmode="search" enterkeyhint="search" name="q" placeholder="Search stories, communities and topics" autocomplete="off">
+      <button class="btn btn-brand" type="submit">Search</button>
+    </form>
+    <p class="search-status" aria-live="polite"></p>
+  </div>
+
+  <div class="nav-backdrop" hidden></div>
+</header>
+
+
+<div class="page">
+  <main class="main" id="main">
+    <h1 class="sr-only">YEGToday — news for Edmonton and the region</h1>
+
+    <section class="block"><h2 class="block-title" id="sec-highlights">Highlights</h2><div class="cols-2"><article class="lead"><a class="story-link" href="article.html"><span class="lead-media"><span class="media"><img src="assets/img/stories/s03.webp" srcset="assets/img/stories/s03-sm.webp 400w, assets/img/stories/s03.webp 800w" sizes="(max-width: 600px) calc(100vw - 32px), (max-width: 860px) calc(50vw - 31px), 300px" alt="" width="800" height="533" loading="eager" fetchpriority="high" decoding="async"></span><span class="badge">Edmonton News</span></span><h3 class="headline h-xl">Province says City of Champions signs will return to highways into Edmonton</h3><p class="dek">Transportation Minister Devin Dreeshen says Alberta will install new welcome signs with the slogan to mark the Elks&#x27; Grey Cup win. The city&#x27;s old welcome signs carrying it came down in 2015.</p><span class="meta">CBC Edmonton · Nov. 20</span></a></article><div><div class="stack"><article><a class="story-link" href="https://www.tsn.ca/cfl/article/fajardo-elks-take-down-alouettes-claim-113th-grey-cup/"><h3 class="headline h-md">Elks beat Alouettes 37-30 to win the 113th Grey Cup, their first title since 2015</h3><p class="dek clamp-2">Cody Fajardo passed for two touchdowns and rushed for two more, taking MVP honours at Calgary&#x27;s McMahon Stadium as Edmonton won its 15th Grey Cup a year after placing last in the West.</p><span class="meta">TSN · Nov. 15</span></a></article><article><a class="story-link" href="https://curiocity.com/lite-up-the-nite-morinville-alberta/"><h3 class="headline h-md">Morinville&#x27;s free Lite Up the Nite festival brings a parade and fireworks Nov. 27 to 29</h3><p class="dek clamp-2">The three-day holiday event has a Friday dance party, then a Saturday family festival, parade, park light-up and 7:30 p.m. fireworks. It ends with a Sunday skate.</p><span class="meta">Curiocity Edmonton · Nov. 10</span></a></article><article><a class="story-link" href="https://dailyhive.com/edmonton/griswold-house-alberta-lights"><h3 class="headline h-md">Stony Plain&#x27;s &#x27;Griswold House&#x27; readies about 60,000 lights for its seventh holiday season</h3><p class="dek clamp-2">Owner Jon Harringa hopes to switch on his Christmas Vacation tribute at 64 Briarwood Pt. around Dec. 2, with a new rooftop setup adding roughly 4,000 lights.</p><span class="meta">Daily Hive · Nov. 18</span></a></article></div><a class="more-link" href="#">More Highlights <span aria-hidden="true">&gt;</span></a></div></div></section>
+    <section class="block"><h2 class="block-title" id="sec-trending">Trending Now</h2><ol class="cols-3 trend"><li><a class="story-link" href="https://www.ctvnews.ca/edmonton/article/oilers-popping-off-on-the-ice-and-in-the-store-through-pop-box-art/"><span class="media"><img src="assets/img/stories/s52.webp" srcset="assets/img/stories/s52-sm.webp 400w, assets/img/stories/s52.webp 800w" sizes="(max-width: 600px) 112px, (max-width: 860px) calc(33vw - 31px), 190px" alt="" width="800" height="533" loading="lazy" decoding="async"></span><span class="rank" aria-hidden="true">1 <svg aria-hidden="true"><use href="#i-trend"/></svg></span><h3 class="headline h-sm">Oilers tribute built from empty pop cases towers nearly 17 feet in a Mayfield grocery store</h3></a></li><li><a class="story-link" href="https://dailyhive.com/edmonton/ice-bumper-cars-hawrelak-park-edmonton"><span class="media"><img src="assets/img/stories/s55.webp" srcset="assets/img/stories/s55-sm.webp 400w, assets/img/stories/s55.webp 800w" sizes="(max-width: 600px) 112px, (max-width: 860px) calc(33vw - 31px), 190px" alt="" width="800" height="533" loading="lazy" decoding="async"></span><span class="rank" aria-hidden="true">2 <svg aria-hidden="true"><use href="#i-trend"/></svg></span><h3 class="headline h-sm">Hawrelak Park adds ice bumper cars, ice bikes and skate rentals this winter</h3></a></li><li><a class="story-link" href="https://dailyhive.com/edmonton/volcano-park-fort-saskatchewan-playground"><span class="media"><img src="assets/img/stories/s21.webp" srcset="assets/img/stories/s21-sm.webp 400w, assets/img/stories/s21.webp 800w" sizes="(max-width: 600px) 112px, (max-width: 860px) calc(33vw - 31px), 190px" alt="" width="800" height="533" loading="lazy" decoding="async"></span><span class="rank" aria-hidden="true">3 <svg aria-hidden="true"><use href="#i-trend"/></svg></span><h3 class="headline h-sm">Volcano-themed playground taking shape in Fort Saskatchewan&#x27;s Roseburn neighbourhood</h3></a></li></ol></section>
+    <section class="block"><h2 class="block-title" id="sec-edmonton">Edmonton News</h2><div class="cols-2"><article class="card"><a class="story-link" href="https://www.ctvnews.ca/edmonton/article/you-may-soon-be-able-to-shop-and-live-at-this-edmonton-mall/"><span class="media"><img src="assets/img/stories/s01.webp" srcset="assets/img/stories/s01-sm.webp 400w, assets/img/stories/s01.webp 800w" sizes="(max-width: 600px) calc(100vw - 32px), (max-width: 860px) calc(50vw - 31px), 300px" alt="" width="800" height="533" loading="lazy" decoding="async"></span><h3 class="headline h-lg">Downtown&#x27;s City Centre mall sold for $57.3M, with 1,500 homes planned over the old Bay store</h3><p class="dek clamp-3">Edmonton developer Westrich Pacific has bought Edmonton City Centre and plans a mixed-use complex with housing over the former Hudson&#x27;s Bay space, plus new stores, entertainment and a Nordic spa.</p><span class="meta">CTV News Edmonton · Nov. 20</span></a></article><article class="card"><a class="story-link" href="https://www.ctvnews.ca/edmonton/article/a-first-nation-has-its-eye-on-an-edmonton-neighbourhood-heres-what-that-might-mean/"><span class="media"><img src="assets/img/stories/s02.webp" srcset="assets/img/stories/s02-sm.webp 400w, assets/img/stories/s02.webp 800w" sizes="(max-width: 600px) calc(100vw - 32px), (max-width: 860px) calc(50vw - 31px), 300px" alt="" width="800" height="533" loading="lazy" decoding="async"></span><h3 class="headline h-lg">Kehewin Cree Nation proposes Edmonton&#x27;s first urban reserve on Blatchford land</h3><p class="dek clamp-3">The First Nation wants to buy 14 hectares of the former airport lands for $1 for housing, health and education services, a spa and a 180-room hotel. Council&#x27;s executive committee takes it up next week.</p><span class="meta">CTV News Edmonton · Nov. 20</span></a></article></div><div class="rows"><a class="row story-link" href="https://www.ctvnews.ca/edmonton/article/why-edmonton-is-slashing-parking-rates-at-some-downtown-locations-this-december/"><span class="media"><img src="assets/img/stories/s05.webp" srcset="assets/img/stories/s05-sm.webp 400w, assets/img/stories/s05.webp 800w" sizes="(max-width: 600px) 112px, 135px" alt="" width="800" height="533" loading="lazy" decoding="async"></span><div><h3 class="headline h-md">Three downtown parkades drop to a $5 flat rate for December</h3><p class="dek clamp-2">All of December, EPark will charge a $5 flat rate on weekends and on weekday evenings from 5 p.m. at the Canada Place, City Hall and Stanley A. Milner parkades to draw holiday crowds downtown.</p><span class="meta">CTV News Edmonton · Nov. 20</span></div></a><a class="row story-link" href="https://www.cbc.ca/news/canada/edmonton/alberta-bill-43-bike-lanes-9.7428365"><span class="media"><img src="assets/img/stories/s08.webp" srcset="assets/img/stories/s08-sm.webp 400w, assets/img/stories/s08.webp 800w" sizes="(max-width: 600px) 112px, 135px" alt="" width="800" height="533" loading="lazy" decoding="async"></span><div><h3 class="headline h-md">Alberta bill would let the province remove city bike lanes, and Edmonton is pushing back</h3><p class="dek clamp-2">Bill 43 would ban new bike lanes that restrict car traffic, let the province remove some existing ones at city expense and add provincial oversight of LRT plans. Mayor Andrew Knack called it dangerous.</p><span class="meta">CBC Edmonton · Nov. 19</span></div></a><a class="row story-link" href="https://edmontonjournal.com/news/government-centre-lrt-station-to-be-renamed-buffalo-crossing-following-years-of-consultation"><span class="media"><img src="assets/img/stories/s04.webp" srcset="assets/img/stories/s04-sm.webp 400w, assets/img/stories/s04.webp 800w" sizes="(max-width: 600px) 112px, 135px" alt="" width="800" height="533" loading="lazy" decoding="async"></span><div><h3 class="headline h-md">Government Centre LRT station is set to become Buffalo Crossing</h3><p class="dek clamp-2">A city naming committee voted 4-0 for the name, which recalls a historic buffalo crossing on the river. Council is expected to sign off Nov. 25, and new station artwork should be finished by the end of 2027.</p><span class="meta">Edmonton Journal · Nov. 17</span></div></a><a class="row story-link" href="https://www.ctvnews.ca/edmonton/article/edmonton-eyes-lower-speeds-on-jasper-avenue-gateway-boulevard-other-arterial-roads/"><span class="media"><img src="assets/img/stories/s09.webp" srcset="assets/img/stories/s09-sm.webp 400w, assets/img/stories/s09.webp 800w" sizes="(max-width: 600px) 112px, 135px" alt="" width="800" height="533" loading="lazy" decoding="async"></span><div><h3 class="headline h-md">Lower speed limits on parts of Jasper Avenue and Gateway Boulevard move a step closer</h3><p class="dek clamp-2">Edmonton&#x27;s urban planning committee backed cutting limits from 50 to 40 km/h on busy roads in or near business districts, including parts of 107 Avenue and 124 Street. City council still has to approve it.</p><span class="meta">CTV News Edmonton · Nov. 17</span></div></a><a class="row story-link" href="https://www.ctvnews.ca/edmonton/article/edmonton-schools-top-and-bottom-a-list-of-best-schools-in-a-report-some-say-misses-the-mark/"><span class="media"><img src="assets/img/stories/s11.webp" srcset="assets/img/stories/s11-sm.webp 400w, assets/img/stories/s11.webp 800w" sizes="(max-width: 600px) 112px, 135px" alt="" width="800" height="533" loading="lazy" decoding="async"></span><div><h3 class="headline h-md">Two Edmonton schools tie for second in Fraser Institute&#x27;s Alberta rankings</h3><p class="dek clamp-2">Mount Pleasant and Windsor Park tied for second among 699 Alberta schools, but four of the 10 lowest-ranked were also in Edmonton. A U of A education instructor calls test scores alone too narrow a measure.</p><span class="meta">CTV News Edmonton · Nov. 12</span></div></a><a class="row story-link" href="https://www.ctvnews.ca/edmonton/alberta-legislature/article/new-urgent-care-centres-wont-replace-need-for-south-hospital-city-councillors-say/"><span class="media"><img src="assets/img/stories/s10.webp" srcset="assets/img/stories/s10-sm.webp 400w, assets/img/stories/s10.webp 800w" sizes="(max-width: 600px) 112px, 135px" alt="" width="800" height="533" loading="lazy" decoding="async"></span><div><h3 class="headline h-md">Urgent care centres are coming, but south Edmonton still wants its hospital</h3><p class="dek clamp-2">Alberta set aside $39 million to buy land and plan nine urgent care centres, two in Edmonton. Councillors say the south side still needs a hospital, and the Heritage Valley hospital site sits empty.</p><span class="meta">CTV News Edmonton · Nov. 11</span></div></a><a class="row story-link" href="https://www.ctvnews.ca/edmonton/article/40-affordable-housing-units-open-to-veterans-in-edmonton/"><span class="media"><img src="assets/img/stories/s12.webp" srcset="assets/img/stories/s12-sm.webp 400w, assets/img/stories/s12.webp 800w" sizes="(max-width: 600px) 112px, 135px" alt="" width="800" height="533" loading="lazy" decoding="async"></span><div><h3 class="headline h-md">New Edmonton building opens 40 supportive homes for homeless veterans</h3><p class="dek clamp-2">Veterans&#x27; House Canada opened its second supportive housing site, a roughly $15-million building at 13015 128 Ave. NW. It has on-site staff, a library, a garden and a park for service pets.</p><span class="meta">CTV News Edmonton · Nov. 9</span></div></a><a class="row story-link" href="https://www.ctvnews.ca/edmonton/article/growing-city-wider-roads-city-admin-suggests-100m-in-street-upgrades-over-4-year-budget-cycle/"><span class="media"><img src="assets/img/stories/s07.webp" srcset="assets/img/stories/s07-sm.webp 400w, assets/img/stories/s07.webp 800w" sizes="(max-width: 600px) 112px, 135px" alt="" width="800" height="533" loading="lazy" decoding="async"></span><div><h3 class="headline h-md">City proposes 4.9% property tax hike for 2027 in its new four-year budget</h3><p class="dek clamp-2">The draft 2027-30 plan would add about $200 to the average homeowner&#x27;s bill. It includes a $6.3-billion capital budget with $100 million to widen Parsons Road, 215 Street and 41 Avenue.</p><span class="meta">CTV News Edmonton · Nov. 2</span></div></a><a class="row story-link" href="https://globalnews.ca/news/12127754/high-level-bridge-2027-closure/"><span class="media"><img src="assets/img/stories/s06.webp" srcset="assets/img/stories/s06-sm.webp 400w, assets/img/stories/s06.webp 800w" sizes="(max-width: 600px) 112px, 135px" alt="" width="800" height="533" loading="lazy" decoding="async"></span><div><h3 class="headline h-md">High Level Bridge to close for most of 2027 for urgent storm repairs</h3><p class="dek clamp-2">Landslides and erosion from 2026&#x27;s record summer rain mean the 113-year-old bridge will close from spring to late fall 2027. Its planned rehabilitation will happen at the same time. Detours are not yet set.</p><span class="meta">Global News · Oct. 30</span></div></a></div><a class="more-link" href="#">More Edmonton News <span aria-hidden="true">&gt;</span></a></section>
+    <section class="block"><h2 class="block-title" id="sec-running">Police budget debate <span class="live-dot" aria-hidden="true"></span></h2><div class="cols-3 strip"><article><a class="story-link" href="https://ca.news.yahoo.com/edmonton-police-credit-technological-tools-202406092.html"><span class="media"><img src="assets/img/stories/s42.webp" srcset="assets/img/stories/s42-sm.webp 400w, assets/img/stories/s42.webp 800w" sizes="(max-width: 1000px) 112px, 72px" alt="" width="800" height="533" loading="lazy" decoding="async"></span><div><h3 class="headline">Crime-mapping software behind drop in violent crime, EPS tells police commission</h3><span class="meta">Edmonton Journal via Yahoo · Nov. 19</span></div></a></article><article><a class="story-link" href="https://ca.news.yahoo.com/q-edmonton-police-chief-wants-130000084.html"><span class="media"><img src="assets/img/stories/s41.webp" srcset="assets/img/stories/s41-sm.webp 400w, assets/img/stories/s41.webp 800w" sizes="(max-width: 1000px) 112px, 72px" alt="" width="800" height="533" loading="lazy" decoding="async"></span><div><h3 class="headline">Police chief says cybercrime and AI are outpacing EPS without more capital funding</h3><span class="meta">CBC Edmonton via Yahoo · Nov. 18</span></div></a></article><article><a class="story-link" href="https://globalnews.ca/news/12137438/edmonton-police-service-city-budget/"><span class="media"><img src="assets/img/stories/s40.webp" srcset="assets/img/stories/s40-sm.webp 400w, assets/img/stories/s40.webp 800w" sizes="(max-width: 1000px) 112px, 72px" alt="" width="800" height="533" loading="lazy" decoding="async"></span><div><h3 class="headline">Edmonton police say draft city budget leaves $61.6M hole in technology funding</h3><span class="meta">Global News · Nov. 4</span></div></a></article></div></section>
+    <section class="block"><h2 class="block-title" id="sec-st-albert">St. Albert News</h2><div class="cols-2"><article class="card"><a class="story-link" href="https://edmontonjournal.com/sports/hockey/oil-kings/edmonton-oil-kings-ty-meunier-st-albert"><span class="media"><img src="assets/img/stories/s16.webp" srcset="assets/img/stories/s16-sm.webp 400w, assets/img/stories/s16.webp 800w" sizes="(max-width: 600px) calc(100vw - 32px), (max-width: 860px) calc(50vw - 31px), 300px" alt="" width="800" height="533" loading="lazy" decoding="async"></span><h3 class="headline h-lg">Oil Kings trade for St. Albert-born winger Ty Meunier to boost their scoring</h3><p class="dek clamp-3">The WHL club sent two conditional 2030 bantam draft picks to Swift Current for the 18-year-old forward. He was the seventh overall bantam pick and is now on his fourth junior team.</p><span class="meta">Edmonton Journal · Nov. 20</span></a></article><article class="card"><a class="story-link" href="https://edmontonjournal.com/sports/alberta-junior-hockey-league-st-albert"><span class="media"><img src="assets/img/stories/s14.webp" srcset="assets/img/stories/s14-sm.webp 400w, assets/img/stories/s14.webp 800w" sizes="(max-width: 600px) calc(100vw - 32px), (max-width: 860px) calc(50vw - 31px), 300px" alt="" width="800" height="533" loading="lazy" decoding="async"></span><h3 class="headline h-lg">Investor group pitches AJHL expansion team for St. Albert, pending city ice approval</h3><p class="dek clamp-3">Investors seeking a 2027 franchise presented to the league in Devon. Governors held off on a vote until St. Albert council decides on ice time at Servus Credit Union Place.</p><span class="meta">Edmonton Journal · Nov. 19</span></a></article></div><div class="rows"><a class="row story-link" href="https://www.ctvnews.ca/edmonton/article/got-a-parking-ticket-give-a-toy-to-a-child-in-need/"><span class="media"><img src="assets/img/stories/s13.webp" srcset="assets/img/stories/s13-sm.webp 400w, assets/img/stories/s13.webp 800w" sizes="(max-width: 600px) 112px, 135px" alt="" width="800" height="533" loading="lazy" decoding="async"></span><div><h3 class="headline h-md">St. Albert drivers can settle November parking tickets with a new toy</h3><p class="dek clamp-2">The 17th annual Toys for Tickets campaign lets drivers ticketed Nov. 15 to 30 donate a new toy worth $30 or more at the RCMP detachment instead of paying the fine.</p><span class="meta">CTV News Edmonton · Nov. 16</span></div></a><a class="row story-link" href="https://edmonton.citynews.ca/2026/11/03/st-albert-tattoo-shop-look-to-raise-funds-to-support-military-families/"><span class="media"><img src="assets/img/stories/s15.webp" srcset="assets/img/stories/s15-sm.webp 400w, assets/img/stories/s15.webp 800w" sizes="(max-width: 600px) 112px, 135px" alt="" width="800" height="533" loading="lazy" decoding="async"></span><div><h3 class="headline h-md">St. Albert tattoo studio hosts fundraiser for military families ahead of Remembrance Day</h3><p class="dek clamp-2">Fountainhead Tattoo owner Andi Monk, who has run the event for seven years, planned a Sunday tattoo fundraiser for Edmonton&#x27;s military family resource centre, expecting higher need after the CFB Wainwright tragedy.</p><span class="meta">CityNews Edmonton · Nov. 3</span></div></a></div><a class="more-link" href="#">More St. Albert News <span aria-hidden="true">&gt;</span></a></section>
+    <section class="block"><h2 class="block-title" id="sec-history">This Month in Edmonton History</h2><div class="rows"><a class="row story-link" href="https://en.wikipedia.org/wiki/42nd_Grey_Cup"><span class="media"><img src="assets/img/stories/s63.webp" srcset="assets/img/stories/s63-sm.webp 400w, assets/img/stories/s63.webp 800w" sizes="(max-width: 600px) 112px, 135px" alt="" width="800" height="533" loading="lazy" decoding="async"></span><div><h3 class="headline h-md">Nov. 27, 1954: Jackie Parker&#x27;s fumble return delivers Edmonton&#x27;s first Grey Cup</h3><p class="dek clamp-2">Parker picked up a Montreal fumble and ran about 90 yards to tie the game. Bob Dean&#x27;s convert then sealed a 26-25 upset of the favoured Alouettes in Toronto.</p><span class="meta">Nov. 27, 1954 · Wikipedia</span></div></a><a class="row story-link" href="https://en.wikipedia.org/wiki/Northlands_Coliseum"><span class="media"><img src="assets/img/stories/s62.webp" srcset="assets/img/stories/s62-sm.webp 400w, assets/img/stories/s62.webp 800w" sizes="(max-width: 600px) 112px, 135px" alt="" width="800" height="533" loading="lazy" decoding="async"></span><div><h3 class="headline h-md">Nov. 10, 1974: Edmonton&#x27;s new Coliseum opens with an Oilers win over Cleveland</h3><p class="dek clamp-2">The $17.3-million arena, built to replace the aging Edmonton Gardens, opened with a WHA game the Oilers won 4-1 over the Cleveland Crusaders. Strikes slowed construction, and the last 5,000 seats arrived just before opening night.</p><span class="meta">Nov. 10, 1974 · Wikipedia</span></div></a></div><a class="more-link" href="#">More Edmonton History <span aria-hidden="true">&gt;</span></a></section>
+    <section class="block"><h2 class="block-title" id="sec-sherwood-park">Sherwood Park &amp; Strathcona County News</h2><div class="cols-2"><article class="card"><a class="story-link" href="https://www.sherwoodparknews.com/news/county-photographer-named-albertas-best-selected-for-team-canada"><span class="media"><img src="assets/img/stories/s17.webp" srcset="assets/img/stories/s17-sm.webp 400w, assets/img/stories/s17.webp 800w" sizes="(max-width: 600px) calc(100vw - 32px), (max-width: 860px) calc(50vw - 31px), 300px" alt="" width="800" height="533" loading="lazy" decoding="async"></span><h3 class="headline h-lg">Strathcona County wedding photographer earns provincial title and a Team Canada spot</h3><p class="dek clamp-3">The Professional Photographers of Canada gave RedTree Photography owner Amy Moedt its Alberta Wedding Photographer of the Year title. She will compete for Canada at the 2027 World Photographic Cup.</p><span class="meta">Sherwood Park News · Nov. 20</span></a></article><article class="card"><a class="story-link" href="https://www.ctvnews.ca/edmonton/article/strathcona-county-council-approves-160k-to-replace-stolen-sherwood-park-street-sign-plaques/"><span class="media"><img src="assets/img/stories/s19.webp" srcset="assets/img/stories/s19-sm.webp 400w, assets/img/stories/s19.webp 800w" sizes="(max-width: 600px) calc(100vw - 32px), (max-width: 860px) calc(50vw - 31px), 300px" alt="" width="800" height="533" loading="lazy" decoding="async"></span><h3 class="headline h-lg">Strathcona County approves $160,000 to restore stolen Woodbridge Farms sign plaques</h3><p class="dek clamp-3">Council voted 8-1 to spend the money on 24 replacement plaques after thieves took the bronze originals from brick sign pillars in February and March. The new ones will be cheaper concrete.</p><span class="meta">CTV News Edmonton · Nov. 20</span></a></article></div><div class="rows"><a class="row story-link" href="https://www.sherwoodparknews.com/news/cpkc-holiday-train-brings-holiday-cheer-to-josephburg"><span class="media"><img src="assets/img/stories/s18.webp" srcset="assets/img/stories/s18-sm.webp 400w, assets/img/stories/s18.webp 800w" sizes="(max-width: 600px) 112px, 135px" alt="" width="800" height="533" loading="lazy" decoding="async"></span><div><h3 class="headline h-md">CPKC Holiday Train will stop in Josephburg on Dec. 13 with the Sam Roberts Band</h3><p class="dek clamp-2">The free trackside concert at Moyer Recreation Centre supports the Strathcona Food Bank. There is no drive-up viewing, so visitors need a parking pass or shuttle wristband, available from Nov. 30.</p><span class="meta">Sherwood Park News · Nov. 18</span></div></a><a class="row story-link" href="https://www.sherwoodparknews.com/news/strathcona-county-proposes-6-95-tax-increase"><span class="media"><img src="assets/img/stories/s20.webp" srcset="assets/img/stories/s20-sm.webp 400w, assets/img/stories/s20.webp 800w" sizes="(max-width: 600px) 112px, 135px" alt="" width="800" height="533" loading="lazy" decoding="async"></span><div><h3 class="headline h-md">Strathcona County administration proposes 6.95 per cent property tax increase for 2027</h3><p class="dek clamp-2">The draft budget focuses on maintaining aging assets and building reserves. A $513,000 home would pay about $163 more a year, and a public hearing is set for Nov. 25.</p><span class="meta">Sherwood Park News · Nov. 18</span></div></a></div><a class="more-link" href="#">More Sherwood Park News <span aria-hidden="true">&gt;</span></a></section>
+
+    <!-- COMMUNITY DISCUSSION -->
+    <section class="block">
+      <h2 class="block-title" id="sec-discuss">Community Discussion</h2>
+      <p class="block-intro">Vote, comment and share with your community.</p>
+      <ul class="discuss">
+        <li><a href="#"><span>What should go into the old Bay space at City Centre mall?</span><svg aria-hidden="true"><use href="#i-chat"/></svg></a></li>
+        <li><a href="#"><span>Where's the best holiday light display in the region?</span><svg aria-hidden="true"><use href="#i-chat"/></svg></a></li>
+        <li><a href="#"><span>Should the province decide where Edmonton puts bike lanes?</span><svg aria-hidden="true"><use href="#i-chat"/></svg></a></li>
+      </ul>
+      <a class="more-link" href="#">More Community Discussion <span aria-hidden="true">&gt;</span></a>
+    </section>
+
+    <!-- NEWSLETTERS -->
+    <section class="block">
+      <h2 class="block-title" id="sec-newsletters">Get the latest directly to your inbox</h2>
+      <div class="nl-wrap">
+        <button class="nl-arrow prev" type="button" aria-label="Previous newsletters"><svg aria-hidden="true"><use href="#i-left"/></svg></button>
+        <div class="nl-track" role="region" aria-label="Newsletters" tabindex="0">
+          <article class="nl-card"><span class="media t-day"><svg aria-hidden="true"><use href="#s-skyline"/></svg></span><div class="nl-body"><h3 id="nl-1">YEGToday Daily</h3><p>The morning briefing for Edmonton and the region, seven days a week.</p><button class="btn btn-dark" type="button" aria-pressed="false" aria-describedby="nl-1">Add</button></div></article>
+          <article class="nl-card"><span class="media t-dusk"><svg aria-hidden="true"><use href="#s-bridge"/></svg></span><div class="nl-body"><h3 id="nl-2">YEGToday Weekly</h3><p>The week's most-read stories in one recap, delivered Sundays.</p><button class="btn btn-dark" type="button" aria-pressed="false" aria-describedby="nl-2">Add</button></div></article>
+          <article class="nl-card"><span class="media t-soft"><svg aria-hidden="true"><use href="#s-cityhall"/></svg></span><div class="nl-body"><h3 id="nl-3">The Council Tracker</h3><p>What every council in the region decided this week, in plain language.</p><button class="btn btn-dark" type="button" aria-pressed="false" aria-describedby="nl-3">Add</button></div></article>
+          <article class="nl-card"><span class="media t-green"><svg aria-hidden="true"><use href="#s-trail"/></svg></span><div class="nl-body"><h3 id="nl-4">St. Albert Daily</h3><p>St. Albert news, events and obituaries, every weekday morning.</p><button class="btn btn-dark" type="button" aria-pressed="false" aria-describedby="nl-4">Add</button></div></article>
+          <article class="nl-card"><span class="media t-day"><svg aria-hidden="true"><use href="#s-lrt"/></svg></span><div class="nl-body"><h3 id="nl-5">Sherwood Park Daily</h3><p>Sherwood Park and Strathcona County news, every weekday morning.</p><button class="btn btn-dark" type="button" aria-pressed="false" aria-describedby="nl-5">Add</button></div></article>
+          <article class="nl-card"><span class="media t-gold"><svg aria-hidden="true"><use href="#s-farm"/></svg></span><div class="nl-body"><h3 id="nl-6">Tri-Region Daily</h3><p>Spruce Grove, Stony Plain and Parkland County, every weekday morning.</p><button class="btn btn-dark" type="button" aria-pressed="false" aria-describedby="nl-6">Add</button></div></article>
+          <article class="nl-card"><span class="media t-day"><svg aria-hidden="true"><use href="#s-court"/></svg></span><div class="nl-body"><h3 id="nl-7">The Cops &amp; Courts Report</h3><p>Crime, courts and public-safety news from across the region.</p><button class="btn btn-dark" type="button" aria-pressed="false" aria-describedby="nl-7">Add</button></div></article>
+          <article class="nl-card"><span class="media t-night"><svg aria-hidden="true"><use href="#s-rink"/></svg></span><div class="nl-body"><h3 id="nl-8">The Game Day Report</h3><p>Pro, university and community sports, five days a week.</p><button class="btn btn-dark" type="button" aria-pressed="false" aria-describedby="nl-8">Add</button></div></article>
+        </div>
+        <button class="nl-arrow next" type="button" aria-label="Next newsletters"><svg aria-hidden="true"><use href="#i-right"/></svg></button>
+      </div>
+    </section>
+
+    <section class="block"><h2 class="block-title" id="sec-crime">Cops, Crime &amp; Court</h2><div class="cols-2"><article class="card"><a class="story-link" href="https://www.ctvnews.ca/edmonton/article/edmonton-area-drivers-urged-to-slow-down-as-snow-creates-slick-road-conditions/"><span class="media"><img src="assets/img/stories/s38.webp" srcset="assets/img/stories/s38-sm.webp 400w, assets/img/stories/s38.webp 800w" sizes="(max-width: 600px) calc(100vw - 32px), (max-width: 860px) calc(50vw - 31px), 300px" alt="" width="800" height="533" loading="lazy" decoding="async"></span><h3 class="headline h-lg">Police urge Edmonton-area drivers to ease off as snow slicks the roads</h3><p class="dek clamp-3">Edmonton-area police issued a winter driving reminder on Friday as falling snow left roads slick around the capital region.</p><span class="meta">CTV News Edmonton · Nov. 20</span></a></article><article class="card"><a class="story-link" href="https://globalnews.ca/news/12160420/edmonton-stadium-plaza-eviction/"><span class="media"><img src="assets/img/stories/s39.webp" srcset="assets/img/stories/s39-sm.webp 400w, assets/img/stories/s39.webp 800w" sizes="(max-width: 600px) calc(100vw - 32px), (max-width: 860px) calc(50vw - 31px), 300px" alt="" width="800" height="533" loading="lazy" decoding="async"></span><h3 class="headline h-lg">Judge&#x27;s order empties troubled Stadium Plaza apartments in Edmonton&#x27;s Parkdale</h3><p class="dek clamp-3">Tenants of the 78-unit building on 86 Street had until noon Friday to leave; court records cite squatters, drug and gang activity, and copper thefts that knocked out the heat.</p><span class="meta">Global News · Nov. 20</span></a></article></div><div class="rows"><a class="row story-link" href="https://heartlandnews.ca/2026/11/19/14-year-sentence-for-u-haul-driver-who-fatally-hit-fort-sask-mother/"><span class="media"><img src="assets/img/stories/s36.webp" srcset="assets/img/stories/s36-sm.webp 400w, assets/img/stories/s36.webp 800w" sizes="(max-width: 600px) 112px, 135px" alt="" width="800" height="533" loading="lazy" decoding="async"></span><div><h3 class="headline h-md">Driver who fled police in a U-Haul gets 14 years for killing Fort Saskatchewan food bank head</h3><p class="dek clamp-2">The executive director of the Fort Saskatchewan Food Bank was hit in February 2024 while inspecting her vehicle, which had rolled over spikes police laid for the fleeing U-Haul.</p><span class="meta">Heartland News · Nov. 19</span></div></a><a class="row story-link" href="https://www.narcity.com/edmonton/sentencing-for-sale-of-gun-used-to-kill-officers"><span class="media"><img src="assets/img/stories/s35.webp" srcset="assets/img/stories/s35-sm.webp 400w, assets/img/stories/s35.webp 800w" sizes="(max-width: 600px) 112px, 135px" alt="" width="800" height="533" loading="lazy" decoding="async"></span><div><h3 class="headline h-md">Slain officers&#x27; families address court at sentencing of man who sold the rifle</h3><p class="dek clamp-2">Prosecutors want 12 to 14 years and the defence 4½ for the man found guilty of manslaughter for selling the rifle used to kill constables Travis Jordan and Brett Ryan in March 2023.</p><span class="meta">Narcity (The Canadian Press) · Nov. 10</span></div></a><a class="row story-link" href="https://globalnews.ca/news/12137329/alberta-rcmp-vehicles-organized-crime/"><span class="media"><img src="assets/img/stories/s37.webp" srcset="assets/img/stories/s37-sm.webp 400w, assets/img/stories/s37.webp 800w" sizes="(max-width: 600px) 112px, 135px" alt="" width="800" height="533" loading="lazy" decoding="async"></span><div><h3 class="headline h-md">Retired RCMP vehicles slated for scrap were resold instead, Alberta Mounties allege</h3><p class="dek clamp-2">Five men face charges after an RCMP auto theft unit probe; police allege a worker at a northwest Edmonton recycler faked destruction records, and tie the ring to 80-plus other stolen vehicles.</p><span class="meta">Global News · Nov. 4</span></div></a></div><a class="more-link" href="#">More Cops, Crime &amp; Court <span aria-hidden="true">&gt;</span></a></section>
+    <section class="block"><h2 class="block-title" id="sec-business">Business &amp; Energy</h2><div class="cols-2"><article class="card"><a class="story-link" href="https://edmonton.taproot.news/news/2026/11/19/ai-defence-and-life-sciences-growing-fast-in-edmonton-region"><span class="media"><img src="assets/img/stories/s49.webp" srcset="assets/img/stories/s49-sm.webp 400w, assets/img/stories/s49.webp 800w" sizes="(max-width: 600px) calc(100vw - 32px), (max-width: 860px) calc(50vw - 31px), 300px" alt="" width="800" height="533" loading="lazy" decoding="async"></span><h3 class="headline h-lg">Edmonton&#x27;s fast-growing AI, defence and life sciences sectors remain a small slice of jobs</h3><p class="dek clamp-3">Jobs in those clusters rose 21% from 2019 to 2025 and pay about $27,000 above the regional average, but they make up just 2% of employment, the Edmonton Chamber of Commerce reports.</p><span class="meta">Taproot Edmonton · Nov. 19</span></a></article><article class="card"><a class="story-link" href="https://www.ctvnews.ca/edmonton/article/fresh-fruit-and-flowers-a-promise-of-yegs-new-collab-with-mexican-cargo-airline/"><span class="media"><img src="assets/img/stories/s47.webp" srcset="assets/img/stories/s47-sm.webp 400w, assets/img/stories/s47.webp 800w" sizes="(max-width: 600px) calc(100vw - 32px), (max-width: 860px) calc(50vw - 31px), 300px" alt="" width="800" height="533" loading="lazy" decoding="async"></span><h3 class="headline h-lg">Direct freighter link to Mexico City coming to Edmonton International Airport in December</h3><p class="dek clamp-3">Service with Mexican cargo carrier mas will carry fresh fruit and flowers north for Vancouver-based distributor Fresh Direct Produce; the airport estimates the route will generate more than $22 million in its first two years.</p><span class="meta">CTV News Edmonton · Nov. 18</span></a></article></div><div class="rows"><a class="row story-link" href="https://finviz.com/news/424753/costco-opens-larger-edmonton-warehouse-creating-more-than-80-jobs-as-canadian-expansion-continues"><span class="media"><img src="assets/img/stories/s48.webp" srcset="assets/img/stories/s48-sm.webp 400w, assets/img/stories/s48.webp 800w" sizes="(max-width: 600px) 112px, 135px" alt="" width="800" height="533" loading="lazy" decoding="async"></span><div><h3 class="headline h-md">Costco trades its long-running 50 Street store for a bigger warehouse in northeast Edmonton</h3><p class="dek clamp-2">The 160,000-plus-square-foot store at 285 Ebbers Boulevard NW opened Nov. 18 with a 24-pump gas bar, a liquor store and over 1,000 parking stalls, adding more than 80 jobs.</p><span class="meta">InvestorsHub · Nov. 18</span></div></a><a class="row story-link" href="https://www.bnnbloomberg.ca/business/company-news/2026/11/04/sherritt-to-temporarily-layoff-nearly-half-of-its-canadian-workforce/"><span class="media"><img src="assets/img/stories/s50.webp" srcset="assets/img/stories/s50-sm.webp 400w, assets/img/stories/s50.webp 800w" sizes="(max-width: 600px) 112px, 135px" alt="" width="800" height="533" loading="lazy" decoding="async"></span><div><h3 class="headline h-md">Sherritt temporarily lays off about 280 workers as its Fort Saskatchewan refinery sits idle</h3><p class="dek clamp-2">The roughly 90-day layoffs hit 47% of its Canadian staff; refining stopped earlier this year after feed from its Moa joint venture in Cuba, paused amid fuel shortages there, ran out.</p><span class="meta">BNN Bloomberg · Nov. 4</span></div></a></div><a class="more-link" href="#">More Business &amp; Energy <span aria-hidden="true">&gt;</span></a></section>
+    <section class="block"><h2 class="block-title" id="sec-tri-region">Spruce Grove, Stony Plain, Parkland &amp; Enoch News</h2><div class="cols-2"><article class="card"><a class="story-link" href="https://www.ctvnews.ca/edmonton/article/energy-city-cactus-rats-suspended-by-league-because-of-ballpark-chaos/"><span class="media"><img src="assets/img/stories/s25.webp" srcset="assets/img/stories/s25-sm.webp 400w, assets/img/stories/s25.webp 800w" sizes="(max-width: 600px) calc(100vw - 32px), (max-width: 860px) calc(50vw - 31px), 300px" alt="" width="800" height="533" loading="lazy" decoding="async"></span><h3 class="headline h-lg">Baseball league benches Spruce Grove&#x27;s Cactus Rats for 2027 over unfinished ballpark</h3><p class="dek clamp-3">The Western Canadian Baseball League voted to suspend the Energy City Cactus Rats for one season, citing slow progress on the unfinished Energy City Metro Ballpark. The owner says he disagrees.</p><span class="meta">CTV News Edmonton · Nov. 17</span></a></article><article class="card"><a class="story-link" href="https://www.ctvnews.ca/edmonton/article/spruce-grove-hockey-tournament-brings-first-responders-military-members-together/"><span class="media t-winter"><svg aria-hidden="true"><use href="#s-rink"/></svg></span><h3 class="headline h-lg">First responder and military teams hit the ice in Spruce Grove to honour fallen officer</h3><p class="dek clamp-3">Twenty-three teams played in the In Their Honour Invitational at Heavy Metal Place, set up by a foundation Const. Brett Ryan&#x27;s family created after the Edmonton officer was killed on duty in 2023.</p><span class="meta">CTV News Edmonton · Nov. 12</span></a></article></div><div class="rows"><a class="row story-link" href="https://www.cbc.ca/news/canada/edmonton/community-fundraising-to-bring-ct-scanner-to-parkland-county-hospital-9.7412533"><span class="media"><img src="assets/img/stories/s28.webp" srcset="assets/img/stories/s28-sm.webp 400w, assets/img/stories/s28.webp 800w" sizes="(max-width: 600px) 112px, 135px" alt="" width="800" height="533" loading="lazy" decoding="async"></span><div><h3 class="headline h-md">WestView hospital foundation passes $3 million in push for Stony Plain CT scanner</h3><p class="dek clamp-2">The WestView Health Foundation is raising $5.1 million so the Stony Plain hospital can scan patients locally instead of sending over 200 a month elsewhere. The province expects the scanner running in 2028.</p><span class="meta">CBC Edmonton · Nov. 7</span></div></a><a class="row story-link" href="https://www.ctvnews.ca/edmonton/article/game-changer-housing-plan-coming-to-first-nation-in-alberta/"><span class="media"><img src="assets/img/stories/s33.webp" srcset="assets/img/stories/s33-sm.webp 400w, assets/img/stories/s33.webp 800w" sizes="(max-width: 600px) 112px, 135px" alt="" width="800" height="533" loading="lazy" decoding="async"></span><div><h3 class="headline h-md">Enoch Cree Nation readies lots for about 166 homes to ease its housing wait list</h3><p class="dek clamp-2">Backed by a $30-million Canada Infrastructure Bank loan, the development will prepare lots for about 166 homes to help the 350 families waiting for housing. No completion date was given.</p><span class="meta">CTV News Edmonton · Oct. 30</span></div></a><a class="row story-link" href="https://www.ctvnews.ca/edmonton/article/river-cree-resort-and-casino-celebrates-20th-birthday/"><span class="media"><img src="assets/img/stories/s34.webp" srcset="assets/img/stories/s34-sm.webp 400w, assets/img/stories/s34.webp 800w" sizes="(max-width: 600px) 112px, 135px" alt="" width="800" height="533" loading="lazy" decoding="async"></span><div><h3 class="headline h-md">River Cree Resort and Casino turns 20, with a new hotel and spa on the way</h3><p class="dek clamp-2">Owned by Enoch Cree Nation, the resort has grown from 600 to more than 1,700 machines and opened Canada&#x27;s first Hell&#x27;s Kitchen. An Indigenous thermal spa and indoor golf are planned.</p><span class="meta">CTV News Edmonton · Oct. 26</span></div></a></div><a class="more-link" href="#">More Tri-Region News <span aria-hidden="true">&gt;</span></a></section>
+    <section class="block"><h2 class="block-title" id="sec-south">Leduc, Beaumont &amp; Devon News</h2><div class="cols-2"><article class="card"><a class="story-link" href="https://dailyhive.com/edmonton/leduc-santa-claus-parade-2026"><span class="media"><img src="assets/img/stories/s29.webp" srcset="assets/img/stories/s29-sm.webp 400w, assets/img/stories/s29.webp 800w" sizes="(max-width: 600px) calc(100vw - 32px), (max-width: 860px) calc(50vw - 31px), 300px" alt="" width="800" height="533" loading="lazy" decoding="async"></span><h3 class="headline h-lg">Leduc rings in the holidays with a Santa Claus parade and downtown festivities Nov. 22</h3><p class="dek clamp-3">The free parade rolls along 5th Avenue at 6 p.m. Sunday, with a craft fair, free Santa photos and crafts at City Centre Mall earlier in the day.</p><span class="meta">Daily Hive · Nov. 18</span></a></article><article class="card"><a class="story-link" href="https://www.thebeaumontnews.ca/news/local-news/photo-radar-in-beaumont-ends-december-6"><span class="media"><img src="assets/img/stories/s31.webp" srcset="assets/img/stories/s31-sm.webp 400w, assets/img/stories/s31.webp 800w" sizes="(max-width: 600px) calc(100vw - 32px), (max-width: 860px) calc(50vw - 31px), 300px" alt="" width="800" height="533" loading="lazy" decoding="async"></span><h3 class="headline h-lg">Beaumont&#x27;s photo radar shuts off Dec. 6 after the provider ends its contract</h3><p class="dek clamp-3">The city&#x27;s automated traffic enforcement contractor pulled out, saying provincial limits on enforcement locations made it financially unviable. Tickets issued before the cutoff still stand.</p><span class="meta">La Nouvelle Beaumont News · Nov. 5</span></a></article></div><div class="rows"><a class="row story-link" href="https://edmontonjournal.com/business/commercial-real-estate/edmonton-nisku-industry-leduc-county"><span class="media"><img src="assets/img/stories/s30.webp" srcset="assets/img/stories/s30-sm.webp 400w, assets/img/stories/s30.webp 800w" sizes="(max-width: 600px) 112px, 135px" alt="" width="800" height="533" loading="lazy" decoding="async"></span><div><h3 class="headline h-md">Nisku soaks up industrial growth as businesses chase Leduc County&#x27;s lower taxes</h3><p class="dek clamp-2">An Avison Young report found Nisku added almost 220,000 square feet of occupied commercial space in the third quarter, as Leduc County&#x27;s 11.11 mill rate draws firms away from Edmonton.</p><span class="meta">Edmonton Journal · Nov. 4</span></div></a><a class="row story-link" href="https://www.devondispatch.ca/news/local-news/devon-wins-national-communities-in-bloom-awards"><span class="media"><img src="assets/img/stories/s32.webp" srcset="assets/img/stories/s32-sm.webp 400w, assets/img/stories/s32.webp 800w" sizes="(max-width: 600px) 112px, 135px" alt="" width="800" height="533" loading="lazy" decoding="async"></span><div><h3 class="headline h-md">Devon collects three national Communities in Bloom honours</h3><p class="dek clamp-2">At the 2026 national symposium in Montreal, the town earned a 5 Blooms Silver rating plus outstanding achievement awards for tree management and community involvement.</p><span class="meta">Devon Dispatch · Oct. 29</span></div></a></div><a class="more-link" href="#">More Leduc, Beaumont &amp; Devon News <span aria-hidden="true">&gt;</span></a></section>
+    <section class="block"><h2 class="block-title" id="sec-north">Fort Saskatchewan, Morinville &amp; Sturgeon News</h2><div class="cols-2"><article class="card"><a class="story-link" href="https://heartlandnews.ca/2026/11/20/city-starts-work-on-repainting-iconic-fort-sask-water-tower-mural/"><span class="media"><img src="assets/img/stories/s22.webp" srcset="assets/img/stories/s22-sm.webp 400w, assets/img/stories/s22.webp 800w" sizes="(max-width: 600px) calc(100vw - 32px), (max-width: 860px) calc(50vw - 31px), 300px" alt="" width="800" height="533" loading="lazy" decoding="async"></span><h3 class="headline h-lg">Repainting begins on Fort Saskatchewan&#x27;s landmark water tower mural</h3><p class="dek clamp-3">Work is underway under what the city calls possibly Canada&#x27;s tallest ground-up scaffolding. New paint colours aim to match the mural&#x27;s original, brighter shades, and no finish date has been set.</p><span class="meta">Heartland News · Nov. 20</span></a></article><article class="card"><a class="story-link" href="https://www.ctvnews.ca/edmonton/article/what-could-trumps-data-centre-comments-mean-as-meta-builds-in-alberta/"><span class="media"><img src="assets/img/stories/s24.webp" srcset="assets/img/stories/s24-sm.webp 400w, assets/img/stories/s24.webp 800w" sizes="(max-width: 600px) calc(100vw - 32px), (max-width: 860px) calc(50vw - 31px), 300px" alt="" width="800" height="533" loading="lazy" decoding="async"></span><h3 class="headline h-lg">Trump&#x27;s threat to tax offshore data centres raises questions for Meta&#x27;s build north of Edmonton</h3><p class="dek clamp-3">Construction is underway on Meta&#x27;s $13-billion AI data centre. A Dalhousie professor told CTV that Trump would more likely use tariff-style measures than a ban, and the premier&#x27;s office says it is waiting for details.</p><span class="meta">CTV News Edmonton · Nov. 20</span></a></article></div><a class="more-link" href="#">More North News <span aria-hidden="true">&gt;</span></a></section>
+    <section class="block"><h2 class="block-title" id="sec-sports">Sports</h2><div class="cols-2"><article class="card"><a class="story-link" href="https://www.nhl.com/oilers/news/edmonton-oilers-tampa-bay-lightning-game-recap-november-19-2026-x6012"><span class="media"><img src="assets/img/stories/s44.webp" srcset="assets/img/stories/s44-sm.webp 400w, assets/img/stories/s44.webp 800w" sizes="(max-width: 600px) calc(100vw - 32px), (max-width: 860px) calc(50vw - 31px), 300px" alt="" width="800" height="533" loading="lazy" decoding="async"></span><h3 class="headline h-lg">Lightning snap McDavid&#x27;s 23-game season-opening point streak with 3-1 win</h3><p class="dek clamp-3">The run matched Wayne Gretzky&#x27;s 1988-89 streak for fourth-longest from opening night in NHL history. Colton Dach scored Edmonton&#x27;s lone goal as the Oilers fell to 17-4-3.</p><span class="meta">NHL.com · Nov. 20</span></a></article><article class="card"><a class="story-link" href="https://bearsandpandas.ca/news/2026/11/15/comeback-bears-claim-u-sports-bronze-with-late-win-over-ubc.aspx"><span class="media"><img src="assets/img/stories/s45.webp" srcset="assets/img/stories/s45-sm.webp 400w, assets/img/stories/s45.webp 800w" sizes="(max-width: 600px) calc(100vw - 32px), (max-width: 860px) calc(50vw - 31px), 300px" alt="" width="800" height="533" loading="lazy" decoding="async"></span><h3 class="headline h-lg">Late goal gives Golden Bears men&#x27;s soccer a U SPORTS bronze over top-seeded UBC</h3><p class="dek clamp-3">Down a goal in Victoria, the University of Alberta tied it in the 68th minute and won 2-1 on Tyson Blight&#x27;s 87th-minute strike, the program&#x27;s first national medal since 2016.</p><span class="meta">Golden Bears &amp; Pandas · Nov. 15</span></a></article></div><div class="rows"><a class="row story-link" href="https://www.tsn.ca/curling/article/edmonton-to-host-world-junior-mixed-doubles-curling-championship-in-may/"><span class="media"><img src="assets/img/stories/s46.webp" srcset="assets/img/stories/s46-sm.webp 400w, assets/img/stories/s46.webp 800w" sizes="(max-width: 600px) 112px, 135px" alt="" width="800" height="533" loading="lazy" decoding="async"></span><div><h3 class="headline h-md">Junior mixed doubles curling worlds return to Edmonton&#x27;s Saville Centre for a third year</h3><p class="dek clamp-2">The open-entry World Curling event runs May 3-9 at the Saville Community Sports Centre, which also hosted this year&#x27;s edition, when Japan edged Canada 6-5 in the final.</p><span class="meta">TSN · Nov. 3</span></div></a></div><a class="more-link" href="#">More Sports <span aria-hidden="true">&gt;</span></a></section>
+    <section class="block"><h2 class="block-title" id="sec-opinion">Opinion from Around the Region</h2><div class="rows"><a class="row story-link" href="https://ca.news.yahoo.com/keith-gerein-edmonton-again-city-213043913.html"><span class="media"><img src="assets/img/stories/s60.webp" srcset="assets/img/stories/s60-sm.webp 400w, assets/img/stories/s60.webp 800w" sizes="(max-width: 600px) 112px, 135px" alt="" width="800" height="533" loading="lazy" decoding="async"></span><div><h3 class="headline h-md">Gerein: Edmonton earned the champions label again, but it shouldn&#x27;t be the city&#x27;s brand</h3><p class="dek clamp-2">The Journal columnist welcomes the civic pride around the Elks but calls the province&#x27;s new City of Champions highway signs a political stunt. He argues Edmonton needs a fresher, more distinctive slogan of its own.</p><span class="meta">Keith Gerein · Edmonton Journal via Yahoo · Nov. 20</span></div></a><a class="row story-link" href="https://ca.news.yahoo.com/lorne-gunter-ucp-bike-lane-110537810.html"><span class="media"><img src="assets/img/stories/s61.webp" srcset="assets/img/stories/s61-sm.webp 400w, assets/img/stories/s61.webp 800w" sizes="(max-width: 600px) 112px, 135px" alt="" width="800" height="533" loading="lazy" decoding="async"></span><div><h3 class="headline h-md">Gunter: Province&#x27;s bike lane bill is common sense, and a city memo shows why</h3><p class="dek clamp-2">The columnist backs the UCP bill letting the province review and remove bike lanes. He argues a city memo pricing removal at $150 million to $170 million concedes that the lanes affected vehicle travel.</p><span class="meta">Lorne Gunter · Edmonton Journal via Yahoo · Nov. 20</span></div></a></div><a class="more-link" href="#">More Opinion <span aria-hidden="true">&gt;</span></a></section>
+    <section class="block"><h2 class="block-title" id="sec-living">Edmonton Living</h2><div class="cols-2"><article class="card"><a class="story-link" href="https://edmonton.taproot.news/briefs/2026/11/19/edmonton-arts-council-recognizes-18-artists-with-15000-each"><span class="media"><img src="assets/img/stories/s54.webp" srcset="assets/img/stories/s54-sm.webp 400w, assets/img/stories/s54.webp 800w" sizes="(max-width: 600px) calc(100vw - 32px), (max-width: 860px) calc(50vw - 31px), 300px" alt="" width="800" height="533" loading="lazy" decoding="async"></span><h3 class="headline h-lg">Eighteen Edmonton artists each receive $15,000 from the Edmonton Artists&#x27; Trust Fund</h3><p class="dek clamp-3">Recipients announced Nov. 16 include photographer Jordon Hon, muralist Busyrawk and drummer Biboye Onanuga. The Edmonton Arts Council says its city funding has stayed flat since 2019.</p><span class="meta">Taproot Edmonton · Nov. 19</span></a></article><article class="card"><a class="story-link" href="https://dailyhive.com/edmonton/green-onion-cake-man-alberta-avenue-edmonton-closing"><span class="media"><img src="assets/img/stories/s53.webp" srcset="assets/img/stories/s53-sm.webp 400w, assets/img/stories/s53.webp 800w" sizes="(max-width: 600px) calc(100vw - 32px), (max-width: 860px) calc(50vw - 31px), 300px" alt="" width="800" height="533" loading="lazy" decoding="async"></span><h3 class="headline h-lg">Green Onion Cake Man to leave its Alberta Avenue storefront when the lease ends in April 2027</h3><p class="dek clamp-3">The shop at 9132 118th Ave. NW says its lease runs out in April 2027. It&#x27;s unclear whether a new spot is planned, but the cakes are still sold at stores including H&amp;W Produce and the Italian Centre Shop.</p><span class="meta">Daily Hive · Nov. 10</span></a></article></div><div class="rows"><a class="row story-link" href="https://www.ctvnews.ca/edmonton/article/local-bakery-shifts-annual-infamous-gingerbread-house-theme-after-public-push-back/"><span class="media"><img src="assets/img/stories/s51.webp" srcset="assets/img/stories/s51-sm.webp 400w, assets/img/stories/s51.webp 800w" sizes="(max-width: 600px) 112px, 135px" alt="" width="800" height="533" loading="lazy" decoding="async"></span><div><h3 class="headline h-md">Duchess Bake Shop scraps Harry Potter gingerbread theme in favour of a holiday village</h3><p class="dek clamp-2">After criticism linked to J.K. Rowling&#x27;s views on transgender people, Duchess is building a gingerbread holiday village instead, with donations going to the Pride Centre of Edmonton and matched by the bakery.</p><span class="meta">CTV News Edmonton · Nov. 8</span></div></a><a class="row story-link" href="https://www.ctvnews.ca/edmonton/article/honour-that-relationship-dia-de-los-muertos-altar-at-edmonton-valley-zoo-remembers-more-than-100-animals/"><span class="media"><img src="assets/img/stories/s56.webp" srcset="assets/img/stories/s56-sm.webp 400w, assets/img/stories/s56.webp 800w" sizes="(max-width: 600px) 112px, 135px" alt="" width="800" height="533" loading="lazy" decoding="async"></span><div><h3 class="headline h-md">Edmonton Valley Zoo builds its first Day of the Dead altar to honour animals it has lost</h3><p class="dek clamp-2">Created with the Mexican Society of Edmonton, the ofrenda remembers more than 100 zoo animals that have died since 1959, including Cactus, a 27-year-old porcupine. Visitors were invited to add photos of their pets.</p><span class="meta">CTV News Edmonton · Nov. 1</span></div></a></div><a class="more-link" href="#">More Edmonton Living <span aria-hidden="true">&gt;</span></a></section>
+    <section class="block"><h2 class="block-title" id="sec-neighbours">Meet Your Neighbours</h2><div class="rows"><a class="row story-link" href="https://www.ctvnews.ca/edmonton/article/a-universal-language-songs-stories-bring-intergenerational-joy-to-seniors-residence/"><span class="media"><img src="assets/img/stories/s58.webp" srcset="assets/img/stories/s58-sm.webp 400w, assets/img/stories/s58.webp 800w" sizes="(max-width: 600px) 112px, 135px" alt="" width="800" height="533" loading="lazy" decoding="async"></span><div><h3 class="headline h-md">Seniors and toddlers bond over songs and stories at Canterbury Foundation literacy program</h3><p class="dek clamp-2">Every Friday, residents join babies, toddlers and parents for the Centre for Family Literacy&#x27;s Do-Re-Mi, 123 program. It began three years ago with about five families and now often draws 50-plus residents.</p><span class="meta">CTV News Edmonton · Nov. 20</span></div></a><a class="row story-link" href="https://www.ctvnews.ca/edmonton/article/true-neighbourhood-gem-edmonton-coffee-shop-nominated-for-canadas-favourite-business/"><span class="media"><img src="assets/img/stories/s57.webp" srcset="assets/img/stories/s57-sm.webp 400w, assets/img/stories/s57.webp 800w" sizes="(max-width: 600px) 112px, 135px" alt="" width="800" height="533" loading="lazy" decoding="async"></span><div><h3 class="headline h-md">Jasper Avenue&#x27;s Coffee Bureau nominated for Canada&#x27;s Favourite Business 2026</h3><p class="dek clamp-2">Husband-and-wife owners Peter West and Christane Tassinari opened the café in 2015 and added a Wîhkwêntôwin location in 2024. A customer&#x27;s nomination puts the shop in the running for a $1,000 gift card.</p><span class="meta">CTV News Edmonton · Nov. 15</span></div></a><a class="row story-link" href="https://edmonton.taproot.news/news/2026/11/12/global-network-puts-artisans-and-region-on-the-map"><span class="media"><img src="assets/img/stories/s59.webp" srcset="assets/img/stories/s59-sm.webp 400w, assets/img/stories/s59.webp 800w" sizes="(max-width: 600px) 112px, 135px" alt="" width="800" height="533" loading="lazy" decoding="async"></span><div><h3 class="headline h-md">Edmonton chocolate maker and Strathcona County pierogi farm join the global ÉCONOMUSÉE network</h3><p class="dek clamp-2">Antoine Lavoie&#x27;s Delavoye Chocolate Maker and Agnes Kulinska&#x27;s Pierogerie Polish Foods became the Edmonton region&#x27;s first members of the artisan network. Both are building visitor experiences around their craft.</p><span class="meta">Taproot Edmonton · Nov. 12</span></div></a></div><a class="more-link" href="#">More Neighbours <span aria-hidden="true">&gt;</span></a></section>
+
+  </main>
+
+  <aside class="rail" aria-label="More from YEGToday">
+    <div class="ad" aria-hidden="true">Advertisement</div>
+
+    <section class="rail-block">
+      <h2 class="block-title" id="rail-weather">Edmonton Weather</h2>
+      <div class="weather">
+        <svg class="weather-icon" aria-hidden="true"><use href="#i-snowcloud"/></svg>
+        <span class="weather-temp">−12°C</span>
+        <span class="weather-desc">Light snow · feels like −19</span>
+        <div class="weather-days"><span>Fri<b>−9°</b></span><span>Sat<b>−14°</b></span><span>Sun<b>−7°</b></span><span>Mon<b>−3°</b></span></div>
+      </div>
+      <a class="more-link" href="#">Forecast &amp; road conditions <span aria-hidden="true">&gt;</span></a>
+    </section>
+
+    <section class="rail-block">
+      <h2 class="block-title" id="rail-poll">Your Vote Matters</h2>
+      <p>Participate in our next community poll.</p>
+      <form class="poll" data-results='{"Love it":486,"Not a fan":233,"No opinion":118}'>
+        <p class="poll-q" id="poll-q">Government Centre LRT station is set to become Buffalo Crossing. What do you think of the new name?</p>
+        <fieldset aria-labelledby="poll-q">
+          <label><input type="radio" name="vote" value="Love it"> Love it</label>
+          <label><input type="radio" name="vote" value="Not a fan"> Not a fan</label>
+          <label><input type="radio" name="vote" value="No opinion"> No opinion</label>
+        </fieldset>
+        <ul class="poll-results" hidden tabindex="-1" aria-label="Poll results"></ul>
+        <div class="poll-actions">
+          <button class="btn btn-brand" type="submit" data-vote>Vote</button>
+          <button class="btn btn-grey" type="button" data-show-results>Results <span aria-hidden="true">&gt;</span></button>
+          <a class="btn btn-grey" href="#">Archives <span aria-hidden="true">&gt;</span></a>
+        </div>
+        <p class="poll-note" role="status"></p>
+      </form>
+    </section>
+
+    <section class="rail-block obits-block">
+      <h2 class="block-title" id="rail-obits">We Remember</h2>
+      <ul class="obits">
+        <li><span class="media r-2x3"><svg aria-hidden="true"><use href="#s-flower"/></svg></span><a href="#"><h3>Sample Name</h3><p class="clamp-3">It is with sadness that the family shares the passing of… (sample listing)</p></a></li>
+        <li><span class="media r-2x3 t-soft"><svg aria-hidden="true"><use href="#s-person"/></svg></span><a href="#"><h3>Sample Name</h3><p class="clamp-3">A celebration of life will be held at a later date. (sample listing)</p></a></li>
+        <li><span class="media r-2x3"><svg aria-hidden="true"><use href="#s-flower"/></svg></span><a href="#"><h3>Sample Name</h3><p class="clamp-3">Lovingly remembered by family and friends in St. Albert and Edmonton. (sample listing)</p></a></li>
+      </ul>
+      <a class="more-link" href="#">More Obituaries <span aria-hidden="true">&gt;</span></a>
+    </section>
+
+    <div class="ad" aria-hidden="true">Advertisement</div>
+
+    <div class="rail-sticky">
+      <div class="ad tall" aria-hidden="true">Advertisement</div>
+    </div>
+  </aside>
+</div>
+
+<section class="photo-credits" aria-labelledby="photo-credits-title"><h2 id="photo-credits-title">Photo credits</h2><p>Story photos show the places and subjects in the news. They are freely licensed images from Wikimedia Commons, not the reporting outlets' own photos. We cropped and resized them, and our versions of CC BY-SA photos are shared under the same licence as the originals.</p><ol><li>One of Edmonton&#x27;s former welcome signs, carrying the City of Champions slogan. Photo: “Edmonton Entrance Sign” by Mack Male from Edmonton, AB, Canada, <a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Edmonton_Entrance_Sign_(16490899554).jpg">Wikimedia Commons</a> (cropped and resized).</li><li>Save-On-Foods store at Mayfield Common in west Edmonton. Photo: “Save-On-Foods Dollarama Mayfield Common Edmonton 2014” by Rowanswiki, <a href="http://creativecommons.org/publicdomain/zero/1.0/deed.en">CC0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Save-On-Foods_Dollarama_Mayfield_Common_Edmonton_2014.jpg">Wikimedia Commons</a> (cropped and resized).</li><li>Snowy pathway in Hawrelak Park in winter. Photo: “♫♫ Walking in the Winter Wonderland ♫♫” by Heidi G from Edmonton/Alberta, Canada, <a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:%E2%99%AB%E2%99%AB_Walking_in_the_Winter_Wonderland_%E2%99%AB%E2%99%AB_(4220142393).jpg">Wikimedia Commons</a> (cropped and resized).</li><li>The North Saskatchewan River at West River&#x27;s Edge park in Fort Saskatchewan. Photo: “North Saskatchewan River Fort Saskatchewan” by Matthew Boonstra, <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:North_Saskatchewan_River_Fort_Saskatchewan.jpg">Wikimedia Commons</a> (cropped and resized).</li><li>Edmonton City Centre mall in downtown Edmonton. Photo: “Edmonton City Centre Edmonton August 2026” by Chinpokomon5, <a href="https://creativecommons.org/licenses/by/4.0">CC BY 4.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Edmonton_City_Centre_Edmonton_August_2026.jpg">Wikimedia Commons</a> (cropped and resized).</li><li>Decommissioned airport control tower in Blatchford, Edmonton. Photo: “Blatchford Air Traffic Control Tower” by Matthew Boonstra, <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Blatchford_Air_Traffic_Control_Tower.jpg">Wikimedia Commons</a> (cropped and resized).</li><li>Stanley A. Milner Library seen from Churchill Square in downtown Edmonton. Photo: “Stanley A. Milner Library from Churchill Square, Edmonton, 2026” by Marie D Martel, <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Stanley_A._Milner_Library_from_Churchill_Square,_Edmonton,_2026.jpg">Wikimedia Commons</a> (cropped and resized).</li><li>Bike lane on 102 Avenue in Edmonton. Photo: “102 Avenue Bike Lane” by Mack Male from Edmonton, AB, Canada, <a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:102_Avenue_Bike_Lane_(52109439155).jpg">Wikimedia Commons</a> (cropped and resized).</li><li>110 Street entrances to Edmonton&#x27;s Government Centre LRT station, then called Grandin. Photo: “GrandinStation110StreetEntrancesJuly2020” by johnnyw3, <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:GrandinStation110StreetEntrancesJuly2020.jpg">Wikimedia Commons</a> (cropped and resized).</li><li>Jasper Avenue westbound through downtown Edmonton. Photo: “Jasper Avenue Westbound, Downtown Edmonton 10-17-2022” by TagaSanPedroAko, <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Jasper_Avenue_Westbound,_Downtown_Edmonton_10-17-2022.jpg">Wikimedia Commons</a> (cropped and resized).</li><li>Edmonton Public Schools headquarters building. Photo: “Edmonton Public School Board Edmonton Alberta Canada 01A” by WinterE229 WinterforceMedia, <a href="https://commons.wikimedia.org/wiki/Template:PD-self">Public domain</a>, via <a href="https://commons.wikimedia.org/wiki/File:Edmonton_Public_School_Board_Edmonton_Alberta_Canada_01A.jpg">Wikimedia Commons</a> (cropped and resized).</li><li>Grey Nuns Community Hospital in south Edmonton. Photo: “2008-10-30 Grey Nuns Community Hospital” by Johntwrl at English Wikipedia, <a href="https://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:2008-10-30_Grey_Nuns_Community_Hospital.jpg">Wikimedia Commons</a> (cropped and resized).</li><li>Lion sculptures at the Edmonton Cenotaph. Photo: “Edmonton Cenotaph, Edmonton, Alberta, 2026-09-27 03” by Chris Woodrich, <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Edmonton_Cenotaph,_Edmonton,_Alberta,_2026-09-27_03.jpg">Wikimedia Commons</a> (cropped and resized).</li><li>Edmonton City Hall and its memorial fountain. Photo: “Edmonton City Hall and Memorial Fountain, June 6, 2024” by D. Benjamin Miller, <a href="http://creativecommons.org/publicdomain/zero/1.0/deed.en">CC0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Edmonton_City_Hall_and_Memorial_Fountain,_June_6,_2024.jpg">Wikimedia Commons</a> (cropped and resized).</li><li>Edmonton&#x27;s High Level Bridge viewed from the base of the Walterdale Bridge. Photo: “High Level Bridge, Edmonton, Alberta, 2026-09-27 02” by Chris Woodrich, <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:High_Level_Bridge,_Edmonton,_Alberta,_2026-09-27_02.jpg">Wikimedia Commons</a> (cropped and resized).</li><li>Edmonton Police Service headquarters downtown. Photo: “Edmonton Police Headquarters” by Mack Male from Edmonton, AB, Canada, <a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Edmonton_Police_Headquarters_(35778923891).jpg">Wikimedia Commons</a> (cropped and resized).</li><li>Row of Edmonton Police Service patrol cars. Photo: “Edmonton Police Cars” by Mack Male from Edmonton, AB, Canada, <a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Edmonton_Police_Cars_(50076963087).jpg">Wikimedia Commons</a> (cropped and resized).</li><li>Edmonton Police Service Ford Police Interceptor Utility patrol vehicle. Photo: “Edmonton Police Ford Police Interceptor Utility Y26” by Mack Male, <a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Edmonton_Police_Ford_Police_Interceptor_Utility_Y26.jpg">Wikimedia Commons</a> (cropped and resized).</li><li>Rogers Place arena in downtown Edmonton, home of the Oil Kings. Photo: “Rogers Place, Edmonton, June 6, 2024” by D. Benjamin Miller, <a href="http://creativecommons.org/publicdomain/zero/1.0/deed.en">CC0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Rogers_Place,_Edmonton,_June_6,_2024.jpg">Wikimedia Commons</a> (cropped and resized).</li><li>Ice rink at Servus Credit Union Place in St. Albert. Photo: “Servus Place Leisure Ice Skating Rink 2014” by Rowanswiki, <a href="http://creativecommons.org/publicdomain/zero/1.0/deed.en">CC0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Servus_Place_Leisure_Ice_Skating_Rink_2014.jpg">Wikimedia Commons</a> (cropped and resized).</li><li>St. Albert Place civic building in St. Albert. Photo: “St Albert Place St Albert Alberta Canada 05A” by WinterE229 WinterforceMedia, <a href="http://creativecommons.org/publicdomain/zero/1.0/deed.en">CC0</a>, via <a href="https://commons.wikimedia.org/wiki/File:St_Albert_Place_St_Albert_Alberta_Canada_05A.jpg">Wikimedia Commons</a> (cropped and resized).</li><li>Old downtown St. Albert, Alberta. Photo: “Downtown St Albert Alberta Canada 02” by WinterE229 WinterforceMedia, <a href="http://creativecommons.org/publicdomain/zero/1.0/deed.en">CC0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Downtown_St_Albert_Alberta_Canada_02.jpg">Wikimedia Commons</a> (cropped and resized).</li><li>Old Varsity Stadium in Toronto, site of the 1954 Grey Cup. Photo: “Old Varsity Stadium” by Unknown photographer, courtesy Toronto Public Library, <a href="https://commons.wikimedia.org/wiki/Template:PD-copyright_holder">Public domain</a>, via <a href="https://commons.wikimedia.org/wiki/File:Old_Varsity_Stadium.jpg">Wikimedia Commons</a> (cropped and resized).</li><li>The former Northlands Coliseum, then called Rexall Place, in Edmonton. Photo: “Rexall Place Edmonton Alberta Canada 07A” by WinterE229 WinterforceMedia, <a href="http://creativecommons.org/publicdomain/zero/1.0/deed.en">CC0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Rexall_Place_Edmonton_Alberta_Canada_07A.jpg">Wikimedia Commons</a> (cropped and resized).</li><li>Broadmoor Lake Park in Sherwood Park at dusk. Photo: “Beautiful Sherwood Park” by Super Russell 457, <a href="http://creativecommons.org/publicdomain/zero/1.0/deed.en">CC0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Beautiful_Sherwood_Park.jpg">Wikimedia Commons</a> (cropped and resized).</li><li>Strathcona County welcome sign on Highway 14. Photo: “Strathcona sign” by 117Avenue, <a href="https://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Strathcona_sign.jpg">Wikimedia Commons</a> (cropped and resized).</li><li>The lit-up Canadian Pacific Holiday Train passing through Winnipeg at night. Photo: “Canadian Pacific Holiday Train” by Teles, <a href="https://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Canadian_Pacific_Holiday_Train.JPG">Wikimedia Commons</a> (cropped and resized).</li><li>Homes along a lake in Sherwood Park, Strathcona County. Photo: “Sherwood Park” by Thankyoubaby, <a href="https://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Sherwood_Park.jpg">Wikimedia Commons</a> (cropped and resized).</li><li>Snow-covered 107 Street in Edmonton after a snowfall. Photo: “Snowy 107 St” by Kurt Bauschardt from Edmonton, Canada, <a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Snowy_107_St_(5341090987).jpg">Wikimedia Commons</a> (cropped and resized).</li><li>Stadium LRT station on the edge of Edmonton&#x27;s Parkdale neighbourhood. Photo: “Stadium LRT Station” by Mack Male from Edmonton, AB, Canada, <a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Stadium_LRT_Station_(52026708243).jpg">Wikimedia Commons</a> (cropped and resized).</li><li>Fort Saskatchewan city hall and public library building. Photo: “Fort Saskatewan Public Library and City Hall - 31-Dec-2016” by Kmw2700, <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Fort_Saskatewan_Public_Library_and_City_Hall_-_31-Dec-2016.jpg">Wikimedia Commons</a> (cropped and resized).</li><li>Exterior of the Edmonton Law Courts building downtown. Photo: “Edmonton Law Courts Building, June 6, 2024 (1)” by D. Benjamin Miller, <a href="http://creativecommons.org/publicdomain/zero/1.0/deed.en">CC0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Edmonton_Law_Courts_Building,_June_6,_2024_(1).jpg">Wikimedia Commons</a> (cropped and resized).</li><li>Alberta RCMP patrol car driving through Seba Beach. Photo: “RCMP Car in Seba Beach” by Qwexcxewq, <a href="https://creativecommons.org/licenses/by/4.0">CC BY 4.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:RCMP_Car_in_Seba_Beach.jpg">Wikimedia Commons</a> (cropped and resized).</li><li>Edmonton Clinic Health Academy building at the University of Alberta. Photo: “Edmonton Clinic Health Academy” by Sdkb, <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Edmonton_Clinic_Health_Academy.jpg">Wikimedia Commons</a> (cropped and resized).</li><li>Cargo being unloaded from an Atlas Air freighter at Edmonton International Airport. Photo: “Atlas air Edmonton” by Khoshhat, <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Atlas_air_Edmonton.jpg">Wikimedia Commons</a> (cropped and resized).</li><li>A Costco warehouse store in Edmonton. Photo: “Costco Edmonton Alberta Canada 01A” by WinterE229 WinterforceMedia, <a href="https://commons.wikimedia.org/wiki/Template:PD-self">Public domain</a>, via <a href="https://commons.wikimedia.org/wiki/File:Costco_Edmonton_Alberta_Canada_01A.jpg">Wikimedia Commons</a> (cropped and resized).</li><li>Structures at the Sherritt plant in Fort Saskatchewan. Photo: “Sherritt-Plant-Fort-Saskatchewan-Alberta-Canada-02A” by WinterE229 (WinterforceMedia), <a href="http://creativecommons.org/publicdomain/zero/1.0/deed.en">CC0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Sherritt-Plant-Fort-Saskatchewan-Alberta-Canada-02A.jpg">Wikimedia Commons</a> (cropped and resized).</li><li>Spruce Grove City Hall, designed by Douglas Cardinal. Photo: “Spruce Grove City Hall” by Tara Zieminek, <a href="https://creativecommons.org/publicdomain/zero/1.0/">Public domain</a>, via <a href="https://commons.wikimedia.org/wiki/File:Spruce_Grove_City_Hall.jpg">Wikimedia Commons</a> (cropped and resized).</li><li>A Siemens Somatom CT scanner in a hospital imaging room. Photo: “Siemens Somatom CT scanner” by USDA Rural Development, <a href="https://commons.wikimedia.org/wiki/Template:PD-USGov-USDA">Public domain</a>, via <a href="https://commons.wikimedia.org/wiki/File:Siemens_Somatom_CT_scanner.jpg">Wikimedia Commons</a> (cropped and resized).</li><li>Enoch Cree Nation administration building. Photo: “Enoch Cree Nation administration building” by 117Avenue, <a href="https://creativecommons.org/licenses/by/4.0">CC BY 4.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Enoch_Cree_Nation_administration_building.jpg">Wikimedia Commons</a> (cropped and resized).</li><li>River Cree Casino sign near the resort&#x27;s main entrance in Enoch. Photo: “River Cree Casino sign” by 117Avenue, <a href="https://creativecommons.org/licenses/by/4.0">CC BY 4.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:River_Cree_Casino_sign.jpg">Wikimedia Commons</a> (cropped and resized).</li><li>Leduc&#x27;s historic grain elevator. Photo: “Leduc Alberta Grain Elevator” by Wilson Hui from Calgary, Canada, <a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Leduc_Alberta_Grain_Elevator_(10078864906).jpg">Wikimedia Commons</a> (cropped and resized).</li><li>St. Vital Catholic Church on the hill in Beaumont. Photo: “Saint Vital Roman Catholic Church Beaumont Alberta Canada 01A” by WinterE229 WinterforceMedia, <a href="https://commons.wikimedia.org/wiki/Template:PD-self">Public domain</a>, via <a href="https://commons.wikimedia.org/wiki/File:Saint_Vital_Roman_Catholic_Church_Beaumont_Alberta_Canada_01A.jpg">Wikimedia Commons</a> (cropped and resized).</li><li>Aerial view of Nisku&#x27;s industrial park with Edmonton International Airport behind. Photo: “Nisku, AB” by Kurt Bauschardt from Edmonton, Canada, <a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Nisku,_AB_(4706062919).jpg">Wikimedia Commons</a> (cropped and resized).</li><li>Aerial view of the North Saskatchewan River valley at Devon. Photo: “Flying over a branch of the Saskatchewan River in Alberta” by paulhami, <a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Flying_over_a_branch_of_the_Saskatchewan_River_in_Alberta.jpg">Wikimedia Commons</a> (cropped and resized).</li><li>Downtown Fort Saskatchewan&#x27;s business district. Photo: “Fort Saskatchewan Downtown” by Matthew Boonstra, <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Fort_Saskatchewan_Downtown.jpg">Wikimedia Commons</a> (cropped and resized).</li><li>Grain elevator on a farm at Namao in Sturgeon County. Photo: “Namao Alberta Grain Elevator” by Wilson Hui from Calgary, Canada, <a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Namao_Alberta_Grain_Elevator_(20867089931).jpg">Wikimedia Commons</a> (cropped and resized).</li><li>Edmonton Oilers game in progress at Rogers Place. Photo: “Dallas Stars vs. Edmonton Oilers March 14, 2017 Rogers Place” by Rowanswiki, <a href="http://creativecommons.org/publicdomain/zero/1.0/deed.en">CC0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Dallas_Stars_vs._Edmonton_Oilers_March_14,_2017_Rogers_Place.jpg">Wikimedia Commons</a> (cropped and resized).</li><li>Foote Field at the University of Alberta South Campus, home field of Golden Bears soccer. Photo: “Foote Field Edmonton Alberta Canada 01A” by WinterE229 WinterforceMedia, <a href="https://commons.wikimedia.org/wiki/Template:PD-self">Public domain</a>, via <a href="https://commons.wikimedia.org/wiki/File:Foote_Field_Edmonton_Alberta_Canada_01A.jpg">Wikimedia Commons</a> (cropped and resized).</li><li>Curling sheets inside the Saville Community Sports Centre. Photo: “Curling sheets at the Saville Community Sports Centre” by Sdkb, <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Curling_sheets_at_the_Saville_Community_Sports_Centre.jpg">Wikimedia Commons</a> (cropped and resized).</li><li>Aerial view of Commonwealth Stadium, home of the Edmonton Elks. Photo: “Commonwealth Stadium (Edmonton, AB)” by Quintin Soloviev, <a href="https://creativecommons.org/licenses/by/4.0">CC BY 4.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Commonwealth_Stadium_(Edmonton,_AB).jpg">Wikimedia Commons</a> (cropped and resized).</li><li>102 Avenue downtown with its curb-protected bike lane. Photo: “102 Avenue Downtown” by Mack Male from Edmonton, AB, Canada, <a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:102_Avenue_Downtown_(52108584548).jpg">Wikimedia Commons</a> (cropped and resized).</li><li>Art Gallery of Alberta building in downtown Edmonton. Photo: “Art Gallery of Alberta, Edmonton, Alberta, 2026-09-27” by Chris Woodrich, <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Art_Gallery_of_Alberta,_Edmonton,_Alberta,_2026-09-27.jpg">Wikimedia Commons</a> (cropped and resized).</li><li>Green onion cakes, an Edmonton street-food staple. Photo: “Green onion cakes in Edmonton” by Sdkb, <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Green_onion_cakes_in_Edmonton.jpg">Wikimedia Commons</a> (cropped and resized).</li><li>Treats from Duchess Bake Shop, in a 2009 photo. Photo: “Treats from Duchess Bake Shop!” by Mack Male from Edmonton, AB, Canada, <a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Treats_from_Duchess_Bake_Shop!_(4105075488).jpg">Wikimedia Commons</a> (cropped and resized).</li><li>Entrance to the Edmonton Valley Zoo. Photo: “Valley Zoo Entrance” by Urban Versis 32, <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Valley_Zoo_Entrance.jpg">Wikimedia Commons</a> (cropped and resized).</li><li>Centre for Family Literacy building in Edmonton. Photo: “Family Literacy Center Edmonton” by GreenVolvox, <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Family_Literacy_Center_Edmonton.jpg">Wikimedia Commons</a> (cropped and resized).</li><li>Coffee Bureau cafe on Jasper Avenue. Photo: “Coffee Bureau” by Mack Male from Edmonton, AB, Canada, <a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Coffee_Bureau_(16528942276).jpg">Wikimedia Commons</a> (cropped and resized).</li><li>Pierogi, the Polish dumplings, on trays at a market stall. Photo: “02024 0417 Pierogi (Dumplings)” by Silar, <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:02024_0417_Pierogi_(Dumplings).jpg">Wikimedia Commons</a> (cropped and resized).</li></ol></section>
+<footer class="site-footer">
+  <div class="footer-cols">
+    <div>
+      <h2>Communities</h2>
+      <a href="#">Edmonton</a>
+      <div class="sub"><a href="#">City Hall</a><a href="#">Transit &amp; roads</a><a href="#">Neighbourhoods</a></div>
+      <a href="#">St. Albert</a>
+      <a href="#">Sherwood Park &amp; Strathcona County</a>
+      <a href="#">Spruce Grove</a>
+      <a href="#">Stony Plain &amp; Parkland County</a>
+      <a href="#">Leduc &amp; Nisku</a>
+      <a href="#">Beaumont</a>
+      <a href="#">Devon</a>
+      <a href="#">Fort Saskatchewan</a>
+      <a href="#">Morinville &amp; Sturgeon County</a>
+      <a href="#">Enoch Cree Nation</a>
+    </div>
+    <div>
+      <h2>Topics</h2>
+      <a href="#">Business &amp; Energy</a>
+      <a href="#">Crime</a>
+      <a href="#">Sports</a>
+      <a href="#">Opinion</a>
+      <a href="#">Arts &amp; Festivals</a>
+      <a href="#">Food &amp; Drink</a>
+      <a href="#">Indigenous</a>
+      <a href="#">Newcomers</a>
+      <a href="#">Weather</a>
+      <a href="#">Obituaries</a>
+      <a href="#">Videos &amp; Podcasts</a>
+    </div>
+    <div>
+      <h2>Features</h2>
+      <a href="#">Gas Prices</a>
+      <a href="#">Road Conditions</a>
+      <a href="#">Council Tracker</a>
+      <a href="#">This Month in History</a>
+      <a href="#">Meet Your Neighbours</a>
+      <h2>Classifieds</h2>
+      <a href="#">Browse classifieds</a>
+      <a href="#">Post a classified</a>
+      <h2>Shop Local</h2>
+      <a href="#">Local business directory</a>
+      <a href="#">Add your business</a>
+      <h2><a href="#">Local Events</a></h2>
+    </div>
+    <div>
+      <h2>About YEGToday</h2>
+      <a href="#">About us</a>
+      <a href="#">How we report</a>
+      <a href="#">Corrections</a>
+      <a href="#">Ethics policy</a>
+      <a href="#">Ownership &amp; funding</a>
+      <a href="#">Careers</a>
+      <h2>Contact Us</h2>
+      <a href="#">Send a news tip</a>
+      <a href="#">Questions or feedback</a>
+      <a href="#">Advertise with us</a>
+      <a href="#">Contact info</a>
+    </div>
+  </div>
+  <div class="footer-base">
+    <a class="logo" href="index.html">
+      <img class="logo-img" src="assets/img/yegtoday-logo.svg" alt="YEGToday home" width="125" height="28">
+    </a>
+    <p>Free, independent local news for Edmonton and the communities around it, from St. Albert to Leduc and from Stony Plain to Fort Saskatchewan.</p>
+    <div class="footer-legal">
+      <span>© <span data-year>2026</span> YEGToday</span>
+      <a href="#">Privacy</a><a href="#">Terms of use</a><a href="#">Accessibility</a><a href="#">Cookie settings</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
