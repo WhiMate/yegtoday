@@ -1082,13 +1082,15 @@
      "author": "",
      "id": "s47",
      "photo": {
-      "depicts": "Cargo being unloaded from an Atlas Air freighter at Edmonton International Airport",
-      "author": "Khoshhat",
-      "license": "CC BY-SA 4.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-      "filePage": "https://commons.wikimedia.org/wiki/File:Atlas_air_Edmonton.jpg",
       "src": "assets/img/stories/s47.webp",
-      "title": "Atlas air Edmonton"
+      "title": "EI-MAA",
+      "author": "Liam Thompson",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "via": "Flickr",
+      "filePage": "https://www.flickr.com/photos/204089279@N06/55091319501/",
+      "depicts": "A mas Airbus A330 freighter, the type the Mexican cargo airline plans to fly to Edmonton, at Los Angeles International Airport in February 2026",
+      "kind": "subject"
      }
     },
     {
@@ -1455,13 +1457,15 @@
      "author": "",
      "id": "s63",
      "photo": {
-      "depicts": "Old Varsity Stadium in Toronto, site of the 1954 Grey Cup",
-      "author": "Unknown photographer, courtesy Toronto Public Library",
-      "license": "Public domain",
-      "licenseUrl": "https://commons.wikimedia.org/wiki/Template:PD-copyright_holder",
-      "filePage": "https://commons.wikimedia.org/wiki/File:Old_Varsity_Stadium.jpg",
       "src": "assets/img/stories/s63.webp",
-      "title": "Old Varsity Stadium"
+      "title": "Edmonton Eskimos fans react to 1954 championship radio broadcast",
+      "author": "Frank Oliver Studios, Provincial Archives of Alberta (OS.3011)",
+      "license": "No known copyright restrictions",
+      "licenseUrl": "https://www.flickr.com/commons/usage/",
+      "via": "Flickr",
+      "filePage": "https://www.flickr.com/photos/alberta_archives/54508198750/",
+      "depicts": "Edmonton Eskimos fans cheer during the radio broadcast of the 1954 Grey Cup",
+      "kind": "event"
      }
     }
    ]

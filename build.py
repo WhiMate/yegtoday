@@ -292,11 +292,19 @@ class Homepage:
 
 
 def credit_line(p) -> str:
-    """'What it shows. Photo: "Title" by Author, Licence, via Wikimedia Commons (cropped and resized).'"""
+    """'What it shows. Photo: "Title" by Author, Licence, via Source (cropped and resized).'
+
+    A photo licensed from a news agency sets `credit` instead (e.g. "Jane Doe / The Canadian Press"),
+    which is printed as given.
+    """
+    depicts = esc(p["depicts"])
+    if p.get("credit"):
+        return f'{depicts}. Photo: {esc(p["credit"])}.'
     lic = (f'<a href="{esc(p["licenseUrl"])}">{esc(p["license"])}</a>' if p.get("licenseUrl") else esc(p["license"]))
     work = f'“{esc(p["title"])}” by {esc(p["author"])}' if p.get("title") else f'by {esc(p["author"])}'
-    return (f'{esc(p["depicts"])}. Photo: {work}, {lic}, via '
-            f'<a href="{esc(p["filePage"])}">Wikimedia Commons</a> (cropped and resized).')
+    via = esc(p.get("via", "Wikimedia Commons"))
+    source = f'<a href="{esc(p["filePage"])}">{via}</a>' if p.get("filePage") else via
+    return f'{depicts}. Photo: {work}, {lic}, via {source} (cropped and resized).'
 
 
 def photo_credits(html: str, by_id: dict) -> str:
@@ -306,11 +314,14 @@ def photo_credits(html: str, by_id: dict) -> str:
     if not shown:
         return ""
     items = "".join(f"<li>{credit_line(s['photo'])}</li>" for s in shown)
+    agency = any(s["photo"].get("credit") for s in shown)
+    intro = ("Where a freely licensed photo of a news event exists, the story shows it; otherwise the photo shows the "
+             "place or subject involved. These are not the reporting outlets' own photos. We cropped and resized them, "
+             "and our versions of CC BY-SA photos are shared under the same licence as the originals.")
+    if agency:
+        intro += " Photos credited to a news agency are used under licence and may not be reused."
     return ('<section class="photo-credits" aria-labelledby="photo-credits-title"><h2 id="photo-credits-title">Photo credits</h2>'
-            '<p>Story photos show the places and subjects in the news. They are freely licensed images from Wikimedia Commons, '
-            'not the reporting outlets\' own photos. We cropped and resized them, and our versions of CC BY-SA photos are '
-            'shared under the same licence as the originals.</p>'
-            f'<ol>{items}</ol></section>')
+            f'<p>{esc(intro)}</p><ol>{items}</ol></section>')
 
 
 # ------------------------------------------------------------------ build ----

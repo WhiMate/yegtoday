@@ -4,7 +4,7 @@ A static, clickable prototype for an independent news site covering Edmonton and
 communities around it. The layout follows [SaskToday.ca](https://www.sasktoday.ca/) as requested.
 The logo is yours (traced to `assets/img/yegtoday-logo.svg`; the original is kept as
 `yegtoday-logo-original.webp`). The colours, icons and illustrations are original; the story
-photos are freely licensed images from Wikimedia Commons, credited on each page (see Photos below).
+photos are freely licensed images from Wikimedia Commons and Flickr, credited on each page (see Photos below).
 
 Open `index.html` (homepage) or `article.html` (story page) in a browser, or serve the folder:
 
@@ -30,9 +30,10 @@ To update the news, edit `src/stories.json` and run `python3 build.py`. Each sto
 
 ## Photos
 
-Story photos are real, freely licensed pictures of the places and subjects in each story, taken from
-Wikimedia Commons. They are **not** the news outlets' own photos, which are copyrighted. Every licence was
-checked through the Commons API and only CC0, public domain, CC BY and CC BY-SA files were used. NC, ND
+Story photos are real, freely licensed pictures of the places and subjects in each story (and of the event
+itself where one exists), mostly from Wikimedia Commons, with two from Flickr. They are **not** the news
+outlets' own photos, which are copyrighted. Every licence was checked at its source and only CC0, public
+domain or no-known-restrictions archive photos, CC BY and CC BY-SA files were used. NC, ND
 and GFDL-only files were left out, and so were photos of murals, because Canada's freedom of panorama
 covers buildings and sculptures but not murals. Each was also checked by eye so a picture doesn't suggest
 something it doesn't show. For example, a Christmas house from another city wasn't used for the Griswold
@@ -41,8 +42,9 @@ House story, so that one keeps its illustration.
 - Files are 800×533 WebP crops in `assets/img/stories/` (`<id>.webp`), each with a 400×267 `<id>-sm.webp`
   that thumbnails and phones pick through `srcset`, plus `s03-lg.webp` (1280×853) for the article hero.
 - Each story's `photo` in `src/stories.json` holds `src`, `depicts` (what the photo shows, in our words),
-  `title` (the Commons title), `author`, `license`, `licenseUrl` and `filePage`, plus `hero` and an optional
-  `alt` (a visual description) for the lead.
+  `title` (the source's title), `author`, `license`, `licenseUrl` and `filePage` (the source page). `via`
+  names the source when it isn't Wikimedia Commons (e.g. `"Flickr"`), and `kind` notes whether the photo
+  shows the `event` or the `subject`. The lead also has `hero` and an optional `alt` (a visual description).
 - `build.py` prints a numbered **Photo credits** list at the bottom of each page, in the order the photos
   appear, with this pattern: *What it shows. Photo: "Title" by Author, Licence, via Wikimedia Commons
   (cropped and resized).* The intro notes that our crops of CC BY-SA photos are shared under the same licence.
@@ -55,8 +57,38 @@ House story, so that one keeps its illustration.
   plain food photos. Other recrops removed a plane engine, another restaurant's name on a plate, and a white
   edge.
 
-These photos show places, not the news events themselves. For a real launch you'd want your own or
-licensed news photography of the events, keeping the credit line pattern.
+### News (event) photos
+
+On 2026-11-21 we searched for freely licensed photos of the actual events in all 63 stories: Wikimedia
+Commons, Openverse, Flickr's licence-filtered search and tag feeds, and government photo accounts. Each
+candidate was then re-checked at its source by a second reviewer. **Almost none exist.** The Government of Alberta,
+Legislative Assembly and City of Edmonton Flickr accounts are non-commercial or all rights reserved, no
+Creative Commons photographer covered the Grey Cup, the Elks' rally or the snowfall, and Openverse's index
+stops around August 2026. Two stories got better photos:
+
+- **Nov. 27, 1954 Grey Cup (history):** a real photo from that day of Edmonton fans cheering at the radio
+  broadcast, by Frank Oliver Studios, from the Provincial Archives of Alberta's Flickr Commons collection
+  ("No known copyright restrictions").
+- **Mexico City freighter route:** the actual airline's A330 freighter (at LAX, Feb. 2026, CC BY-SA 4.0 on
+  Flickr), instead of an unrelated cargo jet.
+
+Everything else keeps its place or subject photo. Real photos of current events have to come from a news
+agency licence (for example The Canadian Press Images or Getty Images editorial), a deal with a local
+outlet, or your own photographer. To add one, put the crop in `assets/img/stories/<id>.webp` (800×533, plus
+`<id>-sm.webp` at 400×267) and give the story a `photo` like this:
+
+```json
+"photo": {
+  "src": "assets/img/stories/s43.webp",
+  "depicts": "Elks quarterback Cody Fajardo lifts the Grey Cup in Calgary, Nov. 15, 2026",
+  "credit": "Jane Doe / The Canadian Press",
+  "kind": "event"
+}
+```
+
+`credit` is printed as given, in place of the Creative Commons credit. When any agency photo is on a page,
+the credits intro adds that those photos are used under licence and can't be reused. Keep the licence
+terms and expiry dates for each one somewhere outside the site.
 
 ---
 
@@ -139,7 +171,7 @@ src/index.html, src/article.html   page sources (homepage blocks are <!--BLOCK:.
 src/stories.json             the news: verified stories that fill the homepage blocks
 src/partials/                header, footer, SVG sprite (icons + fallback illustrations)
 assets/img/                  logo (SVG trace + your original)
-assets/img/stories/          story photos (Wikimedia Commons, credited on the page)
+assets/img/stories/          story photos (Commons and Flickr, credited on the page)
 assets/css/styles.css        all styles; colour tokens at the top
 assets/js/main.js            menus, drawer, search, poll, newsletters, share/listen
 build.py                     assembles the pages, lays out the stories, fills in the brand
@@ -148,7 +180,9 @@ build.py                     assembles the pages, lays out the stories, fills in
 ## Next steps
 
 - Pick the name, register the domains and handles, and get a trademark search.
-- Add your own or licensed photography of the news events. The current Commons photos show the places.
+- Get news photos of current events: a news agency licence (The Canadian Press Images, Getty editorial),
+  a photo-sharing deal with a local outlet, or your own photographer. They drop in with a `credit` field
+  (see News photos above). No freely licensed photos of these Oct.–Nov. 2026 events exist yet.
 - Before going public with aggregated headlines, settle a linking/summary policy, and ideally
   syndication deals, with the outlets you draw from. Original reporting is what will set YEGToday apart.
 - Move the templates into a CMS (WordPress, Ghost or a headless CMS) — the layout maps directly to
