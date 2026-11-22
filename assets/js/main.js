@@ -47,7 +47,7 @@
   const backdrop = $('.nav-backdrop');
   const navClose = $('.nav-close');
   const drawerOpen = () => body.classList.contains('nav-open');
-  const behindDrawer = () => ['.header-top', '#search-panel', '.page', '.site-footer', '.preview-bar', '.skip-link']
+  const behindDrawer = () => ['.header-top', '#search-panel', '.page', '.site-footer', '.skip-link']
     .map((s) => $(s)).filter(Boolean);
 
   function openDrawer() {

@@ -21,7 +21,7 @@ date, facts and original wording, and one that couldn't be verified was dropped.
 (`article.html`) is a short YEGToday summary of CBC News's report, with links to the original.
 
 Still placeholders: obituaries (no real people's notices), the poll results, the weather box and
-the ads. A banner at the top says so.
+the ads.
 
 To update the news, edit `src/stories.json` and run `python3 build.py`. Each story has `headline`,
 `dek`, `section` (which homepage block it goes in), `community`, `published`, `source`, `url`, `scene`
