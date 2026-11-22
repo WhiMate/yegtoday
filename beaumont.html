@@ -1,0 +1,538 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Beaumont — YEGToday</title>
+<meta name="description" content="The latest news from Beaumont.">
+<meta name="theme-color" content="#ffffff">
+<script>document.documentElement.classList.add('js')</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+<script src="assets/js/main.js" defer></script>
+</head>
+<body>
+<svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true" focusable="false">
+<defs>
+  <linearGradient id="haze" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff" stop-opacity=".35"/></linearGradient>
+  <linearGradient id="shade" x1="0" y1="0" x2="0" y2="1"><stop offset=".55" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".16"/></linearGradient>
+
+  <!-- ===== Illustrated photo placeholders (600x400, colour via .t-* palette classes) ===== -->
+
+  <symbol id="s-skyline" viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice">
+    <rect width="600" height="400" style="fill:var(--sky)"/><rect width="600" height="400" fill="url(#haze)"/>
+    <circle cx="470" cy="92" r="34" style="fill:var(--pop)" opacity=".9"/>
+    <path d="M0 252Q150 214 300 240T600 228V400H0Z" style="fill:var(--far)"/>
+    <g style="fill:var(--mid)">
+      <rect x="132" y="196" width="34" height="90"/><rect x="170" y="164" width="28" height="122"/><rect x="202" y="126" width="32" height="160"/>
+      <rect x="238" y="178" width="40" height="108"/><path d="M282 92l28-22v216h-28z"/><rect x="314" y="140" width="36" height="146"/>
+      <rect x="354" y="172" width="30" height="114"/><rect x="388" y="150" width="26" height="136"/><rect x="418" y="198" width="44" height="88"/>
+    </g>
+    <g style="fill:var(--pop)" opacity=".55">
+      <rect x="208" y="140" width="5" height="7"/><rect x="220" y="162" width="5" height="7"/><rect x="290" y="112" width="5" height="7"/><rect x="290" y="150" width="5" height="7"/>
+      <rect x="322" y="170" width="5" height="7"/><rect x="336" y="200" width="5" height="7"/><rect x="394" y="176" width="5" height="7"/><rect x="176" y="186" width="5" height="7"/>
+    </g>
+    <path d="M0 300q22-30 46-6 26-30 54-4 24-26 52-2 26-28 56-4 28-26 56-2 30-28 58-4 26-24 54-2 30-28 58-2 26-24 52 0 22-20 44-2 20-22 44-4 14-14 26-2V400H0z" style="fill:var(--near)"/>
+    <rect y="322" width="600" height="30" style="fill:var(--water)"/>
+    <path d="M40 334h60M180 340h80M330 332h50M450 342h90" stroke="#fff" stroke-opacity=".45" stroke-width="2" stroke-linecap="round"/>
+    <path d="M0 352q150-14 300 4t300-6V400H0z" style="fill:var(--near)"/>
+    <rect width="600" height="400" fill="url(#shade)"/>
+  </symbol>
+
+  <symbol id="s-bridge" viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice">
+    <rect width="600" height="400" style="fill:var(--sky)"/><rect width="600" height="400" fill="url(#haze)"/>
+    <path d="M0 236Q130 206 270 226T600 214V400H0Z" style="fill:var(--far)"/>
+    <rect y="300" width="600" height="64" style="fill:var(--water)"/>
+    <path d="M30 318h70M200 326h90M380 316h60M480 330h80" stroke="#fff" stroke-opacity=".4" stroke-width="2" stroke-linecap="round"/>
+    <g style="fill:var(--near)">
+      <rect x="-10" y="150" width="620" height="14"/><rect x="-10" y="140" width="620" height="4"/><rect x="-10" y="194" width="620" height="5"/>
+      <path d="M46 199h28l10 131H36zM166 199h28l10 131h-48zM286 199h28l10 131h-48zM406 199h28l10 131h-48zM526 199h28l10 131h-48z"/>
+    </g>
+    <polyline points="0,164 15,194 30,164 45,194 60,164 75,194 90,164 105,194 120,164 135,194 150,164 165,194 180,164 195,194 210,164 225,194 240,164 255,194 270,164 285,194 300,164 315,194 330,164 345,194 360,164 375,194 390,164 405,194 420,164 435,194 450,164 465,194 480,164 495,194 510,164 525,194 540,164 555,194 570,164 585,194 600,164" fill="none" style="stroke:var(--near)" stroke-width="3"/>
+    <path d="M50 205L80 325M70 205L40 325M170 205L200 325M190 205L160 325M290 205L320 325M310 205L280 325M410 205L440 325M430 205L400 325M530 205L560 325M550 205L520 325" style="stroke:var(--mid)" stroke-width="2"/>
+    <rect x="236" y="122" width="76" height="18" rx="3" style="fill:var(--pop)"/>
+    <g style="fill:var(--near)" opacity=".6"><rect x="242" y="126" width="9" height="7"/><rect x="256" y="126" width="9" height="7"/><rect x="270" y="126" width="9" height="7"/><rect x="284" y="126" width="9" height="7"/><rect x="298" y="126" width="9" height="7"/></g>
+    <path d="M0 360q30-26 60-4 30-28 64-2 28-24 60 0 32-28 66-2 30-26 62 0 30-28 64-2 28-24 58 0 30-26 62-2 28-22 60 0 24-20 44-4V400H0z" style="fill:var(--mid)"/>
+    <rect width="600" height="400" fill="url(#shade)"/>
+  </symbol>
+
+  <symbol id="s-legislature" viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice">
+    <rect width="600" height="400" style="fill:var(--sky)"/><rect width="600" height="400" fill="url(#haze)"/>
+    <circle cx="120" cy="90" r="28" style="fill:var(--pop)" opacity=".85"/>
+    <g style="fill:var(--mid)">
+      <rect x="120" y="232" width="360" height="92"/><rect x="236" y="196" width="128" height="128"/>
+      <path d="M226 198h148l-74-30z"/><rect x="258" y="138" width="84" height="34"/>
+      <path d="M252 140q48-86 96 0z"/><rect x="295" y="80" width="10" height="20"/><path d="M300 66l5 14h-10z"/>
+    </g>
+    <g style="fill:var(--far)">
+      <rect x="248" y="206" width="8" height="96"/><rect x="266" y="206" width="8" height="96"/><rect x="284" y="206" width="8" height="96"/>
+      <rect x="302" y="206" width="8" height="96"/><rect x="320" y="206" width="8" height="96"/><rect x="338" y="206" width="8" height="96"/>
+      <rect x="136" y="250" width="10" height="16"/><rect x="156" y="250" width="10" height="16"/><rect x="176" y="250" width="10" height="16"/><rect x="196" y="250" width="10" height="16"/><rect x="216" y="250" width="10" height="16"/>
+      <rect x="136" y="284" width="10" height="16"/><rect x="156" y="284" width="10" height="16"/><rect x="176" y="284" width="10" height="16"/><rect x="196" y="284" width="10" height="16"/><rect x="216" y="284" width="10" height="16"/>
+      <rect x="374" y="250" width="10" height="16"/><rect x="394" y="250" width="10" height="16"/><rect x="414" y="250" width="10" height="16"/><rect x="434" y="250" width="10" height="16"/><rect x="454" y="250" width="10" height="16"/>
+      <rect x="374" y="284" width="10" height="16"/><rect x="394" y="284" width="10" height="16"/><rect x="414" y="284" width="10" height="16"/><rect x="434" y="284" width="10" height="16"/><rect x="454" y="284" width="10" height="16"/>
+    </g>
+    <rect y="324" width="600" height="76" style="fill:var(--ground)"/>
+    <ellipse cx="300" cy="360" rx="170" ry="16" style="fill:var(--water)"/>
+    <g style="fill:var(--near)"><circle cx="70" cy="300" r="40"/><circle cx="30" cy="322" r="34"/><circle cx="522" cy="296" r="42"/><circle cx="576" cy="318" r="36"/></g>
+    <rect width="600" height="400" fill="url(#shade)"/>
+  </symbol>
+
+  <symbol id="s-lrt" viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice">
+    <rect width="600" height="400" style="fill:var(--sky)"/><rect width="600" height="400" fill="url(#haze)"/>
+    <g style="fill:var(--far)"><rect x="20" y="150" width="40" height="150"/><rect x="66" y="120" width="30" height="180"/><rect x="102" y="170" width="44" height="130"/><rect x="380" y="140" width="34" height="160"/><rect x="420" y="100" width="28" height="200"/><rect x="454" y="160" width="46" height="140"/><rect x="506" y="130" width="34" height="170"/><rect x="546" y="176" width="50" height="124"/></g>
+    <path d="M90 100v196M310 100v196M530 100v196M90 112h40M310 112h40M530 112h40" style="stroke:var(--near)" stroke-width="5" fill="none"/>
+    <path d="M0 122q160 10 310 0t310 0" fill="none" style="stroke:var(--near)" stroke-width="2"/>
+    <path d="M280 196l20-34 20 34M300 162v-38" stroke="#4d4d4d" stroke-width="3" fill="none"/>
+    <rect x="60" y="196" width="480" height="84" rx="16" fill="#f3f5f7"/>
+    <path d="M520 196h26q34 2 40 44v40h-66z" fill="#f3f5f7"/>
+    <rect x="60" y="258" width="526" height="9" style="fill:var(--pop)"/>
+    <g style="fill:var(--near)" opacity=".85">
+      <rect x="84" y="210" width="44" height="34" rx="4"/><rect x="138" y="210" width="44" height="34" rx="4"/><rect x="192" y="210" width="44" height="34" rx="4"/><rect x="246" y="210" width="44" height="34" rx="4"/>
+      <rect x="300" y="210" width="44" height="34" rx="4"/><rect x="354" y="210" width="44" height="34" rx="4"/><rect x="408" y="210" width="44" height="34" rx="4"/><rect x="462" y="210" width="44" height="34" rx="4"/>
+      <path d="M528 210h18q24 2 30 34h-48z"/>
+    </g>
+    <g style="fill:var(--near)"><rect x="96" y="280" width="90" height="10" rx="5"/><rect x="420" y="280" width="90" height="10" rx="5"/></g>
+    <rect y="290" width="600" height="7" style="fill:var(--near)"/>
+    <rect y="297" width="600" height="103" style="fill:var(--mid)"/>
+    <rect y="304" width="600" height="5" style="fill:var(--pop)" opacity=".9"/>
+    <rect width="600" height="400" fill="url(#shade)"/>
+  </symbol>
+
+  <symbol id="s-snow" viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice">
+    <rect width="600" height="400" style="fill:var(--sky)"/><rect width="600" height="400" fill="url(#haze)"/>
+    <path d="M0 236q40-30 80-6 40-28 90-4 50-30 100-6 50-28 110-4 50-26 100-4 40-22 120-8V320H0z" style="fill:var(--far)"/>
+    <g style="fill:var(--mid)"><rect x="70" y="200" width="150" height="112"/><rect x="290" y="180" width="170" height="132"/><rect x="520" y="214" width="110" height="98"/></g>
+    <g style="fill:var(--near)"><path d="M56 204l89-70 89 70z"/><path d="M276 184l99-76 99 76z"/><path d="M508 218l67-58 67 58z"/></g>
+    <g fill="#fff"><path d="M60 200l85-68 85 68-8 4-77-60-77 60z"/><path d="M280 180l95-72 95 72-8 4-87-64-87 64z"/><path d="M512 214l63-54 63 54-8 4-55-46-55 46z"/></g>
+    <g style="fill:var(--pop)" opacity=".85"><rect x="90" y="228" width="30" height="28"/><rect x="176" y="228" width="30" height="28"/><rect x="310" y="210" width="32" height="30"/><rect x="408" y="210" width="32" height="30"/><rect x="540" y="240" width="28" height="26"/></g>
+    <g style="fill:var(--near)"><rect x="133" y="262" width="28" height="50"/><rect x="360" y="258" width="30" height="54"/></g>
+    <path d="M250 330V170M250 172h22" style="stroke:var(--near)" stroke-width="5" fill="none"/>
+    <circle cx="274" cy="178" r="26" style="fill:var(--pop)" opacity=".22"/><circle cx="274" cy="178" r="8" style="fill:var(--pop)"/>
+    <path d="M0 318q40-22 80-6 40-24 90-4 50-22 100-2 50-24 110-4 50-20 100-2 40-16 120-6V352H0z" fill="#fff"/>
+    <rect y="352" width="600" height="48" style="fill:var(--near)" opacity=".35"/>
+    <path d="M0 370h600M0 386h600" stroke="#fff" stroke-opacity=".55" stroke-width="3" stroke-dasharray="40 18"/>
+    <g fill="#fff">
+      <circle cx="40" cy="60" r="3"/><circle cx="120" cy="40" r="2.5"/><circle cx="200" cy="90" r="3"/><circle cx="260" cy="30" r="2"/><circle cx="330" cy="70" r="3"/>
+      <circle cx="410" cy="40" r="2.5"/><circle cx="480" cy="90" r="3"/><circle cx="560" cy="50" r="2"/><circle cx="80" cy="140" r="2.5"/><circle cx="160" cy="120" r="2"/>
+      <circle cx="240" cy="150" r="3"/><circle cx="350" cy="140" r="2"/><circle cx="430" cy="130" r="3"/><circle cx="520" cy="140" r="2.5"/><circle cx="590" cy="120" r="2"/>
+      <circle cx="20" cy="190" r="2"/><circle cx="300" cy="100" r="2.5"/><circle cx="380" cy="90" r="2"/><circle cx="500" cy="30" r="3"/><circle cx="140" cy="80" r="2"/>
+    </g>
+    <rect width="600" height="400" fill="url(#shade)"/>
+  </symbol>
+
+  <symbol id="s-rink" viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice">
+    <rect width="600" height="400" style="fill:var(--sky)"/><rect width="600" height="400" fill="url(#haze)"/>
+    <path d="M0 255l15-45 15 45 15-55 15 55 15-40 15 40 15-60 15 60 15-48 15 48 15-52 15 52 15-38 15 38 15-58 15 58 15-44 15 44 15-50 15 50 15-42 15 42 15-56 15 56 15-46 15 46 15-54 15 54 15-40 15 40 15-60 15 60 15-45 15 45 15-50 15 50 15-48 15 48 15-55 15 55V270H0z" style="fill:var(--near)"/>
+    <path d="M60 268V120M540 268V120" style="stroke:var(--near)" stroke-width="4"/>
+    <g style="fill:var(--pop)"><circle cx="60" cy="120" r="40" opacity=".22"/><circle cx="540" cy="120" r="40" opacity=".22"/><circle cx="60" cy="120" r="7"/><circle cx="540" cy="120" r="7"/></g>
+    <rect x="20" y="258" width="560" height="22" fill="#f1f4f7"/><rect x="20" y="274" width="560" height="6" fill="#c8102e"/>
+    <path d="M20 280h560l40 120H-20z" fill="#e9f1f7"/>
+    <path d="M170 280l-40 120" stroke="#1f5fa8" stroke-width="6" opacity=".55"/>
+    <path d="M300 280v120" stroke="#c8102e" stroke-width="5" opacity=".5"/>
+    <ellipse cx="300" cy="340" rx="60" ry="20" fill="none" stroke="#1f5fa8" stroke-width="3" opacity=".45"/>
+    <g transform="translate(470 300)">
+      <path d="M2 14h56M2 26h56M10 4v36M20 2v38M30 2v38M40 2v38M50 4v36" stroke="#9aa3ab" stroke-width="1"/>
+      <path d="M0 40V6q0-6 6-6h48q6 0 6 6v34" stroke="#c8102e" stroke-width="5" fill="none"/>
+    </g>
+    <path d="M250 300l90 52h28" stroke="#6b4a22" stroke-width="6" stroke-linecap="round" fill="none"/>
+    <ellipse cx="386" cy="360" rx="14" ry="5" fill="#111"/>
+    <rect width="600" height="400" fill="url(#shade)"/>
+  </symbol>
+
+  <symbol id="s-pyramids" viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice">
+    <rect width="600" height="400" style="fill:var(--sky)"/><rect width="600" height="400" fill="url(#haze)"/>
+    <g style="fill:var(--far)"><rect x="60" y="170" width="30" height="120"/><rect x="96" y="140" width="26" height="150"/><rect x="128" y="186" width="36" height="104"/><path d="M170 110l22-18v198h-22z"/><rect x="198" y="160" width="30" height="130"/><rect x="234" y="190" width="40" height="100"/><rect x="420" y="180" width="34" height="110"/><rect x="460" y="150" width="26" height="140"/><rect x="492" y="196" width="40" height="94"/></g>
+    <path d="M0 284q150-20 300-6t300-4V400H0z" style="fill:var(--mid)"/>
+    <g style="fill:var(--water)"><path d="M70 330 200 170 330 330z"/><path d="M390 330 490 180 590 330z"/><path d="M270 330 360 214 450 330z"/><path d="M10 330 70 254 130 330z"/></g>
+    <g style="fill:var(--near)" opacity=".18"><path d="M200 170 330 330H200z"/><path d="M490 180 590 330H490z"/><path d="M360 214 450 330H360z"/><path d="M70 254 130 330H70z"/></g>
+    <path d="M200 170 135 330M200 170v160M200 170l65 160M167.5 210h65M135 250h130M102.5 290h195M490 180l-50 150M490 180v150M490 180l50 150M456.7 230h66.6M423.3 280h133.4M360 214l-45 116M360 214v116M360 214l45 116M330.5 252h59M300.3 291h119.4M70 254v76M40 292h60" stroke="#fff" stroke-opacity=".4" stroke-width="2" fill="none"/>
+    <rect y="330" width="600" height="70" style="fill:var(--ground)"/>
+    <path d="M0 330q20-26 44-4 18-16 34 0H0zM520 330q22-30 48-4 16-14 32 0z" style="fill:var(--near)"/>
+    <rect width="600" height="400" fill="url(#shade)"/>
+  </symbol>
+
+  <symbol id="s-farm" viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice">
+    <rect width="600" height="400" style="fill:var(--sky)"/><rect width="600" height="400" fill="url(#haze)"/>
+    <g fill="#fff" opacity=".75"><ellipse cx="140" cy="80" rx="60" ry="18"/><ellipse cx="180" cy="68" rx="40" ry="18"/><ellipse cx="430" cy="110" rx="70" ry="16"/><ellipse cx="470" cy="98" rx="38" ry="15"/></g>
+    <path d="M0 250q30-16 60-2 30-18 64-2 34-16 66 0 30-18 62-2 34-16 66 0 32-18 64-2 30-16 62 0 34-18 66 0 30-16 60-2 20-10 30-2V262H0z" style="fill:var(--far)"/>
+    <rect x="400" y="132" width="58" height="126" fill="#9b3b2a"/><path d="M394 136l35-30 35 30z" fill="#7d2f22"/>
+    <rect x="418" y="92" width="22" height="22" fill="#9b3b2a"/><path d="M414 94l15-12 15 12z" fill="#7d2f22"/>
+    <rect x="458" y="176" width="34" height="82" fill="#8a3527"/><rect x="404" y="150" width="50" height="8" fill="#fff" opacity=".8"/>
+    <rect y="258" width="600" height="142" fill="#e9c43a"/>
+    <path d="M300 258L-300 400M300 258L-150 400M300 258L0 400M300 258L150 400M300 258L300 400M300 258L450 400M300 258L600 400M300 258L750 400M300 258L900 400" stroke="#d1a52a" stroke-width="3"/>
+    <path d="M0 372q150-12 300 0t300 0V400H0z" fill="#c99a22"/>
+    <rect width="600" height="400" fill="url(#shade)"/>
+  </symbol>
+
+  <symbol id="s-refinery" viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice">
+    <rect width="600" height="400" style="fill:var(--sky)"/><rect width="600" height="400" fill="url(#haze)"/>
+    <g fill="#fff" opacity=".55"><circle cx="128" cy="78" r="22"/><circle cx="150" cy="60" r="26"/><circle cx="178" cy="48" r="20"/><circle cx="208" cy="96" r="18"/><circle cx="228" cy="78" r="22"/><circle cx="252" cy="62" r="16"/></g>
+    <g style="fill:var(--near)"><rect x="120" y="96" width="16" height="190"/><rect x="200" y="116" width="14" height="170"/></g>
+    <g style="fill:var(--pop)"><rect x="120" y="104" width="16" height="8"/><rect x="200" y="124" width="14" height="8"/></g>
+    <rect x="270" y="130" width="34" height="156" style="fill:var(--mid)"/>
+    <path d="M262 160h50M262 200h50M262 240h50" style="stroke:var(--near)" stroke-width="3"/>
+    <g style="fill:var(--far)"><rect x="340" y="214" width="110" height="72"/><ellipse cx="395" cy="214" rx="55" ry="12"/><rect x="462" y="232" width="90" height="54"/><ellipse cx="507" cy="232" rx="45" ry="10"/></g>
+    <g style="fill:var(--near)" opacity=".16"><rect x="395" y="214" width="55" height="72"/><rect x="507" y="232" width="45" height="54"/></g>
+    <rect x="30" y="230" width="70" height="56" style="fill:var(--mid)"/>
+    <path d="M20 262h330M20 272h330M136 262v-40h134M214 248h56" style="stroke:var(--near)" stroke-width="4" fill="none"/>
+    <g style="fill:var(--pop)"><circle cx="128" cy="150" r="3"/><circle cx="207" cy="170" r="3"/><circle cx="287" cy="150" r="3"/><circle cx="287" cy="210" r="3"/><circle cx="400" cy="240" r="3"/><circle cx="500" cy="250" r="3"/></g>
+    <rect y="286" width="600" height="114" style="fill:var(--ground)"/>
+    <path d="M0 340h600" stroke="#fff" stroke-opacity=".3" stroke-width="3" stroke-dasharray="18 14"/>
+    <rect width="600" height="400" fill="url(#shade)"/>
+  </symbol>
+
+  <symbol id="s-court" viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice">
+    <rect width="600" height="400" style="fill:var(--sky)"/><rect width="600" height="400" fill="url(#haze)"/>
+    <path d="M470 70v190" style="stroke:var(--near)" stroke-width="4"/>
+    <rect x="472" y="72" width="62" height="34" fill="#d52b1e"/><rect x="488" y="72" width="30" height="34" fill="#fff"/>
+    <path d="M503 79l3 6 5-2-2 6 4 2-6 3 1 6h-5l1-6-6-3 4-2-2-6 5 2z" fill="#d52b1e"/>
+    <rect x="150" y="172" width="300" height="98" style="fill:var(--near)" opacity=".45"/>
+    <g style="fill:var(--mid)"><path d="M130 150h340l-170-60z"/><rect x="140" y="150" width="320" height="22"/><rect x="150" y="270" width="300" height="16"/></g>
+    <g style="fill:var(--far)">
+      <rect x="162" y="172" width="18" height="98"/><rect x="206" y="172" width="18" height="98"/><rect x="250" y="172" width="18" height="98"/><rect x="294" y="172" width="18" height="98"/>
+      <rect x="338" y="172" width="18" height="98"/><rect x="382" y="172" width="18" height="98"/><rect x="426" y="172" width="18" height="98"/>
+      <rect x="130" y="286" width="340" height="12"/><rect x="116" y="298" width="368" height="12"/><rect x="102" y="310" width="396" height="12"/>
+    </g>
+    <rect y="322" width="600" height="78" style="fill:var(--ground)"/>
+    <g style="fill:var(--near)"><circle cx="60" cy="290" r="40"/><circle cx="36" cy="320" r="30"/><circle cx="560" cy="292" r="38"/></g>
+    <rect width="600" height="400" fill="url(#shade)"/>
+  </symbol>
+
+  <symbol id="s-festival" viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice">
+    <rect width="600" height="400" style="fill:var(--sky)"/><rect width="600" height="400" fill="url(#haze)"/>
+    <path d="M0 90Q150 160 300 100Q450 160 600 90" fill="none" stroke="#111" stroke-opacity=".55" stroke-width="2"/>
+    <g style="fill:var(--pop)" opacity=".25">
+      <circle cx="30" cy="102.7" r="12"/><circle cx="60" cy="112.8" r="12"/><circle cx="90" cy="120.3" r="12"/><circle cx="120" cy="125.2" r="12"/><circle cx="150" cy="127.5" r="12"/><circle cx="180" cy="127.2" r="12"/><circle cx="210" cy="124.3" r="12"/><circle cx="240" cy="118.8" r="12"/><circle cx="270" cy="110.7" r="12"/>
+      <circle cx="330" cy="110.7" r="12"/><circle cx="360" cy="118.8" r="12"/><circle cx="390" cy="124.3" r="12"/><circle cx="420" cy="127.2" r="12"/><circle cx="450" cy="127.5" r="12"/><circle cx="480" cy="125.2" r="12"/><circle cx="510" cy="120.3" r="12"/><circle cx="540" cy="112.8" r="12"/><circle cx="570" cy="102.7" r="12"/>
+    </g>
+    <g style="fill:var(--pop)">
+      <circle cx="30" cy="102.7" r="5"/><circle cx="60" cy="112.8" r="5"/><circle cx="90" cy="120.3" r="5"/><circle cx="120" cy="125.2" r="5"/><circle cx="150" cy="127.5" r="5"/><circle cx="180" cy="127.2" r="5"/><circle cx="210" cy="124.3" r="5"/><circle cx="240" cy="118.8" r="5"/><circle cx="270" cy="110.7" r="5"/>
+      <circle cx="330" cy="110.7" r="5"/><circle cx="360" cy="118.8" r="5"/><circle cx="390" cy="124.3" r="5"/><circle cx="420" cy="127.2" r="5"/><circle cx="450" cy="127.5" r="5"/><circle cx="480" cy="125.2" r="5"/><circle cx="510" cy="120.3" r="5"/><circle cx="540" cy="112.8" r="5"/><circle cx="570" cy="102.7" r="5"/>
+    </g>
+    <path d="M40 300l70-80v80z" fill="#f4f1ea"/><path d="M110 220l70 80h-70z" style="fill:var(--pop)" opacity=".85"/>
+    <path d="M420 300l70-86v86z" fill="#f4f1ea"/><path d="M490 214l70 86h-70z" style="fill:var(--pop)" opacity=".85"/>
+    <rect x="210" y="210" width="180" height="90" style="fill:var(--mid)"/>
+    <path d="M230 210l-30 90h60zM370 210l-30 90h60z" fill="#fff" opacity=".12"/>
+    <g style="fill:var(--near)">
+      <rect y="328" width="600" height="72" rx="10"/>
+      <circle cx="20" cy="318" r="13"/><circle cx="60" cy="312" r="13"/><circle cx="100" cy="320" r="13"/><circle cx="140" cy="310" r="13"/><circle cx="180" cy="318" r="13"/>
+      <circle cx="220" cy="312" r="13"/><circle cx="260" cy="320" r="13"/><circle cx="300" cy="310" r="13"/><circle cx="340" cy="318" r="13"/><circle cx="380" cy="312" r="13"/>
+      <circle cx="420" cy="320" r="13"/><circle cx="460" cy="310" r="13"/><circle cx="500" cy="318" r="13"/><circle cx="540" cy="312" r="13"/><circle cx="580" cy="320" r="13"/>
+    </g>
+    <rect width="600" height="400" fill="url(#shade)"/>
+  </symbol>
+
+  <symbol id="s-trail" viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice">
+    <rect width="600" height="400" style="fill:var(--sky)"/><rect width="600" height="400" fill="url(#haze)"/>
+    <path d="M0 210Q160 170 320 200T600 190V400H0Z" style="fill:var(--far)"/>
+    <path d="M330 232q80-8 270-4v22q-170-6-270 0z" style="fill:var(--water)"/>
+    <path d="M0 250q25-34 50-8 25-36 56-6 26-32 52-4 28-34 58-6 24-30 50-4 26-34 54-6 28-36 58-4 24-30 50-4 28-34 58-6 26-30 54-4 22-26 44-2 20-22 40 0V400H0z" style="fill:var(--mid)"/>
+    <path d="M250 400C270 340 360 330 330 290S262 262 300 242" fill="none" stroke="#e7dcc2" stroke-width="40" stroke-linecap="round"/>
+    <g fill="#f4f1ea"><rect x="70" y="180" width="8" height="220"/><rect x="120" y="160" width="9" height="240"/><rect x="470" y="170" width="8" height="230"/><rect x="530" y="150" width="10" height="250"/></g>
+    <g fill="#3a3a3a" opacity=".6"><rect x="70" y="240" width="8" height="3"/><rect x="70" y="300" width="8" height="3"/><rect x="120" y="220" width="9" height="3"/><rect x="120" y="290" width="9" height="3"/><rect x="470" y="250" width="8" height="3"/><rect x="530" y="230" width="10" height="3"/><rect x="530" y="310" width="10" height="3"/></g>
+    <g style="fill:var(--pop)" opacity=".95"><circle cx="74" cy="170" r="40"/><circle cx="124" cy="150" r="46"/><circle cx="96" cy="200" r="30"/><circle cx="474" cy="160" r="40"/><circle cx="535" cy="140" r="48"/><circle cx="505" cy="190" r="30"/></g>
+    <path d="M0 380q300-20 600 0V400H0z" style="fill:var(--near)" opacity=".4"/>
+    <rect width="600" height="400" fill="url(#shade)"/>
+  </symbol>
+
+  <symbol id="s-aurora" viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice">
+    <rect width="600" height="400" style="fill:var(--sky)"/>
+    <g fill="#fff" opacity=".8"><circle cx="40" cy="40" r="1.5"/><circle cx="110" cy="70" r="1.2"/><circle cx="190" cy="30" r="1.6"/><circle cx="260" cy="60" r="1.2"/><circle cx="340" cy="26" r="1.5"/><circle cx="420" cy="56" r="1.3"/><circle cx="500" cy="34" r="1.6"/><circle cx="570" cy="70" r="1.2"/><circle cx="80" cy="120" r="1.2"/><circle cx="530" cy="120" r="1.4"/></g>
+    <path d="M-20 180C80 80 160 220 260 120S440 60 620 140V200C440 120 360 220 260 190S80 160-20 240Z" fill="#5ef2b0" opacity=".38"/>
+    <path d="M-20 140C120 60 200 160 320 90S500 40 620 90V130C500 90 420 170 320 150S120 110-20 190Z" fill="#7bd3ff" opacity=".25"/>
+    <path d="M0 300Q300 280 600 300V400H0Z" style="fill:var(--far)"/>
+    <path d="M0 340l14-50 14 50 12-36 12 36 16-62 16 62 13-44 13 44 15-56 15 56 11-34 11 34 17-66 17 66 13-40 13 40 15-54 15 54 12-38 12 38 16-60 16 60 14-46 14 46 13-42 13 42 17-64 17 64 12-36 12 36 15-52 15 52 14-48 14 48 16-58 16 58 13-40 13 40 15-50 15 50 17-62 17 62 14-44 14 44V400H0z" style="fill:var(--near)"/>
+  </symbol>
+
+  <symbol id="s-cityhall" viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice">
+    <rect width="600" height="400" style="fill:var(--sky)"/><rect width="600" height="400" fill="url(#haze)"/>
+    <g style="fill:var(--far)"><rect x="40" y="130" width="40" height="180"/><rect x="86" y="170" width="30" height="140"/><rect x="470" y="120" width="36" height="190"/><rect x="512" y="160" width="46" height="150"/></g>
+    <rect x="110" y="236" width="360" height="74" style="fill:var(--mid)"/>
+    <path d="M200 238 300 140 400 238z" style="fill:var(--water)"/>
+    <path d="M300 140 400 238H300z" style="fill:var(--near)" opacity=".15"/>
+    <path d="M300 140 250 238M300 140v98M300 140l50 98M251 188h98M226 213h148" stroke="#fff" stroke-opacity=".4" stroke-width="2" fill="none"/>
+    <rect x="420" y="120" width="30" height="116" style="fill:var(--near)"/><path d="M416 122l19-16 19 16z" style="fill:var(--near)"/>
+    <circle cx="435" cy="142" r="9" fill="#fff" opacity=".85"/><path d="M435 136v6l4 3" style="stroke:var(--near)" stroke-width="2" fill="none"/>
+    <g style="fill:var(--far)" opacity=".9"><rect x="126" y="262" width="26" height="22"/><rect x="162" y="262" width="26" height="22"/><rect x="398" y="262" width="16" height="22"/></g>
+    <rect y="310" width="600" height="90" style="fill:var(--ground)"/>
+    <ellipse cx="300" cy="352" rx="120" ry="18" style="fill:var(--water)"/>
+    <path d="M260 350q10-40 20 0M290 350q10-56 20 0M320 350q10-40 20 0" stroke="#fff" stroke-width="3" fill="none" opacity=".8"/>
+    <rect width="600" height="400" fill="url(#shade)"/>
+  </symbol>
+
+  <symbol id="s-person" viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice">
+    <rect width="600" height="400" style="fill:var(--sky)"/>
+    <circle cx="300" cy="160" r="70" style="fill:var(--mid)"/>
+    <path d="M150 400q10-150 150-150t150 150z" style="fill:var(--mid)"/>
+  </symbol>
+
+  <symbol id="s-flower" viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice">
+    <rect width="600" height="400" fill="#eef0f2"/>
+    <g transform="translate(300 200)" fill="#fff" stroke="#d3d8de" stroke-width="2">
+      <ellipse rx="28" ry="70" transform="translate(0 -55)"/>
+      <ellipse rx="28" ry="70" transform="rotate(72) translate(0 -55)"/>
+      <ellipse rx="28" ry="70" transform="rotate(144) translate(0 -55)"/>
+      <ellipse rx="28" ry="70" transform="rotate(216) translate(0 -55)"/>
+      <ellipse rx="28" ry="70" transform="rotate(288) translate(0 -55)"/>
+    </g>
+    <circle cx="300" cy="200" r="20" fill="#e8c34a"/>
+  </symbol>
+
+  <!-- ===== UI icons (24x24 unless noted) ===== -->
+  <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 10.6 12 3l9 7.6V21h-6.2v-6.1H9.2V21H3z" fill="currentColor"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 22s7-6.4 7-12.2A7 7 0 0 0 5 9.8C5 15.6 12 22 12 22z" fill="currentColor"/><circle cx="12" cy="9.8" r="2.6" fill="#fff"/></symbol>
+  <symbol id="i-flower" viewBox="0 0 24 24"><path d="M12 21v-8" stroke="currentColor" stroke-width="2" fill="none"/><path d="M6 4l3 2.5L12 3l3 3.5L18 4v5a6 6 0 0 1-12 0z" fill="currentColor"/><path d="M12 18c-2.5 0-4-1.5-5-3M12 18c2.5 0 4-1.5 5-3" stroke="currentColor" stroke-width="1.6" fill="none"/></symbol>
+  <symbol id="i-puck" viewBox="0 0 24 24"><ellipse cx="12" cy="9" rx="9" ry="4" fill="currentColor"/><path d="M3 9v5c0 2.2 4 4 9 4s9-1.8 9-4V9c0 2.2-4 4-9 4S3 11.2 3 9z" fill="currentColor" opacity=".7"/></symbol>
+  <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13.5 2 4.5 13.5h6.2L9.8 22l9.7-12.2h-6.4z" fill="currentColor"/></symbol>
+  <symbol id="i-pen" viewBox="0 0 24 24"><path d="M4 20l1-4.6L15.6 4.8a2 2 0 0 1 2.8 0l.8.8a2 2 0 0 1 0 2.8L8.6 19z" fill="currentColor"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 2.5 4.5 5.3v5.9c0 4.9 3.2 9 7.5 10.3 4.3-1.3 7.5-5.4 7.5-10.3V5.3z" fill="currentColor"/><path d="M9 12l2.2 2.2L15.5 10" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-more" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5" stroke="currentColor" stroke-width="2.2" fill="none"/><path d="M15.5 15.5 21 21" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></symbol>
+  <symbol id="i-caret" viewBox="0 0 10 10"><path d="M1.5 3.2 5 6.8l3.5-3.6" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8.5" r="4" stroke="currentColor" stroke-width="1.8" fill="none"/><path d="M4.5 20.5c.8-4 3.8-6 7.5-6s6.7 2 7.5 6" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round"/></symbol>
+  <symbol id="i-trend" viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 7-7M15 8h5v5" stroke="currentColor" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-4 3.5V16H4z" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linejoin="round"/></symbol>
+  <symbol id="i-camera" viewBox="0 0 24 24"><path d="M4 8h3l1.5-2h7L17 8h3v11H4z" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linejoin="round"/><circle cx="12" cy="13" r="3.2" stroke="currentColor" stroke-width="1.8" fill="none"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5z" fill="currentColor"/></symbol>
+  <symbol id="i-pause" viewBox="0 0 24 24"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z" fill="currentColor"/></symbol>
+  <symbol id="i-share" viewBox="0 0 24 24"><path d="M12 3v12M7.5 7.5 12 3l4.5 4.5M5 13v7h14v-7" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><path d="M3.5 6h17v12h-17z" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linejoin="round"/><path d="M4 6.5l8 6.5 8-6.5" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linejoin="round"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+  <symbol id="i-left" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" stroke="currentColor" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-right" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-snowcloud" viewBox="0 0 24 24"><path d="M7 15a4.5 4.5 0 0 1-.6-9 6 6 0 0 1 11.3 1.6A3.7 3.7 0 0 1 17.5 15z" fill="currentColor" opacity=".9"/><g fill="currentColor"><circle cx="8" cy="19" r="1.2"/><circle cx="12" cy="20.5" r="1.2"/><circle cx="16" cy="19" r="1.2"/></g></symbol>
+
+</defs>
+</svg>
+
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="header-top">
+    <button class="icon-btn menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu"><svg aria-hidden="true"><use href="#i-more"/></svg></button>
+    <a class="logo" href="index.html">
+      <img class="logo-img" src="assets/img/yegtoday-logo.svg" alt="YEGToday home" width="143" height="32">
+    </a>
+    <button class="icon-btn search-toggle-m" type="button" data-search-toggle aria-expanded="false" aria-controls="search-panel" aria-label="Search"><svg aria-hidden="true"><use href="#i-search"/></svg></button>
+    <a class="account" href="about.html#coming-soon">
+      <span class="account-label">Sign in or register for your free account</span>
+      <span class="account-avatar" aria-hidden="true"><svg><use href="#i-user"/></svg></span>
+    </a>
+  </div>
+
+  <nav class="primary-nav" id="primary-nav" aria-label="Main">
+    <div class="nav-head"><span>Sections</span><button class="icon-btn nav-close" type="button" aria-label="Close menu"><svg aria-hidden="true"><use href="#i-close"/></svg></button></div>
+    <ul class="nav-list">
+      <li class="nav-item"><a class="nav-link" href="index.html"><svg class="ico" style="color:var(--brand)" aria-hidden="true"><use href="#i-home"/></svg>Home</a></li>
+
+      <li class="nav-item">
+        <button class="nav-link" type="button" aria-expanded="false" aria-controls="dd-communities"><svg class="ico" style="color:#d0342c" aria-hidden="true"><use href="#i-pin"/></svg>Communities<svg class="caret" aria-hidden="true"><use href="#i-caret"/></svg></button>
+        <div class="dropdown wide" id="dd-communities"><ul>
+          <li><a class="dd-all" href="communities.html">All communities</a></li>
+          <li><a href="edmonton.html">Edmonton</a></li>
+          <li><a href="st-albert.html">St. Albert</a></li>
+          <li><a href="sherwood-park.html">Sherwood Park</a></li>
+          <li><a href="strathcona-county.html">Strathcona County</a></li>
+          <li><a href="spruce-grove.html">Spruce Grove</a></li>
+          <li><a href="stony-plain.html">Stony Plain</a></li>
+          <li><a href="parkland-county.html">Parkland County</a></li>
+          <li><a href="leduc.html">Leduc</a></li>
+          <li><a href="leduc-county.html">Leduc County &amp; Nisku</a></li>
+          <li><a href="beaumont.html" aria-current="page">Beaumont</a></li>
+          <li><a href="devon.html">Devon</a></li>
+          <li><a href="fort-saskatchewan.html">Fort Saskatchewan</a></li>
+          <li><a href="morinville.html">Morinville</a></li>
+          <li><a href="sturgeon-county.html">Sturgeon County</a></li>
+          <li><a href="enoch.html">Enoch Cree Nation</a></li>
+        </ul></div>
+      </li>
+
+      <li class="nav-item">
+        <button class="nav-link" type="button" aria-expanded="false" aria-controls="dd-obits"><svg class="ico" style="color:#c2477f" aria-hidden="true"><use href="#i-flower"/></svg>Obituaries<svg class="caret" aria-hidden="true"><use href="#i-caret"/></svg></button>
+        <div class="dropdown" id="dd-obits"><ul>
+          <li><a class="dd-all" href="obituaries.html">Latest obituaries</a></li>
+          <li><a href="obituaries.html#search">Search obituaries</a></li>
+          <li><a href="obituaries.html#in-memoriam">In memoriam</a></li>
+          <li><a href="obituaries.html#place">Place an obituary</a></li>
+        </ul></div>
+      </li>
+
+      <li class="nav-item">
+        <button class="nav-link" type="button" aria-expanded="false" aria-controls="dd-sports"><svg class="ico" style="color:#7a4f2a" aria-hidden="true"><use href="#i-puck"/></svg>Sports<svg class="caret" aria-hidden="true"><use href="#i-caret"/></svg></button>
+        <div class="dropdown" id="dd-sports"><ul>
+          <li><a class="dd-all" href="sports.html">All sports</a></li>
+          <li><a href="oilers.html">Oilers</a></li>
+          <li><a href="elks.html">Elks</a></li>
+          <li><a href="oil-kings.html">Oil Kings</a></li>
+          <li><a href="university-college.html">University &amp; college</a></li>
+          <li><a href="amateur.html">High school &amp; amateur</a></li>
+          <li><a href="community-sports.html">Community sports</a></li>
+        </ul></div>
+      </li>
+
+      <li class="nav-item">
+        <button class="nav-link" type="button" aria-expanded="false" aria-controls="dd-business"><svg class="ico" style="color:#d48c00" aria-hidden="true"><use href="#i-bolt"/></svg>Business &amp; Energy<svg class="caret" aria-hidden="true"><use href="#i-caret"/></svg></button>
+        <div class="dropdown" id="dd-business"><ul>
+          <li><a class="dd-all" href="business.html">All business</a></li>
+          <li><a href="energy.html">Energy &amp; the Industrial Heartland</a></li>
+          <li><a href="real-estate.html">Real estate &amp; development</a></li>
+          <li><a href="agriculture.html">Agriculture &amp; rural</a></li>
+          <li><a href="jobs.html">Jobs</a></li>
+        </ul></div>
+      </li>
+
+      <li class="nav-item">
+        <button class="nav-link" type="button" aria-expanded="false" aria-controls="dd-opinion"><svg class="ico" style="color:#3a6fb5" aria-hidden="true"><use href="#i-pen"/></svg>Opinion<svg class="caret" aria-hidden="true"><use href="#i-caret"/></svg></button>
+        <div class="dropdown" id="dd-opinion"><ul>
+          <li><a class="dd-all" href="opinion.html">All opinion</a></li>
+          <li><a href="columns.html">Columns</a></li>
+          <li><a href="letters.html">Letters to the editor</a></li>
+          <li><a href="about.html#contact">Write to us</a></li>
+        </ul></div>
+      </li>
+
+      <li class="nav-item">
+        <button class="nav-link" type="button" aria-expanded="false" aria-controls="dd-crime"><svg class="ico" style="color:#2f4fb3" aria-hidden="true"><use href="#i-shield"/></svg>Crime<svg class="caret" aria-hidden="true"><use href="#i-caret"/></svg></button>
+        <div class="dropdown" id="dd-crime"><ul>
+          <li><a class="dd-all" href="crime.html">All crime</a></li>
+          <li><a href="cops-courts.html">Cops &amp; courts</a></li>
+          <li><a href="fire-rescue.html">Fire &amp; rescue</a></li>
+          <li><a href="road-safety.html">Road safety</a></li>
+        </ul></div>
+      </li>
+
+      <li class="nav-item">
+        <button class="nav-link" type="button" aria-expanded="false" aria-controls="dd-more"><svg class="ico" style="color:#6b6b6b" aria-hidden="true"><use href="#i-more"/></svg>More<svg class="caret" aria-hidden="true"><use href="#i-caret"/></svg></button>
+        <div class="dropdown wide right" id="dd-more"><ul>
+          <li><a href="city-hall.html">City Hall &amp; council</a></li>
+          <li><a href="transit-roads.html">Transit &amp; roads</a></li>
+          <li><a href="weather.html">Weather</a></li>
+          <li><a href="arts-festivals.html">Arts &amp; festivals</a></li>
+          <li><a href="food-drink.html">Food &amp; drink</a></li>
+          <li><a href="indigenous.html">Indigenous</a></li>
+          <li><a href="newcomers.html">Newcomers</a></li>
+          <li><a href="history.html">Edmonton history</a></li>
+          <li><a href="events.html">Local events</a></li>
+          <li><a href="neighbours.html">Meet your neighbours</a></li>
+          <li><a href="about.html#coming-soon">Podcasts</a></li>
+          <li><a href="index.html#sec-newsletters">Newsletters</a></li>
+          <li><a href="about.html#coming-soon">Classifieds</a></li>
+          <li><a href="about.html">About us</a></li>
+        </ul></div>
+      </li>
+
+      <li class="nav-item search"><button class="nav-link" type="button" data-search-toggle aria-expanded="false" aria-controls="search-panel" aria-label="Search"><svg class="ico" aria-hidden="true"><use href="#i-search"/></svg></button></li>
+    </ul>
+  </nav>
+
+  <div class="search-panel" id="search-panel" hidden>
+    <form class="search-form" role="search" action="#">
+      <label class="sr-only" for="site-search">Search</label>
+      <input id="site-search" type="text" inputmode="search" enterkeyhint="search" name="q" placeholder="Search stories, communities and topics" autocomplete="off">
+      <button class="btn btn-brand" type="submit">Search</button>
+    </form>
+    <p class="search-status" aria-live="polite"></p>
+  </div>
+
+  <div class="nav-backdrop" hidden></div>
+</header>
+
+
+<div class="page">
+  <main class="main" id="main">
+    <nav aria-label="Breadcrumb"><ol class="crumbs"><li><a href="index.html">Home</a></li><li><a href="communities.html">All communities</a></li></ol></nav><h1 class="article-title">Beaumont</h1><p class="article-dek">The latest news from Beaumont.</p>
+
+    <section class="block"><h2 class="block-title" id="sec-topic">Latest stories</h2><div class="rows"><a class="row story-link" href="https://www.thebeaumontnews.ca/news/local-news/photo-radar-in-beaumont-ends-december-6"><span class="media"><img src="assets/img/stories/s31.webp" srcset="assets/img/stories/s31-sm.webp 400w, assets/img/stories/s31.webp 800w" sizes="(max-width: 600px) 112px, 135px" alt="" width="800" height="533" loading="eager" fetchpriority="high" decoding="async"></span><div><h3 class="headline h-md">Beaumont&#x27;s photo radar shuts off Dec. 6 after the provider ends its contract</h3><p class="dek clamp-2">The city&#x27;s automated traffic enforcement contractor pulled out, saying provincial limits on enforcement locations made it financially unviable. Tickets issued before the cutoff still stand.</p><span class="meta">La Nouvelle Beaumont News · Nov. 5</span></div></a></div></section>
+  </main>
+
+  <aside class="rail" aria-label="More from YEGToday">
+    <div class="ad" aria-hidden="true">Advertisement</div>
+
+    <section class="rail-block"><h2 class="block-title">More in Communities</h2><ul class="topic-links"><li><a href="edmonton.html"><span>Edmonton</span><span class="count">40<span class="sr-only"> stories</span></span></a></li><li><a href="st-albert.html"><span>St. Albert</span><span class="count">4<span class="sr-only"> stories</span></span></a></li><li><a href="sherwood-park.html"><span>Sherwood Park</span><span class="count">2<span class="sr-only"> stories</span></span></a></li><li><a href="strathcona-county.html"><span>Strathcona County</span><span class="count">5<span class="sr-only"> stories</span></span></a></li><li><a href="spruce-grove.html"><span>Spruce Grove</span><span class="count">2<span class="sr-only"> stories</span></span></a></li><li><a href="stony-plain.html"><span>Stony Plain</span><span class="count">2<span class="sr-only"> stories</span></span></a></li><li><a href="parkland-county.html"><span>Parkland County</span><span class="count">0<span class="sr-only"> stories</span></span></a></li><li><a href="leduc.html"><span>Leduc</span><span class="count">1<span class="sr-only"> story</span></span></a></li><li><a href="leduc-county.html"><span>Leduc County &amp; Nisku</span><span class="count">2<span class="sr-only"> stories</span></span></a></li><li><a href="devon.html"><span>Devon</span><span class="count">1<span class="sr-only"> story</span></span></a></li><li><a href="fort-saskatchewan.html"><span>Fort Saskatchewan</span><span class="count">4<span class="sr-only"> stories</span></span></a></li><li><a href="morinville.html"><span>Morinville</span><span class="count">1<span class="sr-only"> story</span></span></a></li><li><a href="sturgeon-county.html"><span>Sturgeon County</span><span class="count">1<span class="sr-only"> story</span></span></a></li><li><a href="enoch.html"><span>Enoch Cree Nation</span><span class="count">2<span class="sr-only"> stories</span></span></a></li></ul></section>
+
+    <div class="rail-sticky">
+      <div class="ad tall" aria-hidden="true">Advertisement</div>
+    </div>
+  </aside>
+</div>
+
+<section class="photo-credits" aria-labelledby="photo-credits-title"><h2 id="photo-credits-title">Photo credits</h2><p>Where a freely licensed photo of a news event exists, the story shows it; otherwise the photo shows the place or subject involved. These are not the reporting outlets&#x27; own photos. We cropped and resized them, and our versions of CC BY-SA photos are shared under the same licence as the originals.</p><ol><li>St. Vital Catholic Church on the hill in Beaumont. Photo: “Saint Vital Roman Catholic Church Beaumont Alberta Canada 01A” by WinterE229 WinterforceMedia, <a href="https://commons.wikimedia.org/wiki/Template:PD-self">Public domain</a>, via <a href="https://commons.wikimedia.org/wiki/File:Saint_Vital_Roman_Catholic_Church_Beaumont_Alberta_Canada_01A.jpg">Wikimedia Commons</a> (cropped and resized).</li></ol></section>
+<footer class="site-footer">
+  <div class="footer-cols">
+    <div>
+      <h2>Communities</h2>
+      <a href="edmonton.html">Edmonton</a>
+      <div class="sub"><a href="city-hall.html">City Hall</a><a href="transit-roads.html">Transit &amp; roads</a><a href="edmonton.html">Neighbourhoods</a></div>
+      <a href="st-albert.html">St. Albert</a>
+      <a href="strathcona-county.html">Sherwood Park &amp; Strathcona County</a>
+      <a href="spruce-grove.html">Spruce Grove</a>
+      <a href="stony-plain.html">Stony Plain &amp; Parkland County</a>
+      <a href="leduc.html">Leduc &amp; Nisku</a>
+      <a href="beaumont.html" aria-current="page">Beaumont</a>
+      <a href="devon.html">Devon</a>
+      <a href="fort-saskatchewan.html">Fort Saskatchewan</a>
+      <a href="morinville.html">Morinville &amp; Sturgeon County</a>
+      <a href="enoch.html">Enoch Cree Nation</a>
+    </div>
+    <div>
+      <h2>Topics</h2>
+      <a href="business.html">Business &amp; Energy</a>
+      <a href="crime.html">Crime</a>
+      <a href="sports.html">Sports</a>
+      <a href="opinion.html">Opinion</a>
+      <a href="arts-festivals.html">Arts &amp; Festivals</a>
+      <a href="food-drink.html">Food &amp; Drink</a>
+      <a href="indigenous.html">Indigenous</a>
+      <a href="newcomers.html">Newcomers</a>
+      <a href="weather.html">Weather</a>
+      <a href="obituaries.html">Obituaries</a>
+      <a href="about.html#coming-soon">Videos &amp; Podcasts</a>
+    </div>
+    <div>
+      <h2>Features</h2>
+      <a href="about.html#coming-soon">Gas Prices</a>
+      <a href="road-safety.html">Road safety</a>
+      <a href="city-hall.html">City Hall &amp; council</a>
+      <a href="history.html">This Month in History</a>
+      <a href="neighbours.html">Meet Your Neighbours</a>
+      <h2>Classifieds</h2>
+      <a href="about.html#coming-soon">Browse classifieds</a>
+      <a href="about.html#coming-soon">Post a classified</a>
+      <h2>Shop Local</h2>
+      <a href="about.html#coming-soon">Local business directory</a>
+      <a href="about.html#coming-soon">Add your business</a>
+      <h2><a href="events.html">Local Events</a></h2>
+    </div>
+    <div>
+      <h2>About YEGToday</h2>
+      <a href="about.html">About us</a>
+      <a href="about.html#how-we-report">How we report</a>
+      <a href="about.html#corrections">Corrections</a>
+      <a href="about.html#ethics">Ethics policy</a>
+      <a href="about.html#ownership">Ownership &amp; funding</a>
+      <a href="about.html#careers">Careers</a>
+      <h2>Contact Us</h2>
+      <a href="about.html#contact">Send a news tip</a>
+      <a href="about.html#contact">Questions or feedback</a>
+      <a href="about.html#contact">Advertise with us</a>
+      <a href="about.html#contact">Contact info</a>
+    </div>
+  </div>
+  <div class="footer-base">
+    <a class="logo" href="index.html">
+      <img class="logo-img" src="assets/img/yegtoday-logo.svg" alt="YEGToday home" width="125" height="28">
+    </a>
+    <p>Free, independent local news for Edmonton and the communities around it, from St. Albert to Leduc and from Stony Plain to Fort Saskatchewan.</p>
+    <div class="footer-legal">
+      <span>© <span data-year>2026</span> YEGToday</span>
+      <a href="about.html#privacy">Privacy</a><a href="about.html#terms">Terms of use</a><a href="about.html#accessibility">Accessibility</a><a href="about.html#privacy">Cookie settings</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

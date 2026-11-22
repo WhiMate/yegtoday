@@ -28,6 +28,30 @@ To update the news, edit `src/stories.json` and run `python3 build.py`. Each sto
 (fallback illustration), `fun` (1–5, used to pick Trending) and an optional `photo`. Set `"pin": "lead"` or
 `"pin": "highlights"` to choose the top stories yourself.
 
+### Topic pages
+
+Every menu item has its own page (`sports.html`, `st-albert.html`, `road-safety.html` and so on), made by
+`build.py` from `src/topics.json` and `src/topic.html`. A story appears on a topic page when:
+
+- its `section` is in the topic's `sections`, or
+- its `community` (or a slug in its own `places` list) is in the topic's `places`, or
+- one of its `topics` tags is in the topic's `tags`.
+
+So to file a story, give it tags such as `"topics": ["oilers"]` or `"topics": ["road-safety", "weather"]`, plus
+`"places": ["fort-saskatchewan"]` if it also belongs to another community. The tag names are the topic slugs in
+`src/topics.json`: `oilers`, `elks`, `oil-kings`, `university-college`, `amateur`, `community-sports`, `energy`,
+`real-estate`, `agriculture`, `jobs`, `business`, `columns`, `letters`, `cops-courts`, `fire-rescue`,
+`road-safety`, `city-hall`, `transit-roads`, `weather`, `arts-festivals`, `food-drink`, `indigenous`,
+`newcomers`, `events` and `neighbours`. A topic with no stories yet says so and shows related stories from its
+`fallback` topic.
+
+`src/topics.json` also holds the About and Obituaries pages. Links to things that don't exist yet (accounts and
+comments, podcasts, classifieds, the business directory, gas prices, community discussions, the poll archive,
+a contact address) go to the "Coming soon" note on the About page.
+
+`build.py` checks every link and image on every page it builds. If any internal link points to a page or
+`#section` that doesn't exist, it stops and lists them, and writes nothing.
+
 ### Publishing YEGToday's own stories
 
 For a story YEGToday reported itself (like the Porsche crash near Rogers Place, from police and
@@ -184,6 +208,9 @@ minimum targets, reduced-motion support, and a no-JavaScript fallback.
 index.html, article.html     built pages (don't edit — run build.py)
 src/index.html, src/article.html   page sources (homepage blocks are <!--BLOCK:...--> markers)
 src/story.html               template for YEGToday's own stories (one page per story with a `body`)
+src/topics.json              topic pages (one per menu item) and the About / Obituaries pages
+src/topic.html               template for topic and info pages
+<slug>.html (50+ files)      built topic and info pages (don't edit — run build.py)
 porsche-crash-rogers-place.html   built page for that original story (don't edit — run build.py)
 src/stories.json             the news: verified stories that fill the homepage blocks
 src/partials/                header, footer, SVG sprite (icons + fallback illustrations)

@@ -279,6 +279,22 @@ span.author-name { text-decoration: none; color: var(--ink-strong); }
 .article-figure .media { aspect-ratio: 3 / 2; }
 .article-figure figcaption { margin-top: 8px; font-size: 12px; line-height: 17px; font-style: italic; }
 .article-figure + .article-body { margin-top: 22px; }
+
+/* Topic and info pages */
+.topic-links { list-style: none; margin: 0; padding: 0; }
+.topic-links li + li { border-top: 1px solid var(--hair); }
+.topic-links a { display: flex; justify-content: space-between; gap: 12px; padding: 9px 0; min-height: 24px; font-size: 14.5px; font-weight: 700; color: var(--ink-strong); }
+.topic-links a:hover, .topic-links a[aria-current] { color: var(--brand); }
+.topic-links .count { color: var(--muted); font-weight: 400; }
+.hub-links { list-style: none; margin: 0 0 8px; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 30px; }
+.hub-links a { display: block; padding: 8px 0; min-height: 24px; border-bottom: 1px solid var(--hair); font-weight: 700; color: var(--ink-strong); }
+.hub-links a:hover { color: var(--brand); }
+.topic-empty { margin: 0 0 28px; padding: 14px 16px; border-radius: var(--radius); background: #f4f4f4; color: var(--ink); }
+.article-dek + .block, .article-dek + .topic-empty { margin-top: 24px; }
+.info-section + .info-section { margin-top: 30px; }
+.weather-note { margin: -8px 0 10px; font-size: 12px; color: var(--muted); }
+.nl-card .btn[aria-disabled="true"] { cursor: default; opacity: .75; }
+@media (max-width: 600px) { .hub-links { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 20px; } }
 .listen { display: flex; align-items: center; gap: 12px; margin: 18px 0 22px; }
 .listen-btn { width: 40px; height: 40px; border-radius: 50%; border: 1.5px solid #9a9a9a; display: grid; place-items: center; color: var(--ink-strong); }
 .listen-btn svg { width: 16px; height: 16px; }
@@ -375,7 +391,7 @@ html:not(.js) [data-search-toggle] { display: none; }
   .cols-2 > * + *, .cols-3 > * + * { margin-top: 16px; padding-top: 16px; }
   .cols-2 > * + *::before, .cols-3 > * + *::before { left: 0; right: 0; bottom: auto; border-left: 0; border-top: 1px solid var(--hair); }
   .trend .story-link { display: grid; grid-template-columns: 112px minmax(0, 1fr); column-gap: 12px; }
-  .trend .media { grid-row: span 2; }
+  .trend .media { grid-row: span 3; }
   .trend .rank { margin-top: 0; }
   .h-xl { font-size: 25px; line-height: 30px; }
   .h-lg { font-size: 19px; line-height: 24px; }

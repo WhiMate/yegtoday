@@ -65,6 +65,17 @@ SECTION_BLOCKS = {
     "sports": (["sports"], "Sports", "Sports"),
     "living": (["living"], "Edmonton Living", "Edmonton Living"),
 }
+# Where each homepage block's "More ..." link goes, and which topic page a story's section belongs to
+# (slugs from src/topics.json).
+MORE_LINKS = {
+    "edmonton": "edmonton", "st-albert": "st-albert", "sherwood-park": "strathcona-county", "tri-region": "tri-region",
+    "south": "south", "north": "north", "crime": "crime", "business": "business", "sports": "sports",
+    "living": "living", "history": "history", "opinion": "opinion", "neighbours": "neighbours",
+}
+SECTION_TOPIC = {**MORE_LINKS, "enoch": "enoch"}
+TOPICS_FILE = SRC / "topics.json"
+TOPIC_TEMPLATE = "topic.html"
+
 BADGE = {
     "edmonton": "Edmonton News", "st-albert": "St. Albert", "sherwood-park": "Sherwood Park",
     "tri-region": "Tri-Region", "south": "Leduc & area", "north": "North", "enoch": "Enoch Cree Nation",
@@ -95,7 +106,12 @@ class Homepage:
         self.running_title = next((g["runningTitle"] for g in data["groups"].values() if g.get("runningTitle")), "")
         self.used = set()
         self.n = 0
+        # article.html is the hand-written page for one story (leadId); links to that story go there.
         self.lead_href = data.get("leadHref", "")
+        self.lead_id = data.get("leadId", "")
+        leads = [s["id"] for s in stories if s.get("pin") == "lead"]
+        if len(leads) > 1:
+            raise SystemExit(f"src/stories.json: only one story can have \"pin\": \"lead\" (found {', '.join(leads)})")
         self.eager = 1          # load the first photo eagerly (it's above the fold)
 
     # -- selection helpers
@@ -141,8 +157,10 @@ class Homepage:
         who = f'{esc(s["author"])} · ' if s.get("author") else ""
         return f'{who}{esc(s["source"])} · {esc(fmt_date(s["published"]))}'
 
-    @staticmethod
-    def href(s) -> str:
+    def href(self, s) -> str:
+        # The story written up on article.html (leadId) links there everywhere; a story with its own page keeps it.
+        if self.lead_href and s["id"] == self.lead_id and not s.get("body"):
+            return esc(self.lead_href)
         return esc(s["url"])
 
     def card(self, s) -> str:
@@ -156,8 +174,11 @@ class Homepage:
                 f'<span class="meta">{self.meta(s)}</span></div></a>')
 
     @staticmethod
-    def block(key, title, inner, more=None, title_extra="") -> str:
-        more_html = f'<a class="more-link" href="#">More {esc(more)} <span aria-hidden="true">&gt;</span></a>' if more else ""
+    def block(key, title, inner, more=None, title_extra="", href=None) -> str:
+        # "More ..." goes to the matching topic page (src/topics.json); see MORE_LINKS.
+        href = href or f"{MORE_LINKS.get(key, 'latest')}.html"
+        more_html = (f'<a class="more-link" href="{esc(href)}">More {esc(more)} <span aria-hidden="true">&gt;</span></a>'
+                     if more else "")
         return (f'<section class="block"><h2 class="block-title" id="sec-{key}">{esc(title)}{title_extra}</h2>'
                 f'{inner}{more_html}</section>')
 
@@ -196,7 +217,7 @@ class Homepage:
             if not pick:
                 break
             stack.append(self.take(pick))
-        href = esc(self.lead_href) if self.lead_href else self.href(lead)
+        href = self.href(lead)
         badge = BADGE.get(lead["section"], lead.get("community", "News"))
         lead_html = (
             f'<article class="lead"><a class="story-link" href="{href}"><span class="lead-media">{self.media(lead)}'
@@ -209,7 +230,7 @@ class Homepage:
             for s in stack
         )
         inner = (f'<div class="cols-2">{lead_html}<div><div class="stack">{stack_html}</div>'
-                 f'<a class="more-link" href="#">More Highlights <span aria-hidden="true">&gt;</span></a></div></div>')
+                 f'<a class="more-link" href="latest.html">More Highlights <span aria-hidden="true">&gt;</span></a></div></div>')
         return f'<section class="block"><h2 class="block-title" id="sec-highlights">Highlights</h2>{inner}</section>'
 
     def trending(self) -> str:
@@ -220,7 +241,7 @@ class Homepage:
         items = "".join(
             f'<li><a class="story-link" href="{self.href(self.take(s))}">{self.media(s, "trend")}'
             f'<span class="rank" aria-hidden="true">{i} <svg aria-hidden="true"><use href="#i-trend"/></svg></span>'
-            f'<h3 class="headline h-sm">{esc(s["headline"])}</h3></a></li>'
+            f'<h3 class="headline h-sm">{esc(s["headline"])}</h3><span class="meta">{self.meta(s)}</span></a></li>'
             for i, s in enumerate(picks, 1)
         )
         return f'<section class="block"><h2 class="block-title" id="sec-trending">Trending Now</h2><ol class="cols-3 trend">{items}</ol></section>'
@@ -246,13 +267,14 @@ class Homepage:
         rows_max = 9 if key == "edmonton" else 5  # the city block carries the most stories, like a provincial-news block
         return self.block(key, title, self.cards_and_rows(stories, rows_max), more)
 
-    def rows_block(self, key, sections, title, more) -> str:
+    def rows_block(self, key, sections, title, more, href=None) -> str:
         stories = [self.take(s) for s in self.pool(sections)[:4]]
         if key == "history":
             stories.sort(key=lambda s: s["published"])
         if not stories:
             return ""
-        return self.block(key, title, '<div class="rows">' + "".join(self.row(s) for s in stories) + "</div>", more)
+        return self.block(key, title, '<div class="rows">' + "".join(self.row(s) for s in stories) + "</div>", more,
+                          href=href)
 
     def render(self) -> dict:
         # Order matters: highlights and trending claim the strongest stories first.
@@ -266,7 +288,7 @@ class Homepage:
 
     def article(self) -> dict:
         """Blocks for the article page: the lead's hero figure, 'More Edmonton News', credits."""
-        lead = next(iter(self.pinned("lead")), None)
+        lead = next((s for s in self.all if s["id"] == self.lead_id), None) or next(iter(self.pinned("lead")), None)
         figure = ""
         if lead:
             self.take(lead)
@@ -277,18 +299,22 @@ class Homepage:
                 figure = (f'<figure class="article-figure">{self.media(lead)}'
                           f'<figcaption>Illustration placeholder</figcaption></figure>')
         self.eager = 0
-        more = self.rows_block("more", ["edmonton"], "More Edmonton News", "Edmonton News")
+        more = self.rows_block("more", ["edmonton"], "More Edmonton News", "Edmonton News", href="edmonton.html")
         return {"article-figure": figure, "article-more": more}
 
-    def story_page(self, s) -> dict:
-        """Blocks for one of YEGToday's own stories (a story with a `body`), rendered from src/story.html."""
+    def story_page(self, s, topics) -> dict:
+        """Blocks for one of YEGToday's own stories (a story with a `body`), rendered from src/story.html.
+
+        The breadcrumb, the "More ..." rows and their link all come from the same topic page, so they agree.
+        """
         self.take(s)
-        sections, title, label = next((v for v in SECTION_BLOCKS.values() if s["section"] in v[0]),
-                                      (["edmonton"], "Edmonton News", "Edmonton News"))
+        slug = SECTION_TOPIC.get(s["section"], "latest")
+        title = topics.by_slug[slug]["title"]
+        topic = f"{slug}.html"
         how = s.get("reported", "Reported by YEGToday")
         head = (
             '<nav aria-label="Breadcrumb"><ol class="crumbs"><li><a href="index.html">Home</a></li>'
-            f'<li><a href="#" aria-current="page">{esc(title)}</a></li></ol></nav>'
+            f'<li><a href="{topic}">{esc(title)}</a></li></ol></nav>'
             f'<h1 class="article-title">{esc(s["headline"])}</h1><p class="article-dek">{esc(s["dek"])}</p>'
             '<div class="byline-row"><span class="author-pic"><svg aria-hidden="true" class="t-soft"><use href="#s-person"/></svg></span>'
             f'<div><span class="author-name">{esc(s.get("author") or "YEGToday staff")}</span>'
@@ -302,10 +328,13 @@ class Homepage:
             items = "".join(f"<li>{esc(x)}</li>" for x in s["unknowns"])
             body += f'<div class="fact-box"><h2>Still unanswered</h2><ul>{items}</ul></div>'
         trust = (f'<div class="trust"><strong>How we reported this:</strong> {esc(s["howReported"])} '
-                 'Spotted an error? <a href="#">Tell us</a> or read our <a href="#">corrections policy</a>.</div>'
+                 'Spotted an error? <a href="about.html#contact">Tell us</a> or read our '
+                 '<a href="about.html#corrections">corrections policy</a>.</div>'
                  if s.get("howReported") else "")
         self.eager = 0
-        more = self.rows_block("more", sections, f"More {title}", label)
+        others = [x for x in topics.stories_for(slug) if x["url"] != s["url"]][:4]
+        more = (self.block("more", f"More {title}", '<div class="rows">' + "".join(self.row(x) for x in others) + "</div>",
+                           title, href=topic) if others else "")
         return {"story-title": esc(s["headline"]), "story-description": esc(s["dek"]), "story-head": head,
                 "article-figure": hero_figure(s["photo"]) if s.get("photo") else "",
                 "story-body": body, "story-trust": trust, "article-more": more}
@@ -359,6 +388,149 @@ def photo_credits(html: str, by_id: dict) -> str:
             f'<p>{esc(intro)}</p><ol>{items}</ol></section>')
 
 
+# ----------------------------------------------------------------- topics ----
+
+# Topic groups whose "All ..." page the breadcrumb links back to.
+GROUP_HOME = {"communities": "communities", "sports": "sports", "business": "business",
+              "opinion": "opinion", "crime": "crime"}
+
+
+class Topics:
+    """The topic pages and info pages described in src/topics.json."""
+
+    def __init__(self, data: dict, spec: dict):
+        self.data = data
+        self.spec = spec
+        self.place_of = spec["communityPlaces"]
+        self.by_slug = {t["slug"]: t for t in spec["topics"]}
+        self.stories = Homepage(data).all  # already de-duplicated by url
+        self._found = {}
+        for t in spec["topics"]:
+            for ref in filter(None, [t.get("fallback")]):
+                if ref not in self.by_slug:
+                    raise SystemExit(f"src/topics.json: {t['slug']} falls back to unknown topic {ref!r}")
+        # Catch typos in stories.json, which would otherwise quietly leave a story off its topic pages.
+        tags = {tag for t in spec["topics"] for tag in t.get("tags", ())}
+        slugs = set(self.place_of.values())
+        problems = []
+        for s in self.stories:
+            for tag in s.get("topics", ()):
+                if tag not in tags:
+                    problems.append(f"{s['id']}: unknown topic tag {tag!r}")
+            for place in s.get("places", ()):
+                if place not in slugs:
+                    problems.append(f"{s['id']}: unknown place {place!r}")
+            if s.get("community") not in self.place_of and s.get("community") != "Region":
+                problems.append(f"{s['id']}: community {s.get('community')!r} isn't in communityPlaces "
+                                "(add it there, or use \"Region\" with a `places` list)")
+        if problems:
+            raise SystemExit("src/stories.json:\n  " + "\n  ".join(problems))
+
+    def places(self, s) -> set:
+        out = set(s.get("places", ()))
+        if s.get("community") in self.place_of:
+            out.add(self.place_of[s["community"]])
+        return out
+
+    def stories_for(self, slug) -> list:
+        """Every story on a topic, newest first."""
+        if slug not in self._found:
+            t = self.by_slug[slug]
+            sections, places, tags = set(t.get("sections", ())), set(t.get("places", ())), set(t.get("tags", ()))
+            hits = [s for s in self.stories
+                    if t.get("all") or s["section"] in sections or self.places(s) & places
+                    or set(s.get("topics", ())) & tags]
+            self._found[slug] = sorted(hits, key=lambda s: s["published"], reverse=True)
+        return self._found[slug]
+
+    def listed(self, group, skip=None):
+        return [t for t in self.spec["topics"]
+                if t["group"] == group and not t.get("hidden") and not t.get("hub") and t["slug"] != skip]
+
+    @staticmethod
+    def crumbs(*items) -> str:
+        parts = "".join(f'<li><a href="{esc(href)}">{esc(label)}</a></li>' for label, href in items)
+        return f'<nav aria-label="Breadcrumb"><ol class="crumbs"><li><a href="index.html">Home</a></li>{parts}</ol></nav>'
+
+    def topic_page(self, t) -> dict:
+        page = Homepage(self.data)  # fresh, so every matching story can be shown
+        home = GROUP_HOME.get(t["group"])
+        trail = [(self.by_slug[home]["title"], f"{home}.html")] if home and home != t["slug"] else []
+        head = (self.crumbs(*trail) + f'<h1 class="article-title">{esc(t["title"])}</h1>'
+                f'<p class="article-dek">{esc(t["intro"])}</p>')
+        body = ""
+        if t.get("hub"):
+            links = "".join(f'<li><a href="{o["slug"]}.html">{esc(o["title"])}</a></li>' for o in self.listed(t["group"]))
+            body += page.block("communities", "Pick a community", f'<ul class="hub-links">{links}</ul>')
+        stories = self.stories_for(t["slug"])
+        if stories:
+            title = "Latest from around the region" if t.get("hub") else "Latest stories"
+            body += page.block("topic", title, page.cards_and_rows(stories, len(stories)))
+        else:
+            note = t.get("empty") or f"We don't have any {t['title']} stories yet."
+            body += f'<p class="topic-empty">{esc(note)}</p>'
+            fb = t.get("fallback", "latest")
+            more = self.stories_for(fb)[:6]
+            if more:
+                label = self.by_slug[fb]["title"]
+                body += page.block("topic", "Latest news" if fb == "latest" else f"More from {label}",
+                                   page.cards_and_rows(more, 4), more="news" if fb == "latest" else label,
+                                   href=f"{fb}.html")
+        group_label = self.spec["groups"][t["group"]]
+        rail_title = group_label if t["group"] == "more" else f"More in {group_label}"
+        items = "".join(
+            f'<li><a href="{o["slug"]}.html"><span>{esc(o["title"])}</span>'
+            f'<span class="count">{count(len(self.stories_for(o["slug"])))}</span></a></li>'
+            for o in self.listed(t["group"], skip=t["slug"]))
+        rail = (f'<section class="rail-block"><h2 class="block-title">{esc(rail_title)}</h2>'
+                f'<ul class="topic-links">{items}</ul></section>') if items else ""
+        return {"page-title": esc(t["title"]), "page-description": esc(t["intro"]), "page-head": head,
+                "page-body": body, "page-rail": rail}
+
+    def info_page(self, p) -> dict:
+        head = self.crumbs() + f'<h1 class="article-title">{esc(p["title"])}</h1><p class="article-dek">{esc(p["intro"])}</p>'
+        sections = "".join(
+            f'<section class="info-section" id="{esc(sec["id"])}"><h2>{esc(sec["heading"])}</h2>'
+            + "".join(f"<p>{esc(par)}</p>" for par in sec["body"]) + "</section>"
+            for sec in p["sections"])
+        toc = "".join(f'<li><a href="#{esc(sec["id"])}"><span>{esc(sec["heading"])}</span></a></li>' for sec in p["sections"])
+        rail = (f'<section class="rail-block"><h2 class="block-title">On this page</h2>'
+                f'<ul class="topic-links">{toc}</ul></section>')
+        return {"page-title": esc(p.get("docTitle") or p["title"]), "page-description": esc(p["intro"]), "page-head": head,
+                "page-body": f'<div class="article-body">{sections}</div>', "page-rail": rail}
+
+
+def count(n: int) -> str:
+    """A story count for the topic rail: the number shows, the word is for screen readers."""
+    return f'{n}<span class="sr-only"> {"story" if n == 1 else "stories"}</span>'
+
+
+def check_links(output: dict) -> list:
+    """Every link and image on a built page must point at a built page (and an id on it) or a file that exists."""
+    ids = {page: set(re.findall(r'\bid="([^"]+)"', html)) for page, html in output.items()}
+    problems = []
+    for page, html in output.items():
+        urls = re.findall(r'\b(?:href|src)="([^"]*)"', html)
+        urls += [part.split()[0] for srcset in re.findall(r'\bsrcset="([^"]*)"', html) for part in srcset.split(",")]
+        for url in dict.fromkeys(urls):
+            if re.match(r"[a-z][a-z0-9+.-]*:|//", url):
+                continue  # another site (https:, mailto:, ...)
+            path, _, frag = url.partition("#")
+            path = path.split("?")[0]
+            target = path or page
+            if not path and not frag:
+                problems.append(f"{page}: empty link {url!r}")
+            elif target in output:
+                if frag and frag not in ids[target]:
+                    problems.append(f"{page}: {url!r} has no #{frag} to land on")
+            elif path.endswith(".html"):
+                # Pages must come from this build; an old .html left on disk doesn't count.
+                problems.append(f"{page}: {url!r} isn't a page this build makes")
+            elif not (ROOT / path).is_file():
+                problems.append(f"{page}: {url!r} doesn't exist")
+    return problems
+
+
 # ------------------------------------------------------------------ build ----
 
 def build() -> None:
@@ -374,16 +546,33 @@ def build() -> None:
         page_blocks["article.html"] = Homepage(data).article()
     blocks = page_blocks["index.html"]
 
-    # YEGToday's own stories (those with a `body`) each get a page made from src/story.html.
     templates = {page: page for page in PAGES}
+    topics = None
+    if stories_file.exists() and TOPICS_FILE.exists():
+        topics = Topics(data, json.loads(TOPICS_FILE.read_text(encoding="utf-8")))
+
+    # YEGToday's own stories (those with a `body`) each get a page made from src/story.html.
     for s in by_id.values():
         if not s.get("body"):
             continue
         url = s.get("url", "")
         if not re.fullmatch(r"[a-z0-9][a-z0-9-]*\.html", url) or url in templates:
             raise SystemExit(f"story {s['id']}: give it a page name of its own as its url, like 'porsche-crash.html'")
+        if topics is None:
+            raise SystemExit(f"story {s['id']}: story pages need src/topics.json for their breadcrumb and 'More' links")
         templates[url] = "story.html"
-        page_blocks[url] = Homepage(data).story_page(s)
+        page_blocks[url] = Homepage(data).story_page(s, topics)
+
+    # Topic pages (one per menu topic) and info pages (About, Obituaries) from src/topics.json.
+    if topics:
+        made = [(t["slug"], topics.topic_page(t)) for t in topics.spec["topics"]]
+        made += [(p["slug"], topics.info_page(p)) for p in topics.spec["pages"]]
+        for slug, page_html in made:
+            url = f"{slug}.html"
+            if not re.fullmatch(r"[a-z0-9][a-z0-9-]*", slug) or url in templates:
+                raise SystemExit(f"src/topics.json: {slug!r} is not a usable page name, or another page already uses it")
+            templates[url] = TOPIC_TEMPLATE
+            page_blocks[url] = page_html
 
     output = {}
     for page, template in templates.items():
@@ -400,19 +589,31 @@ def build() -> None:
         if "<!--BLOCK:" in html:
             start = html.index("<!--BLOCK:")
             raise SystemExit(f"src/{page}: no content for {html[start:start + 30]!r} (is src/stories.json present?)")
-        # Mark the Home nav link as current only on the homepage.
+        # Mark the Home nav link as current only on the homepage, and on other pages any menu link to the page itself.
         html = html.replace("{{HOME_CURRENT}}", ' aria-current="page"' if page == "index.html" else "")
+        if page != "index.html":
+            html = re.sub(rf'href="{re.escape(page)}"(?! aria-current)', f'href="{page}" aria-current="page"', html)
         for key, value in values.items():
             html = html.replace("{{" + key + "}}", value)
         if "{{" in html:
             start = html.index("{{")
-            raise SystemExit(f"src/{page}: unreplaced token near {html[start:start + 30]!r}")
+            raise SystemExit(f"{page} (from src/{template}): unreplaced token near {html[start:start + 30]!r}")
         output[page] = html
+
+    problems = check_links(output)
+    if problems:
+        raise SystemExit("broken links, nothing written:\n  " + "\n  ".join(problems))
 
     # Write only after every page built cleanly.
     for page, html in output.items():
         (ROOT / page).write_text(html, encoding="utf-8")
-        print(f"wrote {page} ({len(html) // 1024} KB)")
+    made = {"story": sum(t == "story.html" for t in templates.values()),
+            "topic and info": sum(t == TOPIC_TEMPLATE for t in templates.values())}
+    print(f"wrote {len(output)} pages: {', '.join(PAGES)}, {made['story']} story page(s), "
+          f"{made['topic and info']} topic and info pages; all links check out")
+    stale = sorted(p.name for p in ROOT.glob("*.html") if p.name not in output)
+    if stale:
+        print("note: these pages are no longer built and nothing links to them; delete them: " + ", ".join(stale))
     if blocks:
         print("homepage blocks: " + ", ".join(f"{k}{'' if v else ' (empty)'}" for k, v in blocks.items()))
 

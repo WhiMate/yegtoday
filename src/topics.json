@@ -1,0 +1,124 @@
+{
+ "_about": "Topic pages and info pages. build.py makes <slug>.html for each. A story shows on a topic page if its section is in `sections`, its community (or a slug in its own `places`) is in `places`, or one of its `topics` tags is in `tags`. `fallback` names a topic whose stories fill an empty page. Topics with \"hidden\": true have pages but aren't listed in the topic rail (they back homepage 'More' links).",
+ "communityPlaces": {
+  "Edmonton": "edmonton", "St. Albert": "st-albert", "Sherwood Park": "sherwood-park",
+  "Strathcona County": "strathcona-county", "Spruce Grove": "spruce-grove", "Stony Plain": "stony-plain",
+  "Parkland County": "parkland-county", "Leduc": "leduc", "Leduc County": "leduc-county", "Beaumont": "beaumont",
+  "Devon": "devon", "Fort Saskatchewan": "fort-saskatchewan", "Morinville": "morinville",
+  "Sturgeon County": "sturgeon-county", "Enoch Cree Nation": "enoch"
+ },
+ "groups": {
+  "communities": "Communities", "sports": "Sports", "business": "Business & Energy",
+  "opinion": "Opinion", "crime": "Cops, Crime & Court", "more": "More topics"
+ },
+ "topics": [
+  {"slug": "communities", "title": "All communities", "group": "communities", "hub": true,
+   "intro": "News from every community around Edmonton. Pick a community, or read the latest from across the region below.",
+   "places": ["st-albert", "sherwood-park", "strathcona-county", "spruce-grove", "stony-plain", "parkland-county", "leduc", "leduc-county", "beaumont", "devon", "fort-saskatchewan", "morinville", "sturgeon-county", "enoch"], "sections": ["st-albert", "sherwood-park", "tri-region", "enoch", "south", "north"]},
+  {"slug": "edmonton", "title": "Edmonton", "group": "communities", "intro": "The latest news from Edmonton.", "places": ["edmonton"], "sections": ["edmonton"]},
+  {"slug": "st-albert", "title": "St. Albert", "group": "communities", "intro": "The latest news from St. Albert.", "places": ["st-albert"], "sections": ["st-albert"]},
+  {"slug": "sherwood-park", "title": "Sherwood Park", "group": "communities", "intro": "The latest news from Sherwood Park.", "places": ["sherwood-park"], "fallback": "strathcona-county"},
+  {"slug": "strathcona-county", "title": "Strathcona County", "group": "communities", "intro": "The latest news from Strathcona County, including Sherwood Park.", "places": ["strathcona-county", "sherwood-park"], "sections": ["sherwood-park"]},
+  {"slug": "spruce-grove", "title": "Spruce Grove", "group": "communities", "intro": "The latest news from Spruce Grove.", "places": ["spruce-grove"]},
+  {"slug": "stony-plain", "title": "Stony Plain", "group": "communities", "intro": "The latest news from Stony Plain.", "places": ["stony-plain"]},
+  {"slug": "parkland-county", "title": "Parkland County", "group": "communities", "intro": "The latest news from Parkland County.", "places": ["parkland-county"], "fallback": "tri-region"},
+  {"slug": "leduc", "title": "Leduc", "group": "communities", "intro": "The latest news from Leduc.", "places": ["leduc"]},
+  {"slug": "leduc-county", "title": "Leduc County & Nisku", "group": "communities", "intro": "The latest news from Leduc County, including Nisku.", "places": ["leduc-county"]},
+  {"slug": "beaumont", "title": "Beaumont", "group": "communities", "intro": "The latest news from Beaumont.", "places": ["beaumont"]},
+  {"slug": "devon", "title": "Devon", "group": "communities", "intro": "The latest news from Devon.", "places": ["devon"]},
+  {"slug": "fort-saskatchewan", "title": "Fort Saskatchewan", "group": "communities", "intro": "The latest news from Fort Saskatchewan.", "places": ["fort-saskatchewan"]},
+  {"slug": "morinville", "title": "Morinville", "group": "communities", "intro": "The latest news from Morinville.", "places": ["morinville"]},
+  {"slug": "sturgeon-county", "title": "Sturgeon County", "group": "communities", "intro": "The latest news from Sturgeon County.", "places": ["sturgeon-county"]},
+  {"slug": "enoch", "title": "Enoch Cree Nation", "group": "communities", "intro": "The latest news from Enoch Cree Nation.", "places": ["enoch"], "sections": ["enoch"]},
+  {"slug": "tri-region", "title": "Spruce Grove, Stony Plain, Parkland & Enoch", "group": "communities", "hidden": true,
+   "intro": "The latest news from Spruce Grove, Stony Plain, Parkland County and Enoch Cree Nation.", "places": ["spruce-grove", "stony-plain", "parkland-county", "enoch"], "sections": ["tri-region", "enoch"]},
+  {"slug": "south", "title": "Leduc, Beaumont & Devon", "group": "communities", "hidden": true,
+   "intro": "The latest news from Leduc, Leduc County and Nisku, Beaumont and Devon.", "places": ["leduc", "leduc-county", "beaumont", "devon"], "sections": ["south"]},
+  {"slug": "north", "title": "Fort Saskatchewan, Morinville & Sturgeon", "group": "communities", "hidden": true,
+   "intro": "The latest news from Fort Saskatchewan, Morinville and Sturgeon County.", "places": ["fort-saskatchewan", "morinville", "sturgeon-county"], "sections": ["north"]},
+
+  {"slug": "sports", "title": "Sports", "group": "sports", "intro": "Pro, university and community sports from around the region.",
+   "sections": ["sports"], "tags": ["oilers", "elks", "oil-kings", "university-college", "amateur", "community-sports"]},
+  {"slug": "oilers", "title": "Oilers", "group": "sports", "intro": "Edmonton Oilers news, then and now.", "tags": ["oilers"]},
+  {"slug": "elks", "title": "Elks", "group": "sports", "intro": "Edmonton Elks news, including the 2026 Grey Cup win.", "tags": ["elks"]},
+  {"slug": "oil-kings", "title": "Oil Kings", "group": "sports", "intro": "Edmonton Oil Kings news from the WHL.", "tags": ["oil-kings"], "fallback": "sports"},
+  {"slug": "university-college", "title": "University & college", "group": "sports", "intro": "University and college sports, including the U of A Golden Bears and Pandas.", "tags": ["university-college"], "fallback": "sports"},
+  {"slug": "amateur", "title": "High school & amateur", "group": "sports", "intro": "Junior, high school and amateur sports from around the region.", "tags": ["amateur"], "fallback": "sports"},
+  {"slug": "community-sports", "title": "Community sports", "group": "sports", "intro": "Community games, leagues and fundraisers.", "tags": ["community-sports"], "fallback": "sports"},
+
+  {"slug": "business", "title": "Business & Energy", "group": "business", "intro": "Business, energy, jobs and development across the region.",
+   "sections": ["business"], "tags": ["business", "energy", "real-estate", "agriculture", "jobs"]},
+  {"slug": "energy", "title": "Energy & the Industrial Heartland", "group": "business", "intro": "Energy, industry and the Industrial Heartland north and east of Edmonton.", "tags": ["energy"], "fallback": "business"},
+  {"slug": "real-estate", "title": "Real estate & development", "group": "business", "intro": "Housing, development and what's being built.", "tags": ["real-estate"], "fallback": "business"},
+  {"slug": "agriculture", "title": "Agriculture & rural", "group": "business", "intro": "Farms, food producers and rural life around the region.", "tags": ["agriculture"], "fallback": "business"},
+  {"slug": "jobs", "title": "Jobs", "group": "business", "intro": "Hiring, layoffs and the local job market.", "tags": ["jobs"], "fallback": "business"},
+
+  {"slug": "opinion", "title": "Opinion", "group": "opinion", "intro": "Columns and opinion from around the region, each linking to the original.",
+   "sections": ["opinion"], "tags": ["columns", "letters"]},
+  {"slug": "columns", "title": "Columns", "group": "opinion", "intro": "Columns from the region's writers, each linking to the original.", "tags": ["columns"], "fallback": "opinion"},
+  {"slug": "letters", "title": "Letters to the editor", "group": "opinion", "intro": "Letters from YEGToday readers.", "tags": ["letters"], "fallback": "opinion",
+   "empty": "We haven't published any letters yet. A way to send one is coming soon."},
+
+  {"slug": "crime", "title": "Cops, Crime & Court", "group": "crime", "intro": "Police, courts, fire and road safety across the region.",
+   "sections": ["crime"], "tags": ["cops-courts", "fire-rescue", "road-safety"]},
+  {"slug": "cops-courts", "title": "Cops & courts", "group": "crime", "intro": "Police and court news.", "tags": ["cops-courts"], "fallback": "crime"},
+  {"slug": "fire-rescue", "title": "Fire & rescue", "group": "crime", "intro": "Fires, rescues and emergency crews.", "tags": ["fire-rescue"], "fallback": "crime"},
+  {"slug": "road-safety", "title": "Road safety", "group": "crime", "intro": "Crashes, speeding, road conditions and traffic safety.", "tags": ["road-safety"], "fallback": "crime"},
+
+  {"slug": "city-hall", "title": "City Hall & council", "group": "more", "intro": "City and county councils, budgets and local politics.", "tags": ["city-hall"]},
+  {"slug": "transit-roads", "title": "Transit & roads", "group": "more", "intro": "LRT, buses, bridges, bike lanes and roads.", "tags": ["transit-roads"]},
+  {"slug": "weather", "title": "Weather", "group": "more", "intro": "Weather and how it's affecting the region.", "tags": ["weather"], "fallback": "road-safety"},
+  {"slug": "arts-festivals", "title": "Arts & festivals", "group": "more", "intro": "Artists, festivals and the arts scene.", "tags": ["arts-festivals"]},
+  {"slug": "food-drink", "title": "Food & drink", "group": "more", "intro": "Restaurants, bakeries and local food.", "tags": ["food-drink"]},
+  {"slug": "indigenous", "title": "Indigenous", "group": "more", "intro": "News from and about Indigenous communities in the region.", "tags": ["indigenous"]},
+  {"slug": "newcomers", "title": "Newcomers", "group": "more", "intro": "News for people new to Edmonton and the region.", "tags": ["newcomers"], "fallback": "latest",
+   "empty": "We don't have any newcomer stories yet."},
+  {"slug": "history", "title": "Edmonton history", "group": "more", "intro": "This month in Edmonton history.", "sections": ["history"]},
+  {"slug": "events", "title": "Local events", "group": "more", "intro": "Parades, festivals, fundraisers and things to do.", "tags": ["events"]},
+  {"slug": "neighbours", "title": "Meet your neighbours", "group": "more", "intro": "People and small businesses from around the region.", "sections": ["neighbours"], "tags": ["neighbours"]},
+  {"slug": "living", "title": "Edmonton Living", "group": "more", "hidden": true, "intro": "Food, arts, parks and life in Edmonton.", "sections": ["living"]},
+  {"slug": "latest", "title": "Latest news", "group": "more", "hidden": true, "intro": "Every YEGToday story, newest first.", "all": true}
+ ],
+ "pages": [
+  {"slug": "about", "title": "About YEGToday", "docTitle": "About us", "intro": "Who we are, how we report, and the parts of the site that are still being built.",
+   "sections": [
+    {"id": "about", "heading": "About us", "body": [
+     "YEGToday is a local news site for Edmonton and the communities around it, from St. Albert and Sherwood Park to Leduc, Spruce Grove, Fort Saskatchewan and Enoch Cree Nation.",
+     "We bring the region's news together in one place: short summaries of what other outlets are reporting, each linking to the original, plus our own reporting."]},
+    {"id": "how-we-report", "heading": "How we report", "body": [
+     "Most stories are summaries, in our own words, of reporting by other news outlets. Each one names the outlet and links to its story, so you can read the full version.",
+     "When YEGToday reports a story itself, we say who told us each fact, such as police at the scene, and we list what we don't know yet.",
+     "Photos come from freely licensed sources such as Wikimedia Commons and Flickr, and every one is credited at the bottom of the page it appears on."]},
+    {"id": "corrections", "heading": "Corrections", "body": [
+     "If we get something wrong, we fix it and note the change at the bottom of the story."]},
+    {"id": "ethics", "heading": "Ethics", "body": [
+     "We don't copy other outlets' stories or photos. We credit the people and outlets whose work we draw on, and we keep identifiable private people out of photos in crime and controversy stories."]},
+    {"id": "ownership", "heading": "Ownership & funding", "body": [
+     "Details about who owns and funds YEGToday are coming soon."]},
+    {"id": "careers", "heading": "Careers", "body": [
+     "Job openings at YEGToday will be posted here."]},
+    {"id": "contact", "heading": "Contact & news tips", "body": [
+     "A contact address for news tips, questions, letters to the editor and advertising is coming soon."]},
+    {"id": "privacy", "heading": "Privacy & cookies", "body": [
+     "YEGToday doesn't use reader accounts, cookies, analytics or ad trackers.",
+     "The site is hosted on GitHub Pages and its fonts load from Google Fonts, so, as with any website, those services can see your IP address when you visit."]},
+    {"id": "terms", "heading": "Terms of use", "body": [
+     "Our summaries link to the original reporting, which belongs to the outlets that published it. Photos are used under the licences listed in each page's photo credits. Full terms of use are coming soon."]},
+    {"id": "accessibility", "heading": "Accessibility", "body": [
+     "We build YEGToday to work with a keyboard and with screen readers, with readable text contrast, and with less motion if your device asks for it. If something doesn't work for you, we want to hear about it once our contact address is up."]},
+    {"id": "coming-soon", "heading": "Coming soon", "body": [
+     "Some parts of YEGToday aren't ready yet: reader accounts and comments, newsletters, site search, audio versions of stories, live weather, poll voting and the poll archive, videos and podcasts, classifieds, the local business directory, gas prices and community discussions.", "Until they're ready, the weather and poll results on our pages are samples, and the newsletter buttons don't sign you up for anything."]}
+   ]},
+  {"slug": "obituaries", "title": "Obituaries", "intro": "Obituaries and memorial notices from Edmonton and the region.",
+   "sections": [
+    {"id": "latest", "heading": "Latest obituaries", "body": [
+     "YEGToday doesn't publish obituaries yet. The notices shown on the homepage are samples of how they'll look."]},
+    {"id": "search", "heading": "Search obituaries", "body": [
+     "Search will open once we start publishing obituaries."]},
+    {"id": "in-memoriam", "heading": "In memoriam", "body": [
+     "In memoriam notices will appear here."]},
+    {"id": "place", "heading": "Place an obituary", "body": [
+     "We're not taking obituary submissions yet. Details on how to place one are coming soon."]}
+   ]}
+ ]
+}

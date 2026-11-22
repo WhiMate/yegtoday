@@ -69,6 +69,13 @@
     menuToggle.addEventListener('click', () => (drawerOpen() ? closeDrawer() : openDrawer()));
     backdrop.addEventListener('click', () => closeDrawer());
     if (navClose) navClose.addEventListener('click', () => closeDrawer());
+    // A menu link to a section of this same page (e.g. Newsletters on the homepage) doesn't load a new page,
+    // so close the drawer and menus ourselves; this runs before the browser jumps to the #section.
+    nav.addEventListener('click', (e) => {
+      if (!e.target.closest('a[href]')) return;
+      closeMenus();
+      if (drawerOpen()) closeDrawer({ restoreFocus: false });
+    });
     onMqChange(() => {
       if (!mqMobile.matches && drawerOpen()) closeDrawer({ restoreFocus: false });
       closeMenus();
@@ -109,7 +116,7 @@
   if (searchPanel) {
     $('form', searchPanel).addEventListener('submit', (e) => {
       e.preventDefault();
-      if (searchStatus) searchStatus.textContent = 'Search isn’t connected in this design preview.';
+      if (searchStatus) searchStatus.textContent = 'Search is coming soon. For now, browse by topic from the menu.';
     });
   }
 
@@ -185,7 +192,7 @@
       if (!picked) { note.textContent = 'Choose an option first.'; return; }
       voted = String(picked);
       showResults();
-      note.textContent = 'Thanks for voting. These are sample results — this preview doesn’t record votes.';
+      note.textContent = 'Thanks! Poll voting opens soon, so your vote wasn’t recorded. These are sample results.';
       out.focus();
     });
 
@@ -203,20 +210,11 @@
     }
   });
 
-  /* ---------- Newsletter cards: the name stays "Add", the pressed state carries the change ---------- */
+  /* ---------- Newsletter cards: sign-up isn't built yet, so say so instead of pretending ---------- */
   $$('.nl-card .btn').forEach((btn) => {
-    const label = document.createElement('span');
-    label.textContent = btn.textContent.trim();
-    const done = document.createElement('span');
-    done.textContent = 'Added ✓';
-    done.setAttribute('aria-hidden', 'true');
-    done.hidden = true;
-    btn.replaceChildren(label, done);
     btn.addEventListener('click', () => {
-      const on = btn.getAttribute('aria-pressed') !== 'true';
-      btn.setAttribute('aria-pressed', String(on));
-      label.className = on ? 'sr-only' : '';
-      done.hidden = !on;
+      btn.textContent = 'Coming soon';
+      btn.setAttribute('aria-disabled', 'true');
     });
   });
 
@@ -262,37 +260,14 @@
     });
   });
 
-  /* ---------- Article: listen (placeholder player with a working timer) ---------- */
+  /* ---------- Article: listen (audio isn't built yet, so the button says so) ---------- */
   $$('[data-listen]').forEach((wrap) => {
     const btn = $('.listen-btn', wrap);
-    const label = $('.listen-label', wrap);
     const time = $('.listen-time', wrap);
-    if (!btn || !label || !time) return;
-    const totalText = time.dataset.total || time.textContent.trim();
-    const total = totalText.split(':').reduce((acc, n) => acc * 60 + Number(n), 0) || 0;
-    const fmt = (s) => [Math.floor(s / 3600), Math.floor(s / 60) % 60, s % 60].map((n) => String(n).padStart(2, '0')).join(':');
-    const icon = $('use', btn);
-    let secs = 0;
-    let timer = null;
-
-    const stop = (finished) => {
-      clearInterval(timer);
-      timer = null;
-      btn.setAttribute('aria-pressed', 'false');
-      if (icon) icon.setAttribute('href', '#i-play');
-      label.textContent = 'Listen to this article';
-      if (finished) { secs = 0; time.textContent = totalText; }
-    };
+    if (!btn || !time) return;
     btn.addEventListener('click', () => {
-      if (timer) { stop(false); return; }
-      btn.setAttribute('aria-pressed', 'true');
-      if (icon) icon.setAttribute('href', '#i-pause');
-      label.textContent = 'Playing (audio placeholder)';
-      timer = setInterval(() => {
-        secs += 1;
-        if (total && secs >= total) { stop(true); return; }
-        time.textContent = `${fmt(secs)} / ${totalText}`;
-      }, 1000);
+      time.setAttribute('role', 'status');
+      time.textContent = 'Audio versions of stories are coming soon.';
     });
   });
 

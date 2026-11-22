@@ -1,5 +1,6 @@
 {
  "leadHref": "article.html",
+ "leadId": "s03",
  "groups": {
   "edmonton": {
    "runningTitle": "",
@@ -25,7 +26,10 @@
       "filePage": "https://commons.wikimedia.org/wiki/File:Edmonton_City_Centre_Edmonton_August_2026.jpg",
       "src": "assets/img/stories/s01.webp",
       "title": "Edmonton City Centre Edmonton August 2026"
-     }
+     },
+     "topics": [
+      "real-estate"
+     ]
     },
     {
      "headline": "Kehewin Cree Nation proposes Edmonton's first urban reserve on Blatchford land",
@@ -48,7 +52,12 @@
       "filePage": "https://commons.wikimedia.org/wiki/File:Blatchford_Air_Traffic_Control_Tower.jpg",
       "src": "assets/img/stories/s02.webp",
       "title": "Blatchford Air Traffic Control Tower"
-     }
+     },
+     "topics": [
+      "indigenous",
+      "real-estate",
+      "city-hall"
+     ]
     },
     {
      "headline": "Province says City of Champions signs will return to highways into Edmonton",
@@ -74,7 +83,10 @@
       "hero": "assets/img/stories/s03-lg.webp",
       "alt": "Stone sign reading Welcome to the City of Edmonton, with a City of Champions plaque below it",
       "title": "Edmonton Entrance Sign"
-     }
+     },
+     "topics": [
+      "elks"
+     ]
     },
     {
      "headline": "Government Centre LRT station is set to become Buffalo Crossing",
@@ -97,7 +109,10 @@
       "filePage": "https://commons.wikimedia.org/wiki/File:GrandinStation110StreetEntrancesJuly2020.jpg",
       "src": "assets/img/stories/s04.webp",
       "title": "GrandinStation110StreetEntrancesJuly2020"
-     }
+     },
+     "topics": [
+      "transit-roads"
+     ]
     },
     {
      "headline": "Three downtown parkades drop to a $5 flat rate for December",
@@ -120,7 +135,11 @@
       "filePage": "https://commons.wikimedia.org/wiki/File:Stanley_A._Milner_Library_from_Churchill_Square,_Edmonton,_2026.jpg",
       "src": "assets/img/stories/s05.webp",
       "title": "Stanley A. Milner Library from Churchill Square, Edmonton, 2026"
-     }
+     },
+     "topics": [
+      "transit-roads",
+      "city-hall"
+     ]
     },
     {
      "headline": "High Level Bridge to close for most of 2027 for urgent storm repairs",
@@ -143,7 +162,10 @@
       "filePage": "https://commons.wikimedia.org/wiki/File:High_Level_Bridge,_Edmonton,_Alberta,_2026-09-27_02.jpg",
       "src": "assets/img/stories/s06.webp",
       "title": "High Level Bridge, Edmonton, Alberta, 2026-09-27 02"
-     }
+     },
+     "topics": [
+      "transit-roads"
+     ]
     },
     {
      "headline": "City proposes 4.9% property tax hike for 2027 in its new four-year budget",
@@ -166,7 +188,10 @@
       "filePage": "https://commons.wikimedia.org/wiki/File:Edmonton_City_Hall_and_Memorial_Fountain,_June_6,_2024.jpg",
       "src": "assets/img/stories/s07.webp",
       "title": "Edmonton City Hall and Memorial Fountain, June 6, 2024"
-     }
+     },
+     "topics": [
+      "city-hall"
+     ]
     },
     {
      "headline": "Alberta bill would let the province remove city bike lanes, and Edmonton is pushing back",
@@ -189,7 +214,11 @@
       "filePage": "https://commons.wikimedia.org/wiki/File:102_Avenue_Bike_Lane_(52109439155).jpg",
       "src": "assets/img/stories/s08.webp",
       "title": "102 Avenue Bike Lane"
-     }
+     },
+     "topics": [
+      "transit-roads",
+      "city-hall"
+     ]
     },
     {
      "headline": "Lower speed limits on parts of Jasper Avenue and Gateway Boulevard move a step closer",
@@ -212,7 +241,12 @@
       "filePage": "https://commons.wikimedia.org/wiki/File:Jasper_Avenue_Westbound,_Downtown_Edmonton_10-17-2022.jpg",
       "src": "assets/img/stories/s09.webp",
       "title": "Jasper Avenue Westbound, Downtown Edmonton 10-17-2022"
-     }
+     },
+     "topics": [
+      "road-safety",
+      "transit-roads",
+      "city-hall"
+     ]
     },
     {
      "headline": "Urgent care centres are coming, but south Edmonton still wants its hospital",
@@ -281,7 +315,10 @@
       "filePage": "https://commons.wikimedia.org/wiki/File:Edmonton_Cenotaph,_Edmonton,_Alberta,_2026-09-27_03.jpg",
       "src": "assets/img/stories/s12.webp",
       "title": "Edmonton Cenotaph, Edmonton, Alberta, 2026-09-27 03"
-     }
+     },
+     "topics": [
+      "real-estate"
+     ]
     }
    ]
   },
@@ -332,7 +369,10 @@
       "filePage": "https://commons.wikimedia.org/wiki/File:Servus_Place_Leisure_Ice_Skating_Rink_2014.jpg",
       "src": "assets/img/stories/s14.webp",
       "title": "Servus Place Leisure Ice Skating Rink 2014"
-     }
+     },
+     "topics": [
+      "amateur"
+     ]
     },
     {
      "headline": "St. Albert tattoo studio hosts fundraiser for military families ahead of Remembrance Day",
@@ -355,7 +395,10 @@
       "filePage": "https://commons.wikimedia.org/wiki/File:Downtown_St_Albert_Alberta_Canada_02.jpg",
       "src": "assets/img/stories/s15.webp",
       "title": "Downtown St Albert Alberta Canada 02"
-     }
+     },
+     "topics": [
+      "events"
+     ]
     },
     {
      "headline": "Oil Kings trade for St. Albert-born winger Ty Meunier to boost their scoring",
@@ -378,7 +421,13 @@
       "filePage": "https://commons.wikimedia.org/wiki/File:Rogers_Place,_Edmonton,_June_6,_2024.jpg",
       "src": "assets/img/stories/s16.webp",
       "title": "Rogers Place, Edmonton, June 6, 2024"
-     }
+     },
+     "topics": [
+      "oil-kings"
+     ],
+     "places": [
+      "edmonton"
+     ]
     },
     {
      "headline": "Strathcona County wedding photographer earns provincial title and a Team Canada spot",
@@ -401,7 +450,10 @@
       "filePage": "https://commons.wikimedia.org/wiki/File:Beautiful_Sherwood_Park.jpg",
       "src": "assets/img/stories/s17.webp",
       "title": "Beautiful Sherwood Park"
-     }
+     },
+     "topics": [
+      "neighbours"
+     ]
     },
     {
      "headline": "CPKC Holiday Train will stop in Josephburg on Dec. 13 with the Sam Roberts Band",
@@ -424,7 +476,10 @@
       "filePage": "https://commons.wikimedia.org/wiki/File:Canadian_Pacific_Holiday_Train.JPG",
       "src": "assets/img/stories/s18.webp",
       "title": "Canadian Pacific Holiday Train"
-     }
+     },
+     "topics": [
+      "events"
+     ]
     },
     {
      "headline": "Strathcona County approves $160,000 to restore stolen Woodbridge Farms sign plaques",
@@ -447,7 +502,13 @@
       "filePage": "https://commons.wikimedia.org/wiki/File:Strathcona_sign.jpg",
       "src": "assets/img/stories/s19.webp",
       "title": "Strathcona sign"
-     }
+     },
+     "topics": [
+      "city-hall"
+     ],
+     "places": [
+      "strathcona-county"
+     ]
     },
     {
      "headline": "Strathcona County administration proposes 6.95 per cent property tax increase for 2027",
@@ -470,7 +531,13 @@
       "filePage": "https://commons.wikimedia.org/wiki/File:Sherwood_Park.jpg",
       "src": "assets/img/stories/s20.webp",
       "title": "Sherwood Park"
-     }
+     },
+     "topics": [
+      "city-hall"
+     ],
+     "places": [
+      "sherwood-park"
+     ]
     },
     {
      "headline": "Volcano-themed playground taking shape in Fort Saskatchewan's Roseburn neighbourhood",
@@ -516,7 +583,10 @@
       "filePage": "https://commons.wikimedia.org/wiki/File:Fort_Saskatchewan_Downtown.jpg",
       "src": "assets/img/stories/s22.webp",
       "title": "Fort Saskatchewan Downtown"
-     }
+     },
+     "topics": [
+      "arts-festivals"
+     ]
     },
     {
      "headline": "Morinville's free Lite Up the Nite festival brings a parade and fireworks Nov. 27 to 29",
@@ -539,7 +609,11 @@
       "filePage": "https://commons.wikimedia.org/wiki/File:Notre_Dame_Convent,_Morinville.jpg",
       "src": "assets/img/stories/s23.webp",
       "title": "Notre Dame Convent, Morinville"
-     }
+     },
+     "topics": [
+      "events",
+      "arts-festivals"
+     ]
     },
     {
      "headline": "Trump's threat to tax offshore data centres raises questions for Meta's build north of Edmonton",
@@ -562,7 +636,11 @@
       "filePage": "https://commons.wikimedia.org/wiki/File:Namao_Alberta_Grain_Elevator_(20867089931).jpg",
       "src": "assets/img/stories/s24.webp",
       "title": "Namao Alberta Grain Elevator"
-     }
+     },
+     "topics": [
+      "business",
+      "energy"
+     ]
     }
    ]
   },
@@ -590,7 +668,10 @@
       "filePage": "https://commons.wikimedia.org/wiki/File:Spruce_Grove_City_Hall.jpg",
       "src": "assets/img/stories/s25.webp",
       "title": "Spruce Grove City Hall"
-     }
+     },
+     "topics": [
+      "amateur"
+     ]
     },
     {
      "headline": "First responder and military teams hit the ice in Spruce Grove to honour fallen officer",
@@ -604,7 +685,11 @@
      "fun": 3,
      "running": false,
      "author": "",
-     "id": "s26"
+     "id": "s26",
+     "topics": [
+      "community-sports",
+      "events"
+     ]
     },
     {
      "headline": "Stony Plain's 'Griswold House' readies about 60,000 lights for its seventh holiday season",
@@ -618,7 +703,10 @@
      "fun": 5,
      "running": false,
      "author": "",
-     "id": "s27"
+     "id": "s27",
+     "topics": [
+      "events"
+     ]
     },
     {
      "headline": "WestView hospital foundation passes $3 million in push for Stony Plain CT scanner",
@@ -664,7 +752,10 @@
       "filePage": "https://commons.wikimedia.org/wiki/File:Leduc_Alberta_Grain_Elevator_(10078864906).jpg",
       "src": "assets/img/stories/s29.webp",
       "title": "Leduc Alberta Grain Elevator"
-     }
+     },
+     "topics": [
+      "events"
+     ]
     },
     {
      "headline": "Nisku soaks up industrial growth as businesses chase Leduc County's lower taxes",
@@ -687,7 +778,12 @@
       "filePage": "https://commons.wikimedia.org/wiki/File:Nisku,_AB_(4706062919).jpg",
       "src": "assets/img/stories/s30.webp",
       "title": "Nisku, AB"
-     }
+     },
+     "topics": [
+      "business",
+      "energy",
+      "real-estate"
+     ]
     },
     {
      "headline": "Beaumont's photo radar shuts off Dec. 6 after the provider ends its contract",
@@ -710,7 +806,10 @@
       "filePage": "https://commons.wikimedia.org/wiki/File:Saint_Vital_Roman_Catholic_Church_Beaumont_Alberta_Canada_01A.jpg",
       "src": "assets/img/stories/s31.webp",
       "title": "Saint Vital Roman Catholic Church Beaumont Alberta Canada 01A"
-     }
+     },
+     "topics": [
+      "road-safety"
+     ]
     },
     {
      "headline": "Devon collects three national Communities in Bloom honours",
@@ -756,7 +855,11 @@
       "filePage": "https://commons.wikimedia.org/wiki/File:Enoch_Cree_Nation_administration_building.jpg",
       "src": "assets/img/stories/s33.webp",
       "title": "Enoch Cree Nation administration building"
-     }
+     },
+     "topics": [
+      "indigenous",
+      "real-estate"
+     ]
     },
     {
      "headline": "River Cree Resort and Casino turns 20, with a new hotel and spa on the way",
@@ -779,7 +882,11 @@
       "filePage": "https://commons.wikimedia.org/wiki/File:River_Cree_Casino_sign.jpg",
       "src": "assets/img/stories/s34.webp",
       "title": "River Cree Casino sign"
-     }
+     },
+     "topics": [
+      "indigenous",
+      "business"
+     ]
     }
    ]
   },
@@ -825,7 +932,10 @@
       "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
       "filePage": "https://commons.wikimedia.org/wiki/File:Rogers_Place,_Edmonton,_June_6,_2024.jpg",
       "kind": "subject"
-     }
+     },
+     "topics": [
+      "road-safety"
+     ]
     },
     {
      "headline": "Slain officers' families address court at sentencing of man who sold the rifle",
@@ -848,7 +958,10 @@
       "filePage": "https://commons.wikimedia.org/wiki/File:Edmonton_Law_Courts_Building,_June_6,_2024_(1).jpg",
       "src": "assets/img/stories/s35.webp",
       "title": "Edmonton Law Courts Building, June 6, 2024 (1)"
-     }
+     },
+     "topics": [
+      "cops-courts"
+     ]
     },
     {
      "headline": "Driver who fled police in a U-Haul gets 14 years for killing Fort Saskatchewan food bank head",
@@ -871,7 +984,13 @@
       "filePage": "https://commons.wikimedia.org/wiki/File:Fort_Saskatewan_Public_Library_and_City_Hall_-_31-Dec-2016.jpg",
       "src": "assets/img/stories/s36.webp",
       "title": "Fort Saskatewan Public Library and City Hall - 31-Dec-2016"
-     }
+     },
+     "topics": [
+      "cops-courts"
+     ],
+     "places": [
+      "fort-saskatchewan"
+     ]
     },
     {
      "headline": "Retired RCMP vehicles slated for scrap were resold instead, Alberta Mounties allege",
@@ -894,7 +1013,10 @@
       "filePage": "https://commons.wikimedia.org/wiki/File:RCMP_Car_in_Seba_Beach.jpg",
       "src": "assets/img/stories/s37.webp",
       "title": "RCMP Car in Seba Beach"
-     }
+     },
+     "topics": [
+      "cops-courts"
+     ]
     },
     {
      "headline": "Police urge Edmonton-area drivers to ease off as snow slicks the roads",
@@ -917,7 +1039,14 @@
       "filePage": "https://commons.wikimedia.org/wiki/File:Snowy_107_St_(5341090987).jpg",
       "src": "assets/img/stories/s38.webp",
       "title": "Snowy 107 St"
-     }
+     },
+     "topics": [
+      "road-safety",
+      "weather"
+     ],
+     "places": [
+      "edmonton"
+     ]
     },
     {
      "headline": "Judge's order empties troubled Stadium Plaza apartments in Edmonton's Parkdale",
@@ -940,7 +1069,10 @@
       "filePage": "https://commons.wikimedia.org/wiki/File:Stadium_LRT_Station_(52026708243).jpg",
       "src": "assets/img/stories/s39.webp",
       "title": "Stadium LRT Station"
-     }
+     },
+     "topics": [
+      "cops-courts"
+     ]
     },
     {
      "headline": "Edmonton police say draft city budget leaves $61.6M hole in technology funding",
@@ -963,7 +1095,11 @@
       "filePage": "https://commons.wikimedia.org/wiki/File:Edmonton_Police_Ford_Police_Interceptor_Utility_Y26.jpg",
       "src": "assets/img/stories/s40.webp",
       "title": "Edmonton Police Ford Police Interceptor Utility Y26"
-     }
+     },
+     "topics": [
+      "cops-courts",
+      "city-hall"
+     ]
     },
     {
      "headline": "Police chief says cybercrime and AI are outpacing EPS without more capital funding",
@@ -986,7 +1122,10 @@
       "filePage": "https://commons.wikimedia.org/wiki/File:Edmonton_Police_Cars_(50076963087).jpg",
       "src": "assets/img/stories/s41.webp",
       "title": "Edmonton Police Cars"
-     }
+     },
+     "topics": [
+      "cops-courts"
+     ]
     },
     {
      "headline": "Crime-mapping software behind drop in violent crime, EPS tells police commission",
@@ -1009,7 +1148,10 @@
       "filePage": "https://commons.wikimedia.org/wiki/File:Edmonton_Police_Headquarters_(35778923891).jpg",
       "src": "assets/img/stories/s42.webp",
       "title": "Edmonton Police Headquarters"
-     }
+     },
+     "topics": [
+      "cops-courts"
+     ]
     }
    ]
   },
@@ -1038,7 +1180,10 @@
       "filePage": "https://commons.wikimedia.org/wiki/File:111th_Grey_Cup,_Trophy.jpg",
       "src": "assets/img/stories/s43.webp",
       "title": "111th Grey Cup, Trophy"
-     }
+     },
+     "topics": [
+      "elks"
+     ]
     },
     {
      "headline": "Lightning snap McDavid's 23-game season-opening point streak with 3-1 win",
@@ -1061,7 +1206,10 @@
       "filePage": "https://commons.wikimedia.org/wiki/File:Dallas_Stars_vs._Edmonton_Oilers_March_14,_2017_Rogers_Place.jpg",
       "src": "assets/img/stories/s44.webp",
       "title": "Dallas Stars vs. Edmonton Oilers March 14, 2017 Rogers Place"
-     }
+     },
+     "topics": [
+      "oilers"
+     ]
     },
     {
      "headline": "Late goal gives Golden Bears men's soccer a U SPORTS bronze over top-seeded UBC",
@@ -1084,7 +1232,10 @@
       "filePage": "https://commons.wikimedia.org/wiki/File:Foote_Field_Edmonton_Alberta_Canada_01A.jpg",
       "src": "assets/img/stories/s45.webp",
       "title": "Foote Field Edmonton Alberta Canada 01A"
-     }
+     },
+     "topics": [
+      "university-college"
+     ]
     },
     {
      "headline": "Junior mixed doubles curling worlds return to Edmonton's Saville Centre for a third year",
@@ -1107,7 +1258,10 @@
       "filePage": "https://commons.wikimedia.org/wiki/File:Curling_sheets_at_the_Saville_Community_Sports_Centre.jpg",
       "src": "assets/img/stories/s46.webp",
       "title": "Curling sheets at the Saville Community Sports Centre"
-     }
+     },
+     "topics": [
+      "amateur"
+     ]
     },
     {
      "headline": "Direct freighter link to Mexico City coming to Edmonton International Airport in December",
@@ -1132,7 +1286,10 @@
       "filePage": "https://www.flickr.com/photos/204089279@N06/55091319501/",
       "depicts": "A mas Airbus A330 freighter, the type the Mexican cargo airline plans to fly to Edmonton, at Los Angeles International Airport in February 2026",
       "kind": "subject"
-     }
+     },
+     "topics": [
+      "business"
+     ]
     },
     {
      "headline": "Costco trades its long-running 50 Street store for a bigger warehouse in northeast Edmonton",
@@ -1155,7 +1312,10 @@
       "filePage": "https://commons.wikimedia.org/wiki/File:Costco_Edmonton_Alberta_Canada_01A.jpg",
       "src": "assets/img/stories/s48.webp",
       "title": "Costco Edmonton Alberta Canada 01A"
-     }
+     },
+     "topics": [
+      "real-estate"
+     ]
     },
     {
      "headline": "Edmonton's fast-growing AI, defence and life sciences sectors remain a small slice of jobs",
@@ -1178,7 +1338,13 @@
       "filePage": "https://commons.wikimedia.org/wiki/File:Edmonton_Clinic_Health_Academy.jpg",
       "src": "assets/img/stories/s49.webp",
       "title": "Edmonton Clinic Health Academy"
-     }
+     },
+     "topics": [
+      "jobs"
+     ],
+     "places": [
+      "edmonton"
+     ]
     },
     {
      "headline": "Sherritt temporarily lays off about 280 workers as its Fort Saskatchewan refinery sits idle",
@@ -1201,7 +1367,11 @@
       "filePage": "https://commons.wikimedia.org/wiki/File:Sherritt-Plant-Fort-Saskatchewan-Alberta-Canada-02A.jpg",
       "src": "assets/img/stories/s50.webp",
       "title": "Sherritt-Plant-Fort-Saskatchewan-Alberta-Canada-02A"
-     }
+     },
+     "topics": [
+      "jobs",
+      "energy"
+     ]
     }
    ]
   },
@@ -1229,7 +1399,10 @@
       "title": "Treats from Duchess Bake Shop!",
       "depicts": "Treats from Duchess Bake Shop, in a 2009 photo",
       "src": "assets/img/stories/s51.webp"
-     }
+     },
+     "topics": [
+      "food-drink"
+     ]
     },
     {
      "headline": "Oilers tribute built from empty pop cases towers nearly 17 feet in a Mayfield grocery store",
@@ -1252,7 +1425,10 @@
       "filePage": "https://commons.wikimedia.org/wiki/File:Save-On-Foods_Dollarama_Mayfield_Common_Edmonton_2014.jpg",
       "src": "assets/img/stories/s52.webp",
       "title": "Save-On-Foods Dollarama Mayfield Common Edmonton 2014"
-     }
+     },
+     "topics": [
+      "oilers"
+     ]
     },
     {
      "headline": "Green Onion Cake Man to leave its Alberta Avenue storefront when the lease ends in April 2027",
@@ -1275,7 +1451,11 @@
       "filePage": "https://commons.wikimedia.org/wiki/File:Green_onion_cakes_in_Edmonton.jpg",
       "src": "assets/img/stories/s53.webp",
       "title": "Green onion cakes in Edmonton"
-     }
+     },
+     "topics": [
+      "food-drink",
+      "business"
+     ]
     },
     {
      "headline": "Eighteen Edmonton artists each receive $15,000 from the Edmonton Artists' Trust Fund",
@@ -1298,7 +1478,10 @@
       "filePage": "https://commons.wikimedia.org/wiki/File:Art_Gallery_of_Alberta,_Edmonton,_Alberta,_2026-09-27.jpg",
       "src": "assets/img/stories/s54.webp",
       "title": "Art Gallery of Alberta, Edmonton, Alberta, 2026-09-27"
-     }
+     },
+     "topics": [
+      "arts-festivals"
+     ]
     },
     {
      "headline": "Hawrelak Park adds ice bumper cars, ice bikes and skate rentals this winter",
@@ -1321,7 +1504,10 @@
       "filePage": "https://commons.wikimedia.org/wiki/File:%E2%99%AB%E2%99%AB_Walking_in_the_Winter_Wonderland_%E2%99%AB%E2%99%AB_(4220142393).jpg",
       "src": "assets/img/stories/s55.webp",
       "title": "♫♫ Walking in the Winter Wonderland ♫♫"
-     }
+     },
+     "topics": [
+      "events"
+     ]
     },
     {
      "headline": "Edmonton Valley Zoo builds its first Day of the Dead altar to honour animals it has lost",
@@ -1344,7 +1530,10 @@
       "filePage": "https://commons.wikimedia.org/wiki/File:Valley_Zoo_Entrance.jpg",
       "src": "assets/img/stories/s56.webp",
       "title": "Valley Zoo Entrance"
-     }
+     },
+     "topics": [
+      "events"
+     ]
     },
     {
      "headline": "Jasper Avenue's Coffee Bureau nominated for Canada's Favourite Business 2026",
@@ -1367,7 +1556,11 @@
       "filePage": "https://commons.wikimedia.org/wiki/File:Coffee_Bureau_(16528942276).jpg",
       "src": "assets/img/stories/s57.webp",
       "title": "Coffee Bureau"
-     }
+     },
+     "topics": [
+      "food-drink",
+      "business"
+     ]
     },
     {
      "headline": "Seniors and toddlers bond over songs and stories at Canterbury Foundation literacy program",
@@ -1413,7 +1606,16 @@
       "title": "02024 0417 Pierogi (Dumplings)",
       "depicts": "Pierogi, the Polish dumplings, on trays at a market stall",
       "src": "assets/img/stories/s59.webp"
-     }
+     },
+     "topics": [
+      "food-drink",
+      "business",
+      "agriculture"
+     ],
+     "places": [
+      "edmonton",
+      "strathcona-county"
+     ]
     },
     {
      "headline": "Gerein: Edmonton earned the champions label again, but it shouldn't be the city's brand",
@@ -1436,7 +1638,11 @@
       "filePage": "https://commons.wikimedia.org/wiki/File:Commonwealth_Stadium_(Edmonton,_AB).jpg",
       "src": "assets/img/stories/s60.webp",
       "title": "Commonwealth Stadium (Edmonton, AB)"
-     }
+     },
+     "topics": [
+      "columns",
+      "elks"
+     ]
     },
     {
      "headline": "Gunter: Province's bike lane bill is common sense, and a city memo shows why",
@@ -1459,7 +1665,11 @@
       "filePage": "https://commons.wikimedia.org/wiki/File:102_Avenue_Downtown_(52108584548).jpg",
       "src": "assets/img/stories/s61.webp",
       "title": "102 Avenue Downtown"
-     }
+     },
+     "topics": [
+      "columns",
+      "transit-roads"
+     ]
     },
     {
      "headline": "Nov. 10, 1974: Edmonton's new Coliseum opens with an Oilers win over Cleveland",
@@ -1482,7 +1692,10 @@
       "filePage": "https://commons.wikimedia.org/wiki/File:Rexall_Place_Edmonton_Alberta_Canada_07A.jpg",
       "src": "assets/img/stories/s62.webp",
       "title": "Rexall Place Edmonton Alberta Canada 07A"
-     }
+     },
+     "topics": [
+      "oilers"
+     ]
     },
     {
      "headline": "Nov. 27, 1954: Jackie Parker's fumble return delivers Edmonton's first Grey Cup",
@@ -1507,7 +1720,10 @@
       "filePage": "https://www.flickr.com/photos/alberta_archives/54508198750/",
       "depicts": "Edmonton Eskimos fans cheer during the radio broadcast of the 1954 Grey Cup",
       "kind": "event"
-     }
+     },
+     "topics": [
+      "elks"
+     ]
     }
    ]
   }
