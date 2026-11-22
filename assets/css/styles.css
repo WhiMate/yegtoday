@@ -278,6 +278,7 @@ span.author-name { text-decoration: none; color: var(--ink-strong); }
 .byline-actions .btn { height: 32px; }
 .article-figure .media { aspect-ratio: 3 / 2; }
 .article-figure figcaption { margin-top: 8px; font-size: 12px; line-height: 17px; font-style: italic; }
+.article-figure + .article-body { margin-top: 22px; }
 .listen { display: flex; align-items: center; gap: 12px; margin: 18px 0 22px; }
 .listen-btn { width: 40px; height: 40px; border-radius: 50%; border: 1.5px solid #9a9a9a; display: grid; place-items: center; color: var(--ink-strong); }
 .listen-btn svg { width: 16px; height: 16px; }

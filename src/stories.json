@@ -787,6 +787,47 @@
    "runningTitle": "Police budget debate",
    "stories": [
     {
+     "id": "s64",
+     "headline": "Porsche driver, 23, was going 228 km/h, police at crash scene near Rogers Place say",
+     "dek": "No one was hurt in the single-vehicle crash, which left the front of a grey Porsche Taycan smashed in downtown Edmonton.",
+     "community": "Edmonton",
+     "section": "crime",
+     "published": "2026-11-21",
+     "source": "YEGToday",
+     "author": "",
+     "url": "porsche-crash-rogers-place.html",
+     "reported": "Reported at the scene",
+     "scene": "skyline",
+     "fun": 4,
+     "running": false,
+     "pin": "highlights",
+     "body": [
+      "EDMONTON — A 23-year-old man was driving a Porsche at 228 km/h in Edmonton, police at the scene told YEGToday.",
+      "The grey Porsche Taycan was badly damaged in a single-vehicle crash near Rogers Place downtown. No one was hurt, according to police and firefighters at the scene.",
+      "The front of the car took the worst of it. The hood was crumpled, the front bumper was partly torn off and debris was scattered across the road.",
+      "Fire crews were called to the crash. Traffic cones were set out around the car while traffic kept moving through the intersection, and bystanders watched from the sidewalk. The road was wet, with patches of snow along the curb.",
+      "It wasn't known whether charges had been laid. Edmonton police have not put out a public statement about the crash, and YEGToday will update this story if they do."
+     ],
+     "unknowns": [
+      "Whether the driver has been charged.",
+      "Where the car was going 228 km/h, and how that speed was measured.",
+      "Exactly when the crash happened and at which intersection."
+     ],
+     "howReported": "A YEGToday reporter was at the crash scene and spoke with police officers and firefighters there. The driver's age and speed come from what officers at the scene said; Edmonton police haven't released a statement yet. We'll update this story as we learn more.",
+     "photo": {
+      "src": "assets/img/stories/s64.webp",
+      "hero": "assets/img/stories/s64-lg.webp",
+      "depicts": "Rogers Place in downtown Edmonton, near where the crash happened (file photo from June 2024)",
+      "alt": "The curved silver front of Rogers Place arena and the wide intersection beside it on a sunny day",
+      "title": "Rogers Place, Edmonton, June 6, 2024",
+      "author": "D. Benjamin Miller",
+      "license": "CC0",
+      "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "filePage": "https://commons.wikimedia.org/wiki/File:Rogers_Place,_Edmonton,_June_6,_2024.jpg",
+      "kind": "subject"
+     }
+    },
+    {
      "headline": "Slain officers' families address court at sentencing of man who sold the rifle",
      "dek": "Prosecutors want 12 to 14 years and the defence 4½ for the man found guilty of manslaughter for selling the rifle used to kill constables Travis Jordan and Brett Ryan in March 2023.",
      "community": "Edmonton",

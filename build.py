@@ -272,23 +272,58 @@ class Homepage:
             self.take(lead)
             p = lead.get("photo")
             if p:
-                # alt describes what's in the frame; the caption (read with the figure) says what it is
-                # and who took it, so the two don't repeat each other.
-                alt = esc(p.get("alt", ""))
-                if p.get("hero"):
-                    img = (f'<img src="{esc(p["hero"])}" srcset="{esc(p["src"])} 800w, {esc(p["hero"])} 1280w" '
-                           f'sizes="(max-width: 860px) calc(100vw - 32px), 630px" alt="{alt}" width="1280" height="853" '
-                           f'fetchpriority="high">')
-                else:
-                    img = f'<img src="{esc(p["src"])}" alt="{alt}" width="800" height="533" fetchpriority="high">'
-                figure = (f'<figure class="article-figure"><span class="media">{img}</span>'
-                          f'<figcaption>{credit_line(p)}</figcaption></figure>')
+                figure = hero_figure(p)
             else:
                 figure = (f'<figure class="article-figure">{self.media(lead)}'
                           f'<figcaption>Illustration placeholder</figcaption></figure>')
         self.eager = 0
         more = self.rows_block("more", ["edmonton"], "More Edmonton News", "Edmonton News")
         return {"article-figure": figure, "article-more": more}
+
+    def story_page(self, s) -> dict:
+        """Blocks for one of YEGToday's own stories (a story with a `body`), rendered from src/story.html."""
+        self.take(s)
+        sections, title, label = next((v for v in SECTION_BLOCKS.values() if s["section"] in v[0]),
+                                      (["edmonton"], "Edmonton News", "Edmonton News"))
+        how = s.get("reported", "Reported by YEGToday")
+        head = (
+            '<nav aria-label="Breadcrumb"><ol class="crumbs"><li><a href="index.html">Home</a></li>'
+            f'<li><a href="#" aria-current="page">{esc(title)}</a></li></ol></nav>'
+            f'<h1 class="article-title">{esc(s["headline"])}</h1><p class="article-dek">{esc(s["dek"])}</p>'
+            '<div class="byline-row"><span class="author-pic"><svg aria-hidden="true" class="t-soft"><use href="#s-person"/></svg></span>'
+            f'<div><span class="author-name">{esc(s.get("author") or "YEGToday staff")}</span>'
+            f'<span class="author-time">{esc(fmt_date(s["published"], True))} · {esc(how)}</span></div>'
+            '<div class="byline-actions"><button class="btn btn-outline" type="button" data-share>'
+            '<svg aria-hidden="true"><use href="#i-share"/></svg><span>Share this</span></button>'
+            '<p class="share-status" role="status" data-share-status></p></div></div>'
+        )
+        body = "".join(f"<p>{esc(par)}</p>" for par in s["body"])
+        if s.get("unknowns"):
+            items = "".join(f"<li>{esc(x)}</li>" for x in s["unknowns"])
+            body += f'<div class="fact-box"><h2>Still unanswered</h2><ul>{items}</ul></div>'
+        trust = (f'<div class="trust"><strong>How we reported this:</strong> {esc(s["howReported"])} '
+                 'Spotted an error? <a href="#">Tell us</a> or read our <a href="#">corrections policy</a>.</div>'
+                 if s.get("howReported") else "")
+        self.eager = 0
+        more = self.rows_block("more", sections, f"More {title}", label)
+        return {"story-title": esc(s["headline"]), "story-description": esc(s["dek"]), "story-head": head,
+                "article-figure": hero_figure(s["photo"]) if s.get("photo") else "",
+                "story-body": body, "story-trust": trust, "article-more": more}
+
+
+def hero_figure(p) -> str:
+    """The big photo at the top of a story page, with its credit as the caption."""
+    # alt describes what's in the frame; the caption (read with the figure) says what it is
+    # and who took it, so the two don't repeat each other.
+    alt = esc(p.get("alt", ""))
+    if p.get("hero"):
+        img = (f'<img src="{esc(p["hero"])}" srcset="{esc(p["src"])} 800w, {esc(p["hero"])} 1280w" '
+               f'sizes="(max-width: 860px) calc(100vw - 32px), 630px" alt="{alt}" width="1280" height="853" '
+               f'fetchpriority="high">')
+    else:
+        img = f'<img src="{esc(p["src"])}" alt="{alt}" width="800" height="533" fetchpriority="high">'
+    return (f'<figure class="article-figure"><span class="media">{img}</span>'
+            f'<figcaption>{credit_line(p)}</figcaption></figure>')
 
 
 def credit_line(p) -> str:
@@ -339,9 +374,20 @@ def build() -> None:
         page_blocks["article.html"] = Homepage(data).article()
     blocks = page_blocks["index.html"]
 
+    # YEGToday's own stories (those with a `body`) each get a page made from src/story.html.
+    templates = {page: page for page in PAGES}
+    for s in by_id.values():
+        if not s.get("body"):
+            continue
+        url = s.get("url", "")
+        if not re.fullmatch(r"[a-z0-9][a-z0-9-]*\.html", url) or url in templates:
+            raise SystemExit(f"story {s['id']}: give it a page name of its own as its url, like 'porsche-crash.html'")
+        templates[url] = "story.html"
+        page_blocks[url] = Homepage(data).story_page(s)
+
     output = {}
-    for page in PAGES:
-        html = (SRC / page).read_text(encoding="utf-8")
+    for page, template in templates.items():
+        html = (SRC / template).read_text(encoding="utf-8")
         missing = [m for m in MARKERS if m not in html]
         if missing:
             raise SystemExit(f"src/{page}: missing markers {missing}")

@@ -28,6 +28,21 @@ To update the news, edit `src/stories.json` and run `python3 build.py`. Each sto
 (fallback illustration), `fun` (1–5, used to pick Trending) and an optional `photo`. Set `"pin": "lead"` or
 `"pin": "highlights"` to choose the top stories yourself.
 
+### Publishing YEGToday's own stories
+
+For a story YEGToday reported itself (like the Porsche crash near Rogers Place, from police and
+firefighters at the scene), set `source` to `"YEGToday"`, give it a `body` (a list of paragraphs) and set
+`url` to a page name of its own, such as `porsche-crash-rogers-place.html`. `build.py` then makes that page
+from `src/story.html` and links the homepage to it. Optional fields:
+
+- `reported`: shown after the date in the byline, e.g. "Reported at the scene".
+- `unknowns`: the "Still unanswered" box.
+- `howReported`: the "How we reported this" note.
+- `photo`: as for other stories; add `hero` for a 1280px version and `alt` for a visual description.
+
+Say who told you each fact (for example "police at the scene told YEGToday"), don't state more than you
+were told, and update the story when an official statement comes out.
+
 ## Photos
 
 Story photos are real, freely licensed pictures of the places and subjects in each story (and of the event
@@ -168,6 +183,8 @@ minimum targets, reduced-motion support, and a no-JavaScript fallback.
 ```
 index.html, article.html     built pages (don't edit — run build.py)
 src/index.html, src/article.html   page sources (homepage blocks are <!--BLOCK:...--> markers)
+src/story.html               template for YEGToday's own stories (one page per story with a `body`)
+porsche-crash-rogers-place.html   built page for that original story (don't edit — run build.py)
 src/stories.json             the news: verified stories that fill the homepage blocks
 src/partials/                header, footer, SVG sprite (icons + fallback illustrations)
 assets/img/                  logo (SVG trace + your original)
